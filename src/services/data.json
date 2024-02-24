@@ -1,0 +1,158 @@
+[
+  {
+    "id": 1,
+    "question": "¿Prefieres pasar tiempo solo o rodeado de gente?",
+    "answer": [
+      { "Gryffindor": "Me gusta pasar tiempo con mis amigos más cercanos." },
+      { "Ravenclaw": "Prefiero estar solo/a." },
+      {
+        "Hufflepuff": "Disfruto de estar en grandes reuniones con muchas personas."
+      },
+      {
+        "Slytherin": "Me siento cómo tanto solo como en grupos, depende del día."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "¿Qué tipo de actividad prefieres en tu tiempo libre?",
+    "answer": [
+      { "Gryffindor": "Practicar deportes o actividades físicas." },
+      { "Ravenclaw": "Leer un libro o explorar mi creatividad." },
+      { "Hufflepuff": "Socializar con amigos o ir a eventos sociales." },
+      {
+        "Slytherin": "Me gusta tener variedad de actividades, desde actividades artísticas hasta deportes."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "question": " ¿Cuál es tu enfoque ante los desafíos? ",
+    "answer": [
+      {
+        "Gryffindor": "Me gusta el trabajo en equipo y buscar soluciones juntos. "
+      },
+      {
+        "Ravenclaw": "Prefiero enfrentarlos en solitairo y resolverlos a mi manera."
+      },
+      {
+        "Hufflepuff": "Me adapto a los desafíos según la situación, a veces necesito ayuda pero otras puedo resolverlos por mi cuenta."
+      },
+      {
+        "Slytherin": "A veces me abrumo ante los desafíos y prefiero evitarlos."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "¿Cómo te describirías en términos de valentía? ",
+    "answer": [
+      {
+        "Gryffindor": " Soy una persona muy valiente, no temo enfrentarme a situaciones difíciles."
+      },
+      {
+        "Ravenclaw": "Considero que la valentía viene en diferentes formas, a veces es confrontar el miedo y otras veces es aceptarlo y seguir adelante."
+      },
+      {
+        "Hufflepuff": "Puedo ser valiente cuando se trata de defender a mis seres queridos o mis ideales."
+      },
+      {
+        "Slytherin": "A veces me siento inseguro/a y prefiero evitar situaciones que puedan ser peligrosas."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "question": " ¿Qué cualidad crees que es más importante en una amistad?",
+    "answer": [
+      { "Gryffindor": "Aventura y diversión compartida." },
+      { "Ravenclaw": "Apoyo emocional y comprensión." },
+      { "Hufflepuff": "Lealtad y confianza mutua." },
+      { "Slytherin": "Honestidad y sinceridad en todo momento." }
+    ]
+  },
+  {
+    "id": 6,
+    "question": "¿Cómo sueles reaccionar ante situaciones de conflicto o confrontación?",
+    "answer": [
+      {
+        "Gryffindor": "Me enfrento directamente al problema y defiendo mis principios sin dudarlo."
+      },
+      {
+        "Ravenclaw": " Analizo la situación antes de actuar y elijo la mejor estrategia para resolver el conflicto de manera inteligente."
+      },
+      {
+        "Hufflepuff": "Trato de resolver el conflicto pacíficamente y encontrar un compromiso. "
+      },
+      {
+        "Slytherin": "Prefiero evitar confrontaciones y buscar soluciones más sutiles o indirectas."
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "question": "¿Qué cualidad consideras más valiosa en ti mismo/a?",
+    "answer": [
+      {
+        "Gryffindor": "Mi honestidad y capacidad para decir la verdad en cualquier situación."
+      },
+      {
+        "Ravenclaw": "Mi inteligencia y habilidad para resolver problemas complejos. "
+      },
+      { "Hufflepuff": "Mi amabilidad y empatía hacia los demás." },
+      {
+        "Slytherin": "Mi capacidad para adaptarme a diferentes circunstancias y sacar provecho de ellas."
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "question": "¿Qué te motiva más en la vida?",
+    "answer": [
+      { "Gryffindor": "La búsqueda de aventuras y experiencias emocionantes." },
+      {
+        "Ravenclaw": "La adquisición de conocimiento y la exploración del mundo que me rodea."
+      },
+      {
+        "Hufflepuff": "La conexión con los demás y la creación de relaciones significativas. "
+      },
+      {
+        "Slytherin": "El deseo de alcanzar el éxito y el reconocimiento personal."
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "question": "¿Cómo manejas la presión o el estrés?",
+    "answer": [
+      {
+        "Gryffindor": "Me enfrento a la situación con valentía y determinación, sin dejarme vencer por la presión."
+      },
+      {
+        "Ravenclaw": "Utilizo mi ingenio y creatividad para encontrar soluciones eficientes a los problemas que enfrento."
+      },
+      {
+        "Hufflepuff": "Busco el apoyo de mis amigos y seres queridos para superar los momentos difíciles."
+      },
+      {
+        "Slytherin": "Me centro en mis objetivos y trabajo duro para superar cualquier obstáculo que se presente."
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "question": "¿Qué es lo que más valoras en una persona?",
+    "answer": [
+      {
+        "Gryffindor": "Su coraje y su capacidad para hacer lo correcto incluso cuando es difícil."
+      },
+      {
+        "Ravenclaw": "Su inteligencia y su habilidad para pensar de manera creativa y analítica."
+      },
+      {
+        "Hufflepuff": " Su lealtad y su disposición para estar ahí cuando se les necesita."
+      },
+      { "Slytherin": "Su ambición y su determinación para alcanzar sus metas." }
+    ]
+  }
+]

@@ -1,0 +1,95 @@
+@import '../core/variables';
+
+.letterMaterials {
+  // background-image: url(../../images/backParticles.gif);
+  // background-position: 20%;
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+}
+.materials {
+  background-image: url(../../images/parchment.webp);
+  background-size: cover;
+  background-position: 50%;
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  // justify-content: center;
+
+  margin: 30px;
+  box-shadow: -26px -26px 52px #0f0f0f, 26px 26px 52px #131212;
+  animation: fadeIn ease 5s;
+  padding: 30px;
+  font-family: $princessSofia;
+  overflow-x: auto;
+  height: auto;
+  @media (min-width: 768px) {
+    margin: 40px;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 1.8rem;
+    @media (min-width: 768px) {
+      font-size: 2.2rem;
+    }
+  }
+  &__list {
+    font-size: 1.4rem;
+    @media (min-width: 768px) {
+      font-size: 1.8rem;
+    }
+    & li {
+      font-size: 1.4rem;
+      text-indent: 15px;
+      list-style: none;
+      &::before {
+        content: '- ';
+      }
+      @media (min-width: 768px) {
+        font-size: 1.6rem;
+      }
+    }
+  }
+  & p {
+    font-size: 1.4rem;
+    @media (min-width: 768px) {
+      font-size: 1.8rem;
+    }
+  }
+}
+
+.btnSeal {
+  align-self: flex-end;
+  background-color: #6b0909;
+  border-radius: 100px;
+  box-shadow: rgba(187, 44, 44, 0.2) 0 -25px 18px -14px inset,
+    rgba(187, 44, 44, 0.15) 0 1px 2px, rgba(187, 44, 44, 0.15) 0 2px 4px,
+    rgba(187, 44, 44, 0.15) 0 4px 8px, rgba(187, 44, 44, 0.15) 0 8px 16px,
+    rgba(187, 44, 44, 0.15) 0 16px 32px;
+  color: white;
+  cursor: pointer;
+  width: 80px;
+  margin: 10px;
+  padding: 2px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  font-size: 1.2rem;
+  &:hover {
+    box-shadow: rgba(187, 44, 44, 0.35) 0 -25px 18px -14px inset,
+      rgba(187, 44, 44, 0.25) 0 1px 2px, rgba(187, 44, 44, 0.25) 0 2px 4px,
+      rgba(187, 44, 44, 0.25) 0 4px 8px, rgba(187, 44, 44, 0.25) 0 8px 16px,
+      rgba(187, 44, 44, 0.25) 0 16px 32px;
+    transform: scale(1.05) rotate(-1deg);
+  }
+  @media (min-width: 768px) {
+    margin: 20px;
+    font-size: 1.8rem;
+    width: 100px;
+    height: 40px;
+    padding: 5px;
+  }
+}

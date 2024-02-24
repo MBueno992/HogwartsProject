@@ -1,0 +1,197 @@
+@import '../../core/variables';
+
+.Slytherin {
+  background-color: #0d7a6f;
+  display: flex;
+  flex-direction: column;
+  height: 85%;
+  gap: 20px;
+  position: relative;
+}
+.header {
+  height: 230px;
+  @media (min-width: 768px) {
+    height: auto;
+  }
+  &__houses {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 5px;
+    @media (min-width: 768px) {
+      padding: 0 15px;
+    }
+    @media (min-width: 1024px) {
+      padding: 0 50px;
+    }
+    &--flag {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 5px;
+      @media (min-width: 768px) {
+        gap: 15px;
+      }
+      img {
+        width: 50px;
+        @media (min-width: 768px) {
+          width: 100px;
+        }
+        @media (min-width: 1024px) {
+          width: 130px;
+        }
+      }
+    }
+    &--shield {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 80px 0 0;
+      gap: 10px;
+      text-align: center;
+      @media (min-width: 768px) {
+        margin: 40px 40px;
+      }
+      img {
+        width: 100px;
+
+        @media (min-width: 768px) {
+          width: 250px;
+        }
+      }
+      h2 {
+        color: white;
+        font-family: $harry;
+        font-size: 2.4rem;
+        letter-spacing: 2px;
+        -webkit-animation: text-focus-in 1s
+          cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+        animation: text-focus-in 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+      }
+      @-webkit-keyframes text-focus-in {
+        0% {
+          -webkit-filter: blur(12px);
+          filter: blur(12px);
+          opacity: 0;
+        }
+        100% {
+          -webkit-filter: blur(0px);
+          filter: blur(0px);
+          opacity: 1;
+        }
+      }
+      @keyframes text-focus-in {
+        0% {
+          -webkit-filter: blur(12px);
+          filter: blur(12px);
+          opacity: 0;
+        }
+        100% {
+          -webkit-filter: blur(0px);
+          filter: blur(0px);
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+.house {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  &__art {
+    margin: 40px;
+    background-color: lightgrey;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    border: 3px solid grey;
+    border-radius: 10px;
+    @media (min-width: 768px) {
+      width: 50%;
+      gap: 15px;
+    }
+    &--gif {
+      padding: 10px;
+      width: 200px;
+      @media (min-width: 768px) {
+        width: 250px;
+      }
+    }
+    &--text {
+      padding: 10px;
+      font-family: $sofia;
+      @media (min-width: 768px) {
+        padding: 25px;
+      }
+      h4 {
+        text-align: center;
+        @media (min-width: 768px) {
+          font-size: 2.2rem;
+        }
+      }
+      text-align: justify;
+      @media (min-width: 768px) {
+        font-size: 1.4rem;
+      }
+    }
+  }
+}
+
+.register {
+  background: linear-gradient(
+    90deg,
+    rgba(120, 125, 124, 1) 7%,
+    rgba(206, 219, 218, 1) 50%,
+    rgba(120, 125, 124, 1) 88%
+  );
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  font-family: $sofia;
+  @media (min-width: 768px) {
+    margin: 40px 40px 40px 0;
+  }
+  &__data {
+    display: flex;
+    flex-direction: column;
+
+    border-image: url(../../../images/marcoslytherin.png);
+    border-image-slice: 90 fill;
+    border-style: solid;
+    border-width: 20px;
+
+    background-clip: padding-box;
+    background-color: blue;
+    height: auto;
+
+    img {
+      width: 230px;
+      //   background-color: red;
+      padding: 15px;
+      @media (min-width: 768px) {
+        width: 280px;
+      }
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    input {
+      border-radius: 10px;
+      padding: 5px;
+      border: none;
+    }
+  }
+}

@@ -1,0 +1,57 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  height: 230px;
+  gap: 20px;
+  position: relative;
+  @media (min-width: 768px) {
+    height: auto;
+  }
+  &__houses {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 5px;
+    @media (min-width: 768px) {
+      padding: 0 15px;
+    }
+    @media (min-width: 1024px) {
+      padding: 0 50px;
+    }
+    &--flag {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 5px;
+      @media (min-width: 768px) {
+        gap: 15px;
+      }
+      img {
+        width: 50px;
+        @media (min-width: 768px) {
+          width: 100px;
+        }
+        @media (min-width: 1024px) {
+          width: 130px;
+        }
+      }
+    }
+    &--school {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 40px 0;
+      gap: 10px;
+      @media (min-width: 768px) {
+        margin: 40px 40px;
+      }
+      img {
+        width: 100px;
+
+        @media (min-width: 768px) {
+          width: 250px;
+        }
+      }
+    }
+  }
+}
