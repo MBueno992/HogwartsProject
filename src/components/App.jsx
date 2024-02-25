@@ -9,8 +9,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ShortingHat from './ShortingHat.jsx';
 import Form from './Form/Form.jsx';
 import questions from '../services/data.json';
-import Particles, { initParticlesEngine } from '@tsparticles/react';
-import { loadSlim } from '@tsparticles/slim';
+import Particles from '@tsparticles/react';
+// import Particles from '@tsparticles/react';
+// import { loadSlim } from '@tsparticles/slim';
 import particlesConfig from '../services/particles-config.js';
 import ResultForm from './Form/ResultForm.jsx';
 
@@ -23,6 +24,12 @@ function App() {
   const [answerSelected, setAnswerSelected] = useState([]);
   const [finalResult, setFinalResult] = useState([]);
   const navigate = useNavigate();
+  const [dataUser, setDataUser] = useState({
+    userName: '',
+    wizardName: '',
+    birthdate: '',
+  });
+
   // const [init, setInit] = useState(false);
 
   // useEffect(() => {
@@ -79,6 +86,10 @@ function App() {
     getRandomNumber();
   }, []);
 
+  const userRegister = (key, value) => {
+    setDataUser({ ...dataUser, [key]: value });
+  };
+
   return (
     <div className="background">
       {/* {init && <Particles options={particlesConfig} />} */}
@@ -122,6 +133,7 @@ function App() {
           path="/cuestionario"
           element={
             <>
+              <Particles options={particlesConfig} />
               <Header />
               <Form
                 questions={questions}
@@ -143,7 +155,11 @@ function App() {
           element={
             <>
               {/* <Header /> */}
-              <ResultForm finalResult={finalResult} />
+              <ResultForm
+                finalResult={finalResult}
+                userRegister={userRegister}
+                dataUser={dataUser}
+              />
               <Footer />
             </>
           }

@@ -1,67 +1,82 @@
-import shield from '../../images/SlytherinShield.png';
-import flagShort from '../../images/slytherin.png';
-import flagLong from '../../images/slytherinlong.png';
-import gif from '../../images/slytherinGif.gif';
-
-import '../../scss/layout/Headers/HeadSlytherin.scss';
+import shield from '../../images/GryffindorShield.png';
+import flagShort from '../../images/gryffindorsort.png';
+import flagLong from '../../images/gryffindor.png';
+import '../../scss/layout/Headers/HouseSelect.scss';
 import { Link } from 'react-router-dom';
 
-function ResultForm({ finalResult }) {
+import Gryffindor from '../Houses/Gryffindor';
+import Slytherin from '../Houses/Slytherin';
+import Hufflepuff from '../Houses/Hufflepuff';
+import Ravenclaw from '../Houses/Ravenclaw';
+
+function ResultForm({ finalResult, userRegister, dataUser }) {
+  const houseSelect = finalResult[0][0];
+  const renderHouse = {
+    Gryffindor: <Gryffindor />,
+    Ravenclaw: <Ravenclaw />,
+    Hufflepuff: <Hufflepuff />,
+    Slytherin: <Slytherin />,
+  };
+  console.log(dataUser);
   console.log(finalResult[0]);
   return (
-    <section className="Slytherin">
+    <section className={houseSelect}>
       <header>
         <div className="header__houses">
           <div className="header__houses--flag">
-            <img src={flagLong} alt="slytherin house" />
-            <img src={flagShort} alt="slytherin house" />
+            <img src={flagLong} alt={houseSelect} />
+            <img src={flagShort} alt={houseSelect} />
           </div>
           <div className="header__houses--shield">
             <img src={shield} alt="Hogwarts Shield" />
-            <h2>¡{finalResult[0][0]}!</h2>
+            <h2>¡{houseSelect}!</h2>
           </div>
           <div className="header__houses--flag">
-            <img src={flagShort} alt="slytherin house" />
-            <img src={flagLong} alt="slytherin house" />
+            <img src={flagShort} alt={houseSelect} />
+            <img src={flagLong} alt={houseSelect} />
           </div>
         </div>
       </header>
       <main className="house">
-        <article className="house__art">
-          <img src={gif} alt="" className="house__art--gif" />
-          <div className="house__art--text">
-            <h4>Bienvenido/a a Slytherin</h4>
-            <p>
-              Las personas de Slytherin destacan por su astucia, determinación y
-              ambición. Son personas que valoran el ingenio, la determinación
-              para lograr sus metas y la búsqueda de su propio beneficio. A
-              menudo son percibidas como líderes natos, dispuestas a hacer lo
-              que sea necesario para alcanzar el éxito, aunque eso signifique
-              tomar decisiones difíciles o cuestionables. También tienden a ser
-              muy selectivas en cuanto a sus amistades y a tener un fuerte
-              sentido de lealtad hacia aquellos que consideran dignos.
-            </p>
-          </div>
-        </article>
+        {renderHouse[houseSelect]}
         <section className="register">
           <h3>Crea tu ficha de alumno/a</h3>
           <article className="register__data">
             <img src={shield} alt="" />
-            <h3>Nombre del alumno/a: </h3>
-            <h4>Apodo: </h4>
-            <p>Fecha de nacimiento: </p>
-            <p>Miembro de la casa: </p>
+            <h3>
+              Alumno/a: <span>{dataUser.userName || ''}</span>{' '}
+            </h3>
+            <h4>
+              Apodo: <span>{dataUser.wizardName || ''} </span>
+            </h4>
+            <p>
+              Fecha de nacimiento: <span>{dataUser.birthdate || ''} </span>
+            </p>
+            <p>
+              Miembro de la casa: <span>{houseSelect} </span>
+            </p>
           </article>
-          <form className="register__form">
+          <form
+            className="register__form"
+            onChange={(ev) => {
+              userRegister(ev.target.id, ev.target.value);
+            }}
+          >
             <label>Nombre </label>
-            <input type="text" placeholder="Introduce tu nombre completo" />
+            <input
+              type="text"
+              placeholder="Introduce tu nombre completo"
+              id="userName"
+            />
 
             <label>Apodo</label>
-            <input type="text" placeholder="introduce tu apogo de mago/a" />
-            {/* <label>Correo electrónico </label>
-            <input type="text" placeholder="Introduce tu email" /> */}
+            <input
+              type="text"
+              placeholder="introduce tu apogo de mago/a"
+              id="wizardName"
+            />
             <label>Fecha de nacimiento</label>
-            <input type="date" />
+            <input type="date" id="birthdate" />
             <Link>
               <button>Enviar</button>
             </Link>

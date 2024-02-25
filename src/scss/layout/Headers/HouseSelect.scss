@@ -7,10 +7,74 @@
     rgba(11, 102, 99, 1) 77%,
     rgba(10, 54, 55, 1) 95%
   );
-  // display: flex;
-  // flex-direction: column;
   height: 85%;
-  // gap: 20px;
+  .house__art {
+    background-color: lightgrey;
+    border: 3px solid grey;
+  }
+  .register {
+    background: linear-gradient(
+      90deg,
+      rgba(10, 54, 55, 1) 7%,
+      rgba(19, 163, 144, 1) 50%,
+      rgba(10, 54, 55, 1) 93%
+    );
+    color: lightgrey;
+    border: 3px solid rgba(120, 125, 124, 1);
+    &__data {
+      border: 2px solid grey;
+      background-color: rgba(11, 102, 99, 1);
+      color: rgb(182, 182, 182);
+    }
+    &__form {
+      button {
+        background: #e8e8e8;
+        &:hover {
+          border: 1px solid lightgrey;
+          color: lightgray;
+          background-color: rgba(11, 102, 99, 1);
+        }
+      }
+    }
+  }
+}
+.Gryffindor {
+  background: radial-gradient(
+    circle,
+    rgba(219, 54, 79, 1) 23%,
+    rgba(187, 45, 69, 1) 85%,
+    rgba(87, 29, 42, 1) 99%
+  );
+  height: 85%;
+  .house__art {
+    background-color: #ebc269;
+    border: 3px solid #eca300;
+  }
+  .register {
+    background: linear-gradient(
+      90deg,
+      rgba(150, 34, 54, 1) 7%,
+      rgba(219, 54, 79, 1) 50%,
+      rgba(150, 34, 54, 1) 93%
+    );
+    color: #eca300;
+    border: 3px solid #eca300;
+    &__data {
+      border: 2px solid #eca300;
+      background-color: rgba(187, 45, 69, 1);
+      color: #ffae00;
+    }
+    &__form {
+      button {
+        background: #eca300;
+        &:hover {
+          border: 1px solid #eca300;
+          color: #eca300;
+          background-color: rgba(187, 45, 69, 1);
+        }
+      }
+    }
+  }
 }
 .header {
   height: 230px;
@@ -120,12 +184,12 @@
 
   &__art {
     margin: 40px;
-    background-color: lightgrey;
+    background-color: #ebc269;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    border: 3px solid grey;
+    border: 3px solid #eca300;
     border-radius: 10px;
     @media (min-width: 768px) {
       width: 40%;
@@ -162,13 +226,13 @@
 .register {
   background: linear-gradient(
     90deg,
-    rgba(10, 54, 55, 1) 7%,
-    rgba(19, 163, 144, 1) 50%,
-    rgba(10, 54, 55, 1) 93%
+    rgba(150, 34, 54, 1) 7%,
+    rgba(219, 54, 79, 1) 50%,
+    rgba(150, 34, 54, 1) 93%
   );
-  color: lightgrey;
+  color: #eca300;
   text-align: center;
-  border: 3px solid rgba(120, 125, 124, 1);
+  border: 3px solid #eca300;
   padding: 15px;
   display: flex;
   flex-direction: column;
@@ -181,15 +245,15 @@
   &__data {
     display: flex;
     flex-direction: column;
-    border: 2px solid grey;
+    border: 2px solid #eca300;
     border-radius: 20px;
     padding: 15px;
-    background-color: rgba(11, 102, 99, 1);
+    background-color: rgba(187, 45, 69, 1);
     height: auto;
     text-align: start;
     margin: 15px;
 
-    color: rgb(182, 182, 182);
+    color: #ffae00;
     span {
       color: white;
     }
@@ -237,16 +301,16 @@
       border-radius: 15px;
       color: #212121;
       z-index: 1;
-      background: #e8e8e8;
+      background: #eca300;
       position: relative;
       font-size: 1.4rem;
       -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
       box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
       transition: all 250ms;
       &:hover {
-        border: 1px solid lightgrey;
-        color: lightgray;
-        background-color: rgba(11, 102, 99, 1);
+        border: 1px solid #eca300;
+        color: #eca300;
+        background-color: rgba(187, 45, 69, 1);
       }
     }
   }
