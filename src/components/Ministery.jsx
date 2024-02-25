@@ -12,15 +12,21 @@ function Ministery({ click, input, text }) {
   };
 
   return (
-    <main className="main">
-      <section className="login">
-        <img src={ministery} alt="Ministerio de Magia" className="login__img" />
-        <div className="login__text">
-          <h1 className="login__text--title minis">Ministerio de Magia</h1>
-          <h2 className="login__text--subtitle">
+    <section className="ministery">
+      <article className="ministeryMsg">
+        <img
+          src={ministery}
+          alt="Ministerio de Magia"
+          className="ministeryMsg__img"
+        />
+        <div className="ministeryMsg__text">
+          <h1 className="ministeryMsg__text--title minis">
+            Ministerio de Magia
+          </h1>
+          <h2 className="ministeryMsg__text--subtitle">
             Departamento de educación mágica
           </h2>
-          <p className="login__text--intro">
+          <p className="ministeryMsg__text--intro">
             Durante la Segunda Guerra Mágica, muchos expedientes de futuros
             magos fueron destruidos. Desde el Ministerio de Magia llevamos años
             intentando localizar a todos aquellos magos que no pudieron acceder
@@ -35,19 +41,17 @@ function Ministery({ click, input, text }) {
               placeholder="Nombre completo..."
               onChange={handleInput}
             />
-
-            <input
-              type="submit"
-              value="Continuar"
-              role="button"
+            <button
               className="loginForm__btn js-continue"
               onClick={handleClick}
-            />
+            >
+              Continuar
+            </button>
           </form>
           <p>{text}</p>
         </div>
-      </section>
-    </main>
+      </article>
+    </section>
   );
 }
 

@@ -55,7 +55,7 @@ function Materials() {
           Se recuerda a los padres que a los alumnos de primer año no se les
           permite tener escobas propias.
         </h4>
-        <Link to="/sombrero-seleccionador" className="btnSeal">
+        <Link to="/quest-intro" className="btnSeal">
           Continuar
         </Link>
       </div>

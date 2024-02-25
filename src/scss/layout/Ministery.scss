@@ -1,6 +1,6 @@
 @import '../core/Mixins.scss';
 
-.main {
+.ministery {
   background-image: url(../../images/parchment.webp);
   background-size: cover;
   background-position: center;
@@ -10,7 +10,7 @@
   justify-content: center;
   overflow: auto;
 }
-.login {
+.ministeryMsg {
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -5,9 +5,13 @@
   justify-content: space-around;
   align-items: center;
   height: 15vh;
+  width: 100vw;
   color: white;
   font-family: 'Courier New', Courier, monospace;
   padding: 20px;
+  // position: absolute;
+  // bottom: 0;
+  // left: 0;
   &__logo {
     width: 60px;
   }

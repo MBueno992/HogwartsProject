@@ -14,6 +14,7 @@ import Particles, { initParticlesEngine } from '@tsparticles/react';
 // import { loadSlim } from '@tsparticles/slim';
 import particlesConfig from '../services/particles-config.js';
 import ResultForm from './Form/ResultForm.jsx';
+import Landing from './Landing/Landing.jsx';
 
 function App() {
   const [userName, setUserName] = useState('');
@@ -48,7 +49,7 @@ function App() {
     if (userName === '') {
       setAlertMsg('Por favor, introduce tu nombre');
     } else {
-      navigate('/hogwarts');
+      navigate('/hogwarts-letter');
     }
   };
 
@@ -97,6 +98,15 @@ function App() {
         <Route
           path="/"
           element={
+            <>
+              <Landing />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/register"
+          element={
             <Ministery
               click={addUserName}
               input={userNameInput}
@@ -105,7 +115,7 @@ function App() {
           }
         />
         <Route
-          path="/hogwarts"
+          path="/hogwarts-letter"
           element={
             <div className="page">
               <Particles options={particlesConfig} />
@@ -119,18 +129,18 @@ function App() {
           }
         />
         <Route
-          path="/sombrero-seleccionador"
+          path="/quest-intro"
           element={
-            <>
+            <div className="page">
               <Particles options={particlesConfig} />
               <Header />
               <ShortingHat questions={questions} />
               <Footer />
-            </>
+            </div>
           }
         />
         <Route
-          path="/cuestionario"
+          path="/quest"
           element={
             <>
               <Particles options={particlesConfig} />
