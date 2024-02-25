@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ShortingHat from './ShortingHat.jsx';
 import Form from './Form/Form.jsx';
 import questions from '../services/data.json';
-import Particles from '@tsparticles/react';
+import Particles, { initParticlesEngine } from '@tsparticles/react';
 // import Particles from '@tsparticles/react';
 // import { loadSlim } from '@tsparticles/slim';
 import particlesConfig from '../services/particles-config.js';

@@ -1,9 +1,9 @@
-import shield from '../../images/GryffindorShield.png';
-import flagShort from '../../images/gryffindorsort.png';
-import flagLong from '../../images/gryffindor.png';
+import shield from '../../images/HufflepuffShield.png';
+import flagShort from '../../images/ravenclaw.png';
+import flagLong from '../../images/ravenclawlargue.png';
+
 import '../../scss/layout/Headers/HouseSelect.scss';
 import { Link } from 'react-router-dom';
-
 import Gryffindor from '../Houses/Gryffindor';
 import Slytherin from '../Houses/Slytherin';
 import Hufflepuff from '../Houses/Hufflepuff';
@@ -17,8 +17,7 @@ function ResultForm({ finalResult, userRegister, dataUser }) {
     Hufflepuff: <Hufflepuff />,
     Slytherin: <Slytherin />,
   };
-  console.log(dataUser);
-  console.log(finalResult[0]);
+
   return (
     <section className={houseSelect}>
       <header>
@@ -72,7 +71,7 @@ function ResultForm({ finalResult, userRegister, dataUser }) {
             <label>Apodo</label>
             <input
               type="text"
-              placeholder="introduce tu apogo de mago/a"
+              placeholder="Introduce tu apodo de mago/a"
               id="wizardName"
             />
             <label>Fecha de nacimiento</label>

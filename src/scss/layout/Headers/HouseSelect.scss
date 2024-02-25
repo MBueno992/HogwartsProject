@@ -50,6 +50,9 @@
     background-color: #ebc269;
     border: 3px solid #eca300;
   }
+  .header__houses--shield h2 {
+    color: #eca300;
+  }
   .register {
     background: linear-gradient(
       90deg,
@@ -71,6 +74,95 @@
           border: 1px solid #eca300;
           color: #eca300;
           background-color: rgba(187, 45, 69, 1);
+        }
+      }
+    }
+  }
+}
+.Ravenclaw {
+  background: radial-gradient(
+    circle,
+    rgba(34, 183, 238, 1) 23%,
+    rgba(18, 101, 181, 1) 85%,
+    rgba(18, 53, 96, 1) 99%
+  );
+  height: 85%;
+  .house__art {
+    border: 3px solid #34515c;
+    background-color: rgba(126, 123, 123, 0.795);
+  }
+  .header__houses--shield h2 {
+    color: rgba(18, 53, 96, 1);
+  }
+  .register {
+    background: linear-gradient(
+      90deg,
+      rgba(18, 101, 181, 1) 0%,
+      rgba(130, 179, 227, 1) 50%,
+      rgba(18, 101, 181, 1) 100%
+    );
+    color: #203138;
+    border: 3px solid #34515c;
+    &__data {
+      border: 2px solid #34515c;
+      background-color: #0091d1;
+      color: rgb(196, 193, 193);
+      span {
+        color: #203138;
+      }
+    }
+    &__form {
+      button {
+        background: #203138;
+        color: lightgray;
+        &:hover {
+          border: 1px solid #203138;
+          color: #203138;
+          background-color: #eca300;
+        }
+      }
+    }
+  }
+}
+.Hufflepuff {
+  background: radial-gradient(
+    circle,
+    rgba(255, 227, 76, 1) 23%,
+    rgba(199, 168, 0, 1) 85%,
+    rgba(144, 121, 0, 1) 99%
+  );
+  height: 85%;
+  .header__houses--shield h2 {
+    color: black;
+  }
+  .house__art {
+    background-color: #ffd700;
+    border: 3px solid black;
+  }
+  .register {
+    background: linear-gradient(
+      90deg,
+      rgba(199, 168, 0, 1) 0%,
+      rgba(255, 227, 76, 1) 50%,
+      rgba(199, 168, 0, 1) 100%
+    );
+    color: black;
+    border: 3px solid black;
+    &__data {
+      border: 2px solid black;
+      background-color: #ffd700;
+      color: rgb(56, 56, 56);
+      span {
+        color: black;
+      }
+    }
+    &__form {
+      button {
+        background: lightgrey;
+        &:hover {
+          border: 1px solid #ffd700;
+          color: #ffd700;
+          background-color: black;
         }
       }
     }
@@ -206,6 +298,7 @@
     &--text {
       padding: 10px;
       font-family: $sofia;
+      color: black;
       @media (min-width: 768px) {
         padding: 25px;
       }
@@ -217,7 +310,7 @@
       }
       text-align: justify;
       @media (min-width: 768px) {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
       }
     }
   }
