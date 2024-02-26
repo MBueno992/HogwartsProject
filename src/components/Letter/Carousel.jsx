@@ -2,7 +2,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import Letter from './Letter';
 import Materials from './Materials';
 
-function CarouselFadeExample({ index, selectCarousel, userName }) {
+function CarouselFadeExample({ index, selectCarousel, userName, lastName }) {
   return (
     <Carousel
       fade
@@ -11,7 +11,7 @@ function CarouselFadeExample({ index, selectCarousel, userName }) {
       interval={null}
     >
       <Carousel.Item>
-        {<Letter userName={userName} />}
+        {<Letter userName={userName} lastName={lastName} />}
         <Carousel.Caption></Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>

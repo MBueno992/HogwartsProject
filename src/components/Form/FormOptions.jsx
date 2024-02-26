@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function FormOptions({ answer, house, answerSelect, answerSelected }) {
+function FormOptions({ answer, house, answerSelect }) {
   return (
     <label className={`formPage__form--answer `}>
       {answer}
@@ -10,7 +10,6 @@ function FormOptions({ answer, house, answerSelect, answerSelected }) {
         onClick={(ev) => {
           answerSelect(ev.target.value);
         }}
-        // checked={answerSelected[answerSelected.length - 1] === house}
       />
     </label>
   );
@@ -18,6 +17,7 @@ function FormOptions({ answer, house, answerSelect, answerSelected }) {
 
 FormOptions.propTypes = {
   answer: PropTypes.string,
-  style: PropTypes.string,
+  house: PropTypes.string,
+  answerSelect: PropTypes.func,
 };
 export default FormOptions;

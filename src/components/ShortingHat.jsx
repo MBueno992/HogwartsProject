@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import '../scss/layout/ShortingHat.scss';
 
-function ShortingHat({ questions }) {
+function ShortingHat() {
   return (
     <section className="shortingHat">
       <h2 className="shortingHat__title">Bienvenido a Hogwarts </h2>
@@ -16,7 +16,7 @@ function ShortingHat({ questions }) {
         <br />
         ¿Preparado/a?
       </p>
-      <Link to="/cuestionario" className="shortingHat__btn">
+      <Link to="/quest" className="shortingHat__btn">
         <span>¡Vamos!</span>
       </Link>
     </section>

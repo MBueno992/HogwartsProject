@@ -1,21 +1,55 @@
-import shield from '../../images/HufflepuffShield.png';
-import flagShort from '../../images/ravenclaw.png';
-import flagLong from '../../images/ravenclawlargue.png';
+import '../../scss/layout/HouseSelect.scss';
 
-import '../../scss/layout/Headers/HouseSelect.scss';
-import { Link } from 'react-router-dom';
+import RegisterForm from '../Houses/RegisterForm';
 import Gryffindor from '../Houses/Gryffindor';
 import Slytherin from '../Houses/Slytherin';
 import Hufflepuff from '../Houses/Hufflepuff';
 import Ravenclaw from '../Houses/Ravenclaw';
+//Gryffindor
+import GryffindorShield from '../../images/GryffindorShield.png';
+import GryffindorShort from '../../images/GryffindorShort.png';
+import GryffindorLong from '../../images/GryffindorLong.png';
+//Ravenclaw
+import RavenclawShield from '../../images/RavenclawShield.png';
+import RavenclawShort from '../../images/RavenclawShort.png';
+import RavenclawLong from '../../images/RavenclawLong.png';
+//Hufflepuff
+import HufflepuffShield from '../../images/HufflepuffShield.png';
+import HufflepuffShort from '../../images/HufflepuffShort.png';
+import HufflepuffLong from '../../images/HufflepuffLong.png';
+//Slytherin
+import SlytherinShield from '../../images/SlytherinShield.png';
+import SlytherinShort from '../../images/SlytherinShort.png';
+import SlytherinLong from '../../images/SlytherinLong.png';
 
-function ResultForm({ finalResult, userRegister, dataUser }) {
-  const houseSelect = finalResult[0][0];
+function ResultForm({ houseSelect, userRegister, dataUser, userName }) {
   const renderHouse = {
     Gryffindor: <Gryffindor />,
     Ravenclaw: <Ravenclaw />,
     Hufflepuff: <Hufflepuff />,
     Slytherin: <Slytherin />,
+  };
+  const imageHouse = {
+    Gryffindor: {
+      Shield: GryffindorShield,
+      flagLong: GryffindorLong,
+      flagShort: GryffindorShort,
+    },
+    Ravenclaw: {
+      Shield: RavenclawShield,
+      flagLong: RavenclawLong,
+      flagShort: RavenclawShort,
+    },
+    Hufflepuff: {
+      Shield: HufflepuffShield,
+      flagLong: HufflepuffLong,
+      flagShort: HufflepuffShort,
+    },
+    Slytherin: {
+      Shield: SlytherinShield,
+      flagLong: SlytherinLong,
+      flagShort: SlytherinShort,
+    },
   };
 
   return (
@@ -23,64 +57,28 @@ function ResultForm({ finalResult, userRegister, dataUser }) {
       <header>
         <div className="header__houses">
           <div className="header__houses--flag">
-            <img src={flagLong} alt={houseSelect} />
-            <img src={flagShort} alt={houseSelect} />
+            <img src={imageHouse[houseSelect].flagLong} alt={houseSelect} />
+            <img src={imageHouse[houseSelect].flagShort} alt={houseSelect} />
           </div>
           <div className="header__houses--shield">
-            <img src={shield} alt="Hogwarts Shield" />
+            <img src={imageHouse[houseSelect].Shield} alt="Hogwarts Shield" />
             <h2>¡{houseSelect}!</h2>
           </div>
           <div className="header__houses--flag">
-            <img src={flagShort} alt={houseSelect} />
-            <img src={flagLong} alt={houseSelect} />
+            <img src={imageHouse[houseSelect].flagShort} alt={houseSelect} />
+            <img src={imageHouse[houseSelect].flagLong} alt={houseSelect} />
           </div>
         </div>
       </header>
       <main className="house">
         {renderHouse[houseSelect]}
-        <section className="register">
-          <h3>Crea tu ficha de alumno/a</h3>
-          <article className="register__data">
-            <img src={shield} alt="" />
-            <h3>
-              Alumno/a: <span>{dataUser.userName || ''}</span>{' '}
-            </h3>
-            <h4>
-              Apodo: <span>{dataUser.wizardName || ''} </span>
-            </h4>
-            <p>
-              Fecha de nacimiento: <span>{dataUser.birthdate || ''} </span>
-            </p>
-            <p>
-              Miembro de la casa: <span>{houseSelect} </span>
-            </p>
-          </article>
-          <form
-            className="register__form"
-            onChange={(ev) => {
-              userRegister(ev.target.id, ev.target.value);
-            }}
-          >
-            <label>Nombre </label>
-            <input
-              type="text"
-              placeholder="Introduce tu nombre completo"
-              id="userName"
-            />
-
-            <label>Apodo</label>
-            <input
-              type="text"
-              placeholder="Introduce tu apodo de mago/a"
-              id="wizardName"
-            />
-            <label>Fecha de nacimiento</label>
-            <input type="date" id="birthdate" />
-            <Link>
-              <button>Enviar</button>
-            </Link>
-          </form>
-        </section>
+        <RegisterForm
+          imageHouse={imageHouse}
+          houseSelect={houseSelect}
+          userName={userName}
+          userRegister={userRegister}
+          dataUser={dataUser}
+        />
       </main>
     </section>
   );

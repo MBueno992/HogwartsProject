@@ -9,37 +9,32 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ShortingHat from './ShortingHat.jsx';
 import Form from './Form/Form.jsx';
 import questions from '../services/data.json';
-import Particles, { initParticlesEngine } from '@tsparticles/react';
-// import Particles from '@tsparticles/react';
-// import { loadSlim } from '@tsparticles/slim';
-import particlesConfig from '../services/particles-config.js';
 import ResultForm from './Form/ResultForm.jsx';
 import Landing from './Landing/Landing.jsx';
+import local from '../services/localStorage.js';
 
 function App() {
-  const [userName, setUserName] = useState('');
+  const [userName, setUserName] = useState(local.get('user', ''));
   const [alertMsg, setAlertMsg] = useState('');
   const [indexCarrusel, setIndexCarrusel] = useState(0);
   const [randomOrder, setRandomOrder] = useState([]);
   const [answerArray, setAnswerArray] = useState([]);
   const [answerSelected, setAnswerSelected] = useState([]);
-  const [finalResult, setFinalResult] = useState([]);
+  const [houseSelect, setHouseSelect] = useState(local.get('house', ''));
   const navigate = useNavigate();
   const [dataUser, setDataUser] = useState({
-    userName: '',
+    userName: userName,
     wizardName: '',
     birthdate: '',
+    email: '',
+    password: '',
+    image: '',
   });
 
-  // const [init, setInit] = useState(false);
-
-  // useEffect(() => {
-  //   initParticlesEngine(async (engine) => {
-  //     await loadSlim(engine);
-  //   }).then(() => {
-  //     setInit(true);
-  //   });
-  // }, []);
+  useEffect(() => {
+    local.set('user', userName);
+    local.set('house', houseSelect);
+  }, [userName, houseSelect]);
 
   const userNameInput = (value) => {
     setUserName(value);
@@ -47,7 +42,7 @@ function App() {
 
   const addUserName = () => {
     if (userName === '') {
-      setAlertMsg('Por favor, introduce tu nombre');
+      setAlertMsg('Por favor, introduce tu nombre y apellido');
     } else {
       navigate('/hogwarts-letter');
     }
@@ -67,9 +62,8 @@ function App() {
       result[value] = (result[value] || 0) + 1;
     });
     const orderResults = Object.entries(result).sort((a, b) => b[1] - a[1]);
-    setFinalResult(orderResults);
-    console.log(finalResult);
-    console.log(result);
+    const finalResult = orderResults[0][0];
+    setHouseSelect(finalResult);
   };
 
   const getRandomNumber = () => {
@@ -93,14 +87,13 @@ function App() {
 
   return (
     <div className="background">
-      {/* {init && <Particles options={particlesConfig} />} */}
       <Routes>
         <Route
           path="/"
           element={
             <>
               <Landing />
-              <Footer />
+              <Footer style="loginfooter" />
             </>
           }
         />
@@ -109,8 +102,9 @@ function App() {
           element={
             <Ministery
               click={addUserName}
-              input={userNameInput}
+              handleInput={userNameInput}
               text={alertMsg}
+              userName={userName}
             />
           }
         />
@@ -118,7 +112,6 @@ function App() {
           path="/hogwarts-letter"
           element={
             <div className="page">
-              <Particles options={particlesConfig} />
               <CarouselFadeExample
                 userName={userName}
                 selectCarousel={selectCarousel}
@@ -132,7 +125,6 @@ function App() {
           path="/quest-intro"
           element={
             <div className="page">
-              <Particles options={particlesConfig} />
               <Header />
               <ShortingHat questions={questions} />
               <Footer />
@@ -143,7 +135,6 @@ function App() {
           path="/quest"
           element={
             <>
-              <Particles options={particlesConfig} />
               <Header />
               <Form
                 questions={questions}
@@ -164,9 +155,9 @@ function App() {
           path="/result"
           element={
             <>
-              {/* <Header /> */}
               <ResultForm
-                finalResult={finalResult}
+                userName={userName}
+                houseSelect={houseSelect}
                 userRegister={userRegister}
                 dataUser={dataUser}
               />

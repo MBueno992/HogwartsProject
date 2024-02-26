@@ -6,7 +6,6 @@
   justify-content: center;
   align-items: center;
   font-family: $sofia;
-  height: 60vh;
   &__sorting {
     width: 300px;
     height: 300px;
@@ -14,7 +13,6 @@
   &__form {
     display: flex;
     flex-direction: column;
-
     padding: 20px;
     padding-bottom: 50px;
     @media (min-width: 768px) {
@@ -30,40 +28,29 @@
       font-size: 2.6rem;
       margin: 10px 0;
       padding: 5px;
-      color: lightgrey;
+      color: rgb(226, 225, 225);
       text-align: center;
     }
     &--answer {
-      background-color: #d1aa45;
-      border-image-source: url(../../images/marco.png);
-      border-image-slice: 50;
-      border-style: solid;
-      border-width: 20px;
+      background: linear-gradient(
+        90deg,
+        rgba(217, 161, 51, 1) 0%,
+        rgba(209, 187, 120, 1) 50%,
+        rgba(217, 161, 51, 1) 100%
+      );
+      padding: 20px;
+      border-radius: 5px;
       font-size: 2rem;
       margin: 5px;
       cursor: pointer;
       input[type='radio'] {
         display: none;
       }
+      &:hover {
+        color: rgb(226, 225, 225);
+      }
     }
   }
 }
-
-// .Gryffindor {
-//   background-color: #740001;
-//   color: whitesmoke;
-// }
-// .Hufflepuff {
-//   background-color: #ffd700;
-//   color: whitesmoke;
-// }
-// .Ravenclaw {
-//   background-color: #222f5b;
-//   color: whitesmoke;
-// }
-// .Slytherin {
-//   background-color: #1a472a;
-//   color: whitesmoke;
-// }
 
 // Si utilizo input[type='radio']:checked +label {background-color: red}  Lo que hace es cambiar el color de la etiqueta cuando esta esté seleccionada

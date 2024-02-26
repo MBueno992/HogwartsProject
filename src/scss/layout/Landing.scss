@@ -1,5 +1,5 @@
 .landing {
-  height: 100vh;
+  height: 85vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -65,5 +65,8 @@
   &__register {
     text-align: center;
     margin: 15px;
+    @media (min-width: 768px) {
+      font-size: 1.4rem;
+    }
   }
 }

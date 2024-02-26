@@ -1,18 +1,6 @@
 @import '../core/variables';
 
 .letterMain {
-  // background: radial-gradient(
-  //   circle,
-  //   rgba(1, 55, 125, 1) 0%,
-  //   rgba(4, 31, 77, 1) 48%,
-  //   rgba(4, 29, 73, 1) 56%,
-  //   rgba(4, 36, 85, 1) 68%,
-  //   rgba(1, 61, 128, 1) 100%
-  // );
-  // background-position: 20%;
-  // background-size: cover;
-  // background-repeat: no-repeat;
-  height: 90vh;
   display: flex;
   justify-content: center;
 }
@@ -29,12 +17,8 @@
   animation: fadeIn ease 5s;
   padding: 30px;
   height: auto;
-  width: auto;
-  overflow-x: auto;
   @media (min-width: 768px) {
-    // justify-content: center;
     margin: 40px;
-    overflow-x: hidden;
   }
   &__shield {
     width: 50%;
@@ -82,5 +66,75 @@
         opacity: 1;
       }
     }
+  }
+  &__materials {
+    font-family: $princessSofia;
+
+    font-size: 1.8rem;
+    @media (min-width: 768px) {
+      font-size: 2.2rem;
+    }
+    &--title {
+      font-weight: bold;
+    }
+    &--list {
+      font-size: 1.4rem;
+      @media (min-width: 768px) {
+        font-size: 1.8rem;
+      }
+      & li {
+        font-size: 1.4rem;
+        text-indent: 15px;
+        list-style: none;
+        &::before {
+          content: '- ';
+        }
+        @media (min-width: 768px) {
+          font-size: 1.6rem;
+        }
+      }
+    }
+    & p {
+      font-size: 1.4rem;
+      @media (min-width: 768px) {
+        font-size: 1.8rem;
+      }
+    }
+  }
+  & h4 {
+    font-family: $princessSofia;
+  }
+}
+.btnSeal {
+  font-family: $princessSofia;
+  align-self: flex-end;
+  background-color: #6b0909;
+  border-radius: 100px;
+  box-shadow: rgba(187, 44, 44, 0.2) 0 -25px 18px -14px inset,
+    rgba(187, 44, 44, 0.15) 0 1px 2px, rgba(187, 44, 44, 0.15) 0 2px 4px,
+    rgba(187, 44, 44, 0.15) 0 4px 8px, rgba(187, 44, 44, 0.15) 0 8px 16px,
+    rgba(187, 44, 44, 0.15) 0 16px 32px;
+  color: white;
+  cursor: pointer;
+  width: 80px;
+  margin: 10px;
+  padding: 2px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  font-size: 1.2rem;
+  &:hover {
+    box-shadow: rgba(187, 44, 44, 0.35) 0 -25px 18px -14px inset,
+      rgba(187, 44, 44, 0.25) 0 1px 2px, rgba(187, 44, 44, 0.25) 0 2px 4px,
+      rgba(187, 44, 44, 0.25) 0 4px 8px, rgba(187, 44, 44, 0.25) 0 8px 16px,
+      rgba(187, 44, 44, 0.25) 0 16px 32px;
+    transform: scale(1.05) rotate(-1deg);
+  }
+  @media (min-width: 768px) {
+    margin: 20px;
+    font-size: 1.8rem;
+    width: 100px;
+    height: 40px;
+    padding: 5px;
   }
 }

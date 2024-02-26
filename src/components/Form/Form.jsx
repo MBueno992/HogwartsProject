@@ -11,7 +11,6 @@ function Form({
   setAnswerArray,
   answerArray,
   answerSelect,
-  answerSelected,
   resultForm,
 }) {
   const [newQuest, setNewQuest] = useState(1);
@@ -27,8 +26,8 @@ function Form({
 
   const changeQuestion = () => {
     if (newQuest < 10) {
-      setTimeout(() => getRandomNumber(), 800);
-      setTimeout(() => setNewQuest(newQuest + 1), 800);
+      setTimeout(() => getRandomNumber(), 300);
+      setTimeout(() => setNewQuest(newQuest + 1), 300);
     } else {
       resultForm();
       navigate('/result');
@@ -49,7 +48,6 @@ function Form({
                 answer={ans[propertyName]}
                 house={propertyName}
                 answerSelect={answerSelect}
-                answerSelected={answerSelected}
               />
             );
           })}
@@ -65,6 +63,8 @@ Form.propTypes = {
   randomOrder: PropTypes.array,
   setAnswerArray: PropTypes.func,
   answerArray: PropTypes.array,
+  answerSelect: PropTypes.func,
+  resultForm: PropTypes.func,
 };
 
 export default Form;

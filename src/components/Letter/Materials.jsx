@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
-import '../../scss/layout/Materials.scss';
+import '../../scss/layout/Letter.scss';
 
 function Materials() {
   return (
-    <section className="letterMaterials">
-      <div className="materials">
-        <article>
-          <h3 className="materials__title">Uniforme</h3>
-          <ul className="materials__list">
+    <section className="letterMain">
+      <div className="letter">
+        <article className="letter__materials">
+          <h3 className="letter__materials--title">Uniforme</h3>
+          <ul className="letter__materials--list">
             Los alumnos de primer año necesitarán:
             <li>Tres túnicas sencillas de trabajo (negras).</li>
             <li>Un sombrero puntiagudo ( negro) para uso diario.</li>
@@ -19,9 +19,9 @@ function Materials() {
             nombre).
           </p>
         </article>
-        <article>
-          <h3 className="materials__title">Libros</h3>
-          <ul className="materials__list">
+        <article className="letter__materials">
+          <h3 className="letter__materials--title">Libros</h3>
+          <ul className="letter__materials--list">
             Todos los alumnos deben tener un ejemplar de los siguientes libros:
             <li>
               Libro reglamentario de hechizos, primer curso, Miranda Goshawk.
@@ -38,9 +38,9 @@ function Materials() {
             </li>
           </ul>
         </article>
-        <article>
-          <h3 className="materials__title">Resto del equipo</h3>
-          <ul className="materials__list">
+        <article className="letter__materials">
+          <h3 className="letter__materials--title">Resto del equipo</h3>
+          <ul className="letter__materials--list">
             <li>1 varita</li>
             <li>1 caldero (peltre, medida estándar 2).</li>
             <li>1 juego de redomas de vidrio o cristal.</li>

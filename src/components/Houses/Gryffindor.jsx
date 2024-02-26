@@ -1,4 +1,4 @@
-import gif from '../../images/gryffindorGif.gif';
+import gif from '../../images/GryffindorGif.gif';
 
 function Gryffindor() {
   return (

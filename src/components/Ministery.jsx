@@ -1,11 +1,7 @@
 import ministery from '../images/ministery.webp';
 import '../scss/layout/Ministery.scss';
 
-function Ministery({ click, input, text }) {
-  const handleInput = (event) => {
-    input(event.target.value);
-  };
-
+function Ministery({ click, handleInput, text, userName, lastName }) {
   const handleClick = (ev) => {
     ev.preventDefault();
     click();
@@ -36,15 +32,15 @@ function Ministery({ click, input, text }) {
           </p>
           <form className="loginForm">
             <input
-              className="loginForm__input js-inputName"
+              className="loginForm__input"
               type="text"
-              placeholder="Nombre completo..."
-              onChange={handleInput}
+              placeholder="Nombre y apellido"
+              onChange={(ev) => {
+                handleInput(ev.target.value);
+              }}
+              value={userName}
             />
-            <button
-              className="loginForm__btn js-continue"
-              onClick={handleClick}
-            >
+            <button className="loginForm__btn" onClick={handleClick}>
               Continuar
             </button>
           </form>

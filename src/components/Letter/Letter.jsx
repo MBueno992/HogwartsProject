@@ -2,7 +2,7 @@ import '../../scss/layout/Letter.scss';
 import HogwartsShield from '../../images/logo.png';
 import FilliusSignature from '../../images/filius.webp';
 
-function Letter({ userName }) {
+function Letter({ userName, lastName }) {
   return (
     <section className="letterMain">
       <section className="letter">
@@ -18,7 +18,11 @@ function Letter({ userName }) {
           de la Orden del Fénix)
         </h5>
         <p className="letter__text">
-          Estimado Sr./Sra <span className="js-userName">{userName}</span>,
+          Estimado Sr./Sra{' '}
+          <span className="js-userName">
+            {userName} {lastName}
+          </span>
+          ,
         </p>
         <p className="letter__text">
           Nos complace informarle de que dispone de una plaza en el Colegio

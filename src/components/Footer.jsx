@@ -1,9 +1,9 @@
 import hogwartsFooter from '../images/escudo.png';
 import '../scss/layout/Footer.scss';
 
-function Footer() {
+function Footer({ style }) {
   return (
-    <footer className="footer">
+    <footer className={`footer ${style}`}>
       <a href="./index.html">
         <img
           className="footer__logo"
@@ -15,8 +15,18 @@ function Footer() {
         <strong>Esto es algo que los muggles nunca entenderán</strong>
       </p>
       <nav>
-        <p className="footer__contact">Contacto</p>
+        {/* <p className="footer__contact">Contacto</p> */}
         <ul className="footer__nav">
+          <li>
+            <a
+              href="https://beta.adalab.es/modulo-3-evaluacion-final-MBueno992/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Registro de personajes
+            </a>
+          </li>
+          <li></li>
           <li>
             <a
               href="https://www.linkedin.com/in/mbueno992/"
