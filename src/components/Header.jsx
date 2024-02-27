@@ -4,7 +4,7 @@ import ravenclaw from '../images/RavenclawShort.png';
 import hufflepuff from '../images/HufflepuffLong.png';
 import shield from '../images/escudo.png';
 import hogwarts from '../images/hogwarts.png';
-import '../scss/layout/headers/Header.scss';
+import '../scss/layout/Header.scss';
 
 function Header() {
   return (

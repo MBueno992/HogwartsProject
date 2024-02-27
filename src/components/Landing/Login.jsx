@@ -4,6 +4,7 @@ function Login() {
   const handleClick = (ev) => {
     ev.preventDefault();
   };
+
   return (
     <section className="login">
       <h3 className="login__title">Iniciar sesión</h3>
@@ -11,7 +12,7 @@ function Login() {
         <label>Usuario</label>
         <input type="text" name="" id="" />
         <label>Contraseña</label>
-        <input type="text" name="" id="" />
+        <input type="password" name="" id="" />
         <button className="login__form--btn" onClick={handleClick}>
           Iniciar sesión
         </button>

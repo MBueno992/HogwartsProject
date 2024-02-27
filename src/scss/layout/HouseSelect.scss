@@ -32,13 +32,14 @@
         color: lightgray;
         background-color: rgba(11, 102, 99, 1);
       }
-    }
-    &--img {
-      background: #e8e8e8;
-      &:hover {
-        border: 1px solid rgba(11, 102, 99, 1);
-        color: rgba(11, 102, 99, 1);
-        background-color: lightgrey;
+
+      &--img {
+        background-color: #e8e8e8;
+        &:hover {
+          border: 1px solid #e8e8e8;
+          color: #e8e8e8;
+          background-color: rgba(11, 102, 99, 1);
+        }
       }
     }
   }
@@ -124,13 +125,18 @@
       }
     }
     &__form {
-      button {
+      button:hover {
+        background: #203138;
+        color: lightgray;
+        border: 1px solid lightgray;
+      }
+      &--img {
         background: #203138;
         color: lightgray;
         &:hover {
-          border: 1px solid #eca300;
+          border: 1px solid #203138;
           color: #203138;
-          background-color: #eca300;
+          background-color: lightgray;
         }
       }
     }
@@ -173,6 +179,15 @@
         border: 1px solid #ffd700;
         color: #ffd700;
         background-color: black;
+      }
+      &--img {
+        background: black;
+        color: #ffd700;
+        &:hover {
+          border: 1px solid black;
+          color: black;
+          background-color: #ffd700;
+        }
       }
     }
   }
@@ -423,7 +438,7 @@
       border-radius: 15px;
       color: #212121;
       text-align: center;
-      background: #eca300;
+      // background: #eca300;
       font-size: 1.4rem;
       -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
       box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);

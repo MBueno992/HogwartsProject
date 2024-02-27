@@ -1,0 +1,106 @@
+.detailPage {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__btn {
+    position: relative;
+    margin: 50px 0 20px;
+    transform: translateX(105px);
+    padding: 5px 15px;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    font-weight: bold;
+
+    background: linear-gradient(
+      270deg,
+      rgba(148, 111, 10, 0.681) 0%,
+      rgba(240, 179, 13, 0.873) 60%
+    );
+    &:hover {
+      animation: btnReturn 0.3s ease 0s 1 normal forwards;
+
+      @keyframes btnReturn {
+        0% {
+          box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+          transform: scale(1) translateX(100px);
+        }
+
+        100% {
+          box-shadow: 0 12px 20px -12px rgba(0, 0, 0, 0.35);
+          transform: scale(1.1) translateX(100px);
+        }
+      }
+    }
+  }
+}
+.cardDetail {
+  min-height: 270px;
+  max-height: auto;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  border-image-source: url('/src/images/marcoDorado.png');
+  border-image-slice: 50;
+  border-style: solid;
+  border-width: 20px;
+  padding: 20px 0;
+  background-clip: padding-box;
+  @media (min-width: 768px) {
+    height: 350px;
+    width: 480px;
+    gap: 15px;
+  }
+  &__image {
+    padding: 10px;
+    width: 150px;
+    height: 200px;
+    @media (min-width: 768px) {
+      width: 220px;
+      height: 300px;
+    }
+  }
+  &__text {
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgba(255, 255, 255, 0.85);
+
+    &--name {
+      font-size: 1.6rem;
+      margin-bottom: 5px;
+      @media (min-width: 768px) {
+        font-size: 2rem;
+        margin-bottom: 5px;
+      }
+    }
+    &--prop {
+      font-weight: bold;
+      font-size: 1rem;
+      @media (min-width: 768px) {
+        font-size: 1.4rem;
+      }
+    }
+    span {
+      font-weight: lighter;
+      font-style: italic;
+    }
+  }
+  &__shield {
+    width: 80px;
+  }
+}
+.Gryffindor {
+  background-color: #a72954;
+}
+.Slytherin {
+  background-color: #0d7a6f;
+}
+.Ravenclaw {
+  background-color: #1059ad;
+}
+.Hufflepuff {
+  background-color: rgb(240, 179, 13);
+}
