@@ -1,0 +1,55 @@
+.footer {
+  background-color: #001441;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: auto;
+  width: 100vw;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 20px;
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+
+  &__logo {
+    width: 60px;
+  }
+  &__muggles {
+    font-size: 1.2rem;
+    padding: 20px;
+    text-align: center;
+  }
+  &__contact {
+    font-size: 1.2rem;
+  }
+  &__nav {
+    // display: flex;
+    // flex-direction: row;
+    gap: 7px;
+    list-style: none;
+    margin-left: 5px;
+    color: white;
+    &--icon {
+      margin: 5px 2px;
+      color: white;
+      font-size: 1.4rem;
+      &:hover {
+        animation: pulse 1.5s infinite;
+      }
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+
+        100% {
+          transform: scale(1.4);
+        }
+      }
+    }
+  }
+}
+.loginfooter {
+  background-color: #310000e7;
+}
