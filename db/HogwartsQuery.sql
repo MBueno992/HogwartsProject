@@ -12,9 +12,8 @@ house varchar(15)
 
 CREATE TABLE users(
 idUser int auto_increment primary key,usersusersalumnos
-userName varchar(45) not null,
 email varchar(100) not null,
-password varchar(1500) not null
+hashed_password varchar(1500) not null
 ); 
 
 ALTER TABLE users ADD COLUMN fk_alumno int;

@@ -53,53 +53,44 @@ const authenticate = (req, res, next) => {
   next();
 };
 
+//Validación correo
+const validateEmail = (email) => {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+};
+
 //Iniciar el servidor
 const serverPort = 4000;
 server.listen(serverPort, () => {
   console.log(`http://localhost:${serverPort}`);
 });
 
-//Registro
-server.post('/register', async (req, resp) => {
-  const { username, email, password } = req.body;
-  const connect = await getConnection();
-  const selectUser = 'SELECT * FROM users WHERE email = ? OR userName= ?';
-  const [resultSelect] = await connect.query(selectUser, [email, username]);
-  if (resultSelect.length === 0) {
-    const passwordHashed = await bcrypt.hash(password, 10);
-    const insertUser =
-      'INSERT INTO users (userName, email, password) VALUES (?, ?, ?)';
-    const [resultInsert] = await connect.query(insertUser, [
-      username,
-      email,
-      passwordHashed,
-    ]);
-    resp.json({ success: true, data: resultInsert });
-  }
-  connect.end();
-});
-
 // Login
 server.post('/', async (req, resp) => {
-  const { email, pass } = req.body;
+  const { email, password } = req.body;
   console.log(req.body);
   const connect = await getConnection();
   const selectUser = 'SELECT * FROM users WHERE email = ?';
   const [resultSelect] = await connect.query(selectUser, [email]);
   console.log(resultSelect);
   if (resultSelect.length !== 0) {
-    const isOkPass = await bcrypt.compare(pass, resultSelect[0].password);
+    const isOkPass = await bcrypt.compare(
+      password,
+      resultSelect[0].hashed_password
+    );
+
     if (isOkPass) {
       const infoToken = {
         id: resultSelect[0].idUser,
-        username: resultSelect[0].userName,
+        email: resultSelect[0].email,
       };
+      console.log(infoToken);
       const token = generateToken(infoToken);
       resp.json({ success: true, token: token });
     } else {
       resp.json({
         success: false,
-        msg: 'Contraseña incorrecta. ¿Te habrán hecho algún conjuro obliviate?',
+        msg: 'Contraseña incorrecta. ¿Te habrán hecho algún conjuro confundus?',
       });
     }
   } else {
@@ -109,6 +100,48 @@ server.post('/', async (req, resp) => {
     });
   }
   connect.end();
+});
+
+//Registro
+server.post('/register', async (req, resp) => {
+  const { name, wizardName, birthdate, house, image, email, password } =
+    req.body;
+  console.log(req.body);
+  const connect = await getConnection();
+  const selectUser = 'SELECT * FROM users WHERE email = ?';
+  const [resultSelect] = await connect.query(selectUser, [email]);
+  if (!validateEmail(email)) {
+    return resp.json({
+      success: false,
+      msg: 'El correo electrónico no es válido',
+    });
+  }
+  if (resultSelect.length === 0) {
+    const passwordHashed = await bcrypt.hash(password, 10);
+    const insertUser =
+      'INSERT INTO users (email, hashed_password) VALUES (?, ?)';
+    const [resultUser] = await connect.query(insertUser, [
+      email,
+      passwordHashed,
+    ]);
+    const userId = resultUser.insertId;
+    const insertWizard =
+      'INSERT INTO wizards (name, wizardName, birthdate, house, image, fk_idUser) VALUES (?, ?, ?, ?, ?, ?)';
+    const [resultWizard] = await connect.query(insertWizard, [
+      name,
+      wizardName,
+      birthdate,
+      house,
+      image,
+      userId,
+    ]);
+    resp.json({ success: true, data: resultUser });
+  } else {
+    resp.json({
+      success: false,
+      msg: 'Ese correo electrónico ya está registrado.',
+    });
+  }
 });
 
 //Perfil usuario

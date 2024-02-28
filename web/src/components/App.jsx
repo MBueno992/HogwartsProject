@@ -13,12 +13,11 @@ import ResultForm from './Form/ResultForm.jsx';
 import Landing from './Landing/Landing.jsx';
 import local from '../services/localStorage.js';
 import connectBack from '../services/Login-User.jsx';
-import Login from './Landing/Login.jsx';
+import AboutMe from './AboutMe.jsx';
 
 function App() {
   const [userName, setUserName] = useState(local.get('user', ''));
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [login, setLogin] = useState({ email: '', password: '' });
   const [alertMsg, setAlertMsg] = useState('');
   const [indexCarrusel, setIndexCarrusel] = useState(0);
   const [randomOrder, setRandomOrder] = useState([]);
@@ -27,9 +26,10 @@ function App() {
   const [houseSelect, setHouseSelect] = useState(local.get('house', ''));
   const navigate = useNavigate();
   const [dataUser, setDataUser] = useState({
-    userName: userName,
+    name: userName,
     wizardName: '',
     birthdate: '',
+    house: houseSelect,
     email: '',
     password: '',
     image: '',
@@ -40,12 +40,14 @@ function App() {
     local.set('house', houseSelect);
   }, [userName, houseSelect]);
 
-  const loginUser = (loginData) => {
-    connectBack.sendLogin(loginData).then((response) => {
-      if (response.success === true) {
-        console.log('funciona');
-      } else {
-        console.log('Esto se ha roto');
+  const loginInput = (ev) => {
+    setLogin({ ...login, [ev.target.id]: ev.target.value });
+  };
+
+  const loginUser = () => {
+    connectBack.sendLogin(login).then((response) => {
+      if (response.success === false) {
+        setAlertMsg(response.msg);
       }
     });
   };
@@ -54,13 +56,16 @@ function App() {
     setUserName(value);
   };
 
-  const loginInput = (id, value) => {
-    if (id === 'email') {
-      setEmail(value);
-    }
-    if (id === 'password') {
-      setPassword(value);
-    }
+  const userRegister = (key, value) => {
+    setDataUser({ ...dataUser, [key]: value });
+  };
+
+  const registerWizard = () => {
+    connectBack.sendRegister(dataUser).then((response) => {
+      if (response.success === false) {
+        setAlertMsg(response.msg);
+      }
+    });
   };
 
   const addUserName = () => {
@@ -104,10 +109,6 @@ function App() {
     getRandomNumber();
   }, []);
 
-  const userRegister = (key, value) => {
-    setDataUser({ ...dataUser, [key]: value });
-  };
-
   return (
     <div className="background">
       <Routes>
@@ -118,29 +119,15 @@ function App() {
               <Landing
                 loginUser={loginUser}
                 loginInput={loginInput}
-                email={email}
-                password={password}
+                login={login}
+                alertMsg={alertMsg}
               />
               <Footer style="loginfooter" />
             </>
           }
         />
         <Route
-          path="/login"
-          element={
-            <>
-              <Landing
-                loginUser={loginUser}
-                loginInput={loginInput}
-                email={email}
-                password={password}
-              />
-              <Footer style="loginfooter" />
-            </>
-          }
-        />
-        <Route
-          path="/register"
+          path="/ministery"
           element={
             <Ministery
               click={addUserName}
@@ -194,7 +181,7 @@ function App() {
           }
         />
         <Route
-          path="/result"
+          path="/register"
           element={
             <>
               <ResultForm
@@ -202,9 +189,21 @@ function App() {
                 houseSelect={houseSelect}
                 userRegister={userRegister}
                 dataUser={dataUser}
+                alertMsg={alertMsg}
+                registerWizard={registerWizard}
               />
               <Footer />
             </>
+          }
+        />
+        <Route
+          path="/about-me"
+          element={
+            <section className="pageAbout">
+              <Header />
+              <AboutMe />
+              <Footer />
+            </section>
           }
         />
       </Routes>

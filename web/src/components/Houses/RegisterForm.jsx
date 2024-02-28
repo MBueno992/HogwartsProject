@@ -2,8 +2,21 @@ import { Link } from 'react-router-dom';
 
 import GetAvatar from './GetAvatar';
 
-function RegisterForm({ imageHouse, houseSelect, userRegister, dataUser }) {
-  const { userName, wizardName, birthdate, email, password, image } = dataUser;
+function RegisterForm({
+  imageHouse,
+  houseSelect,
+  userRegister,
+  dataUser,
+  alertMsg,
+  registerWizard,
+}) {
+  const { userName, wizardName, birthdate, email, hashed_password, image } =
+    dataUser;
+
+  const sendData = (ev) => {
+    ev.preventDefault();
+    registerWizard(dataUser);
+  };
 
   return (
     <section className="register">
@@ -33,36 +46,36 @@ function RegisterForm({ imageHouse, houseSelect, userRegister, dataUser }) {
         <input
           type="text"
           placeholder="Introduce tu nombre completo"
-          id="userName"
-          value={userName}
+          id="name"
+          defaultValue={userName}
         />
         <label>Apodo</label>
         <input
           type="text"
           placeholder="Introduce tu apodo de mago/a"
           id="wizardName"
-          value={wizardName}
+          defaultValue={wizardName}
         />
         <label>Fecha de nacimiento</label>
-        <input type="date" id="birthdate" value={birthdate} />
+        <input type="date" id="birthdate" defaultValue={birthdate} />
         <label>E-mail</label>
         <input
           type="text"
           placeholder="Introduce tu e-mail"
           id="email"
-          value={email}
+          defaultValue={email}
         />
         <label>Contraseña</label>
         <input
           type="password"
           placeholder="Introduce una contraseña"
-          id="password"
-          value={password}
+          id="hashed_password"
+          defaultValue={hashed_password}
         />
         <GetAvatar updateAvatar={userRegister} id="image" image={image} />
-
+        <p className="register__form--msg">{alertMsg}</p>
         <Link>
-          <button>Enviar</button>
+          <button onClick={sendData}>Enviar</button>
         </Link>
       </form>
     </section>

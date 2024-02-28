@@ -22,7 +22,14 @@ import SlytherinShield from '../../images/SlytherinShield.png';
 import SlytherinShort from '../../images/SlytherinShort.png';
 import SlytherinLong from '../../images/SlytherinLong.png';
 
-function ResultForm({ houseSelect, userRegister, dataUser, userName }) {
+function ResultForm({
+  houseSelect,
+  userRegister,
+  dataUser,
+  userName,
+  alertMsg,
+  registerWizard,
+}) {
   const renderHouse = {
     Gryffindor: <Gryffindor />,
     Ravenclaw: <Ravenclaw />,
@@ -54,7 +61,7 @@ function ResultForm({ houseSelect, userRegister, dataUser, userName }) {
 
   return (
     <section className={houseSelect}>
-      <header>
+      <div>
         <div className="header__houses">
           <div className="header__houses--flag">
             <img src={imageHouse[houseSelect].flagLong} alt={houseSelect} />
@@ -69,8 +76,8 @@ function ResultForm({ houseSelect, userRegister, dataUser, userName }) {
             <img src={imageHouse[houseSelect].flagLong} alt={houseSelect} />
           </div>
         </div>
-      </header>
-      <main className="house">
+      </div>
+      <aside className="house">
         {renderHouse[houseSelect]}
         <RegisterForm
           imageHouse={imageHouse}
@@ -78,8 +85,10 @@ function ResultForm({ houseSelect, userRegister, dataUser, userName }) {
           userName={userName}
           userRegister={userRegister}
           dataUser={dataUser}
+          alertMsg={alertMsg}
+          registerWizard={registerWizard}
         />
-      </main>
+      </aside>
     </section>
   );
 }

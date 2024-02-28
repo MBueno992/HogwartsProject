@@ -338,6 +338,20 @@
       }
     }
   }
+  &__error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 300px;
+    height: 200px;
+    background-color: red;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
 .register {
@@ -448,6 +462,10 @@
       //   color: #eca300;
       //   background-color: rgba(187, 45, 69, 1);
       // }
+    }
+    &--msg {
+      text-align: center;
+      font-style: italic;
     }
   }
 }
