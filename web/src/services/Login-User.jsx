@@ -1,5 +1,5 @@
 const sendLogin = (data) => {
-  return fetch('http://localhost:4000/', {
+  return fetch('https://hogwartsproject.onrender.com/', {
     method: 'POST',
     body: JSON.stringify(data),
     headers: { 'Content-Type': 'application/json' },
@@ -11,7 +11,7 @@ const sendLogin = (data) => {
 };
 
 const sendRegister = (data) => {
-  return fetch('http://localhost:4000/register', {
+  return fetch('https://hogwartsproject.onrender.com/register', {
     method: 'POST',
     body: JSON.stringify(data),
     headers: { 'Content-Type': 'application/json' },

@@ -60,7 +60,7 @@ const validateEmail = (email) => {
 };
 
 //Iniciar el servidor
-const serverPort = 4000;
+const serverPort = process.env.PORT || 4000;
 server.listen(serverPort, () => {
   console.log(`http://localhost:${serverPort}`);
 });
