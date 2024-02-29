@@ -140,7 +140,7 @@ function App() {
         <Route
           path="/hogwarts-letter"
           element={
-            <div className="page">
+            <div className="background">
               <CarouselFadeExample
                 userName={userName}
                 selectCarousel={selectCarousel}
@@ -153,7 +153,7 @@ function App() {
         <Route
           path="/quest-intro"
           element={
-            <div className="page">
+            <div className="background">
               <Header />
               <ShortingHat questions={questions} />
               <Footer />
@@ -163,7 +163,7 @@ function App() {
         <Route
           path="/quest"
           element={
-            <>
+            <div className="background">
               <Header />
               <Form
                 questions={questions}
@@ -177,7 +177,7 @@ function App() {
                 navigate={navigate}
               />
               <Footer />
-            </>
+            </div>
           }
         />
         <Route
