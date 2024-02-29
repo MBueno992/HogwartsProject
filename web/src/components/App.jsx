@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import '../scss/App.scss';
 import Footer from './Footer.jsx';
 import Ministery from './Ministery.jsx';
 import Header from './Header.jsx';
 import CarouselFadeExample from './Letter/Carousel.jsx';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import ShortingHat from './ShortingHat.jsx';
 import Form from './Form/Form.jsx';
 import questions from '../services/data.json';
@@ -14,6 +14,7 @@ import Landing from './Landing/Landing.jsx';
 import local from '../services/localStorage.js';
 import connectBack from '../services/Login-User.jsx';
 import AboutMe from './AboutMe.jsx';
+import router from '../services/router';
 
 function App() {
   const [userName, setUserName] = useState(local.get('user', ''));
@@ -110,7 +111,7 @@ function App() {
   }, []);
 
   return (
-    <div className="background">
+    <>
       <Routes>
         <Route
           path="/"
@@ -199,15 +200,15 @@ function App() {
         <Route
           path="/about-me"
           element={
-            <>
+            <div className="background">
               <Header />
               <AboutMe />
               <Footer />
-            </>
+            </div>
           }
         />
       </Routes>
-    </div>
+    </>
   );
 }
 

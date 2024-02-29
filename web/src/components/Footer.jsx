@@ -1,19 +1,22 @@
+import { Link } from 'react-router-dom';
 import hogwartsFooter from '../images/escudo.png';
 import '../scss/layout/Footer.scss';
 
 function Footer({ style }) {
   return (
     <footer className={`footer ${style}`}>
-      <a href="./index.html">
-        <img
-          className="footer__logo"
-          src={hogwartsFooter}
-          alt="Logo Hogwarts"
-        />
-      </a>
-      <p className="footer__muggles">
-        <strong>Esto es algo que los muggles nunca entenderán</strong>
-      </p>
+      <section className="footer__hogwarts">
+        <Link to="/">
+          <img
+            className="footer__logo"
+            src={hogwartsFooter}
+            alt="Logo Hogwarts"
+          />
+        </Link>
+        <p className="footer__muggles">
+          <strong>Esto es algo que los muggles nunca entenderán</strong>
+        </p>
+      </section>
       <nav>
         {/* <p className="footer__contact">Contacto</p> */}
         <ul className="footer__nav">
@@ -26,7 +29,9 @@ function Footer({ style }) {
               Registro de personajes
             </a>
           </li>
-          <li></li>
+          <li>
+            <Link to="/about-me">Sobre mí</Link>{' '}
+          </li>
           <li>
             <a
               href="https://www.linkedin.com/in/mbueno992/"
