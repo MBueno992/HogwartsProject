@@ -38,7 +38,8 @@ function Footer({ style }) {
               target="_blank"
               rel="noreferrer"
             >
-              <i className="fa-brands fa-linkedin footer__nav--icon"></i>
+              <i className="fa-brands fa-linkedin footer__nav--icon"></i>{' '}
+              Linkedin
             </a>
           </li>
           <li>
@@ -47,7 +48,8 @@ function Footer({ style }) {
               target="_blank"
               rel="noreferrer"
             >
-              <i className="fa-brands fa-github-alt footer__nav--icon"></i>
+              <i className="fa-brands fa-github-alt footer__nav--icon"></i>{' '}
+              GitHub
             </a>
           </li>
         </ul>

@@ -44,8 +44,8 @@ function AboutMe() {
           parecido, ideas que se pueden llevar a cabo, alguna cosa que hechéis
           de menos, cualquier mensaje para mejorar siempre será bien recibido.
         </p>
-        <Link to="/contact" className="aboutMe__contact">
-          Enviar Feedback
+        <Link to="/contact">
+          <button className="aboutMe__contact">Enviar Feedback</button>
         </Link>
       </article>
     </section>

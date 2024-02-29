@@ -13,10 +13,10 @@ server.use(express.json({ limit: '25mb' }));
 //Conexión a la BD
 const getConnection = async () => {
   const connection = await mysql.createConnection({
-    host: 'localhost',
+    host: process.env.HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    database: 'Hogwarts',
+    database: 'freedb_Hogwarts',
   });
   await connection.connect();
   return connection;

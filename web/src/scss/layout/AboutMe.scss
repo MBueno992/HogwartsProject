@@ -131,11 +131,27 @@
     }
   }
   &__contact {
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 5px 10px;
-    background-color: white;
-    text-decoration: none;
-    color: red;
-    margin-bottom: 15px;
+    // background-color: white;
+    // text-decoration: none;
+    // color: red;
+    // margin-bottom: 15px;
+    // display: inline-block;
+    transition: all 0.2s ease-in;
+    // position: relative;
+    overflow: hidden;
+    // z-index: 1;
+    color: #090909;
+    // padding: 0.7em 1.7em;
+    cursor: pointer;
+    // font-size: 18px;
+    // border-radius: 0.5em;
+    background: #e8e8e8;
+    border: 1px solid #e8e8e8;
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
   }
 }

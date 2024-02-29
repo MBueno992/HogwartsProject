@@ -15,6 +15,7 @@ import local from '../services/localStorage.js';
 import connectBack from '../services/Login-User.jsx';
 import AboutMe from './AboutMe.jsx';
 import router from '../services/router';
+import Contact from './Contact.jsx';
 
 function App() {
   const [userName, setUserName] = useState(local.get('user', ''));
@@ -47,7 +48,7 @@ function App() {
 
   const loginUser = () => {
     connectBack.sendLogin(login).then((response) => {
-      if (response.success === false) {
+      if (!response.success) {
         setAlertMsg(response.msg);
       }
     });
@@ -73,7 +74,7 @@ function App() {
     if (userName === '') {
       setAlertMsg('Por favor, introduce tu nombre y apellido');
     } else {
-      navigate('/hogwarts-letter');
+      router.redirect('/hogwarts-letter');
     }
   };
 
@@ -203,6 +204,16 @@ function App() {
             <div className="background">
               <Header />
               <AboutMe />
+              <Footer />
+            </div>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <div className="background">
+              <Header />
+              <Contact />
               <Footer />
             </div>
           }
