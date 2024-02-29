@@ -1,6 +1,7 @@
 import '../scss/layout/AboutMe.scss';
 import FrontImg from '../images/AboutMe.jpg';
 import BackImg from '../images/AboutMeReal.jpg';
+import { Link } from 'react-router-dom';
 
 function AboutMe() {
   return (
@@ -21,10 +22,15 @@ function AboutMe() {
           Mi nombre es Marta, soy una pequeña "friki" del mundo de Harry Potter,
           y aunque mi corazón se sienta Gryffindor mi personalidad es
           completamente la de una Ravenclaw. Este proyecto nace a partir de
-          realizar un Bootcamp de programación en
-          <a href="https://adalab.es/" target="_blank" rel="noreferrer">
+          realizar un Bootcamp de programación en{' '}
+          <a
+            href="https://adalab.es/"
+            target="_blank"
+            rel="noreferrer"
+            className="aboutMe__text--link"
+          >
             Adalab
-          </a>
+          </a>{' '}
           (la que para mí ha sido como mi pequeña escuela de magia), en el que
           además de poner a prueba los conocimientos adquiridos, he querido
           hacer un guiño a este maravilloso mundo creado por J.K.Rowling y tener
@@ -38,6 +44,9 @@ function AboutMe() {
           parecido, ideas que se pueden llevar a cabo, alguna cosa que hechéis
           de menos, cualquier mensaje para mejorar siempre será bien recibido.
         </p>
+        <Link to="/contact" className="aboutMe__contact">
+          Enviar Feedback
+        </Link>
       </article>
     </section>
   );

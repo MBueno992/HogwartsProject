@@ -199,11 +199,11 @@ function App() {
         <Route
           path="/about-me"
           element={
-            <section className="pageAbout">
+            <>
               <Header />
               <AboutMe />
               <Footer />
-            </section>
+            </>
           }
         />
       </Routes>
