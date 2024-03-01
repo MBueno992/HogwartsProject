@@ -90,6 +90,9 @@
     align-items: flex-start;
     // margin: 0 auto;
   }
+  @media (min-width: 1440px) {
+    width: 60%;
+  }
 
   &__text {
     height: auto;

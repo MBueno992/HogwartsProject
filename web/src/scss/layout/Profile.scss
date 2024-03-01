@@ -1,0 +1,81 @@
+@import '../core/variables';
+
+.profile {
+  width: auto;
+  height: auto;
+  padding: 5px;
+  border: 2px solid black;
+}
+.mainProfile {
+  height: auto;
+  border-image-source: url(../../images/marcoDorado.png);
+  border-image-slice: 50;
+  border-style: solid;
+  border-width: 20px;
+  background-color: #1059ad;
+  background-clip: padding-box;
+  color: white;
+  font-family: $playfair;
+
+  align-items: center;
+  max-width: 450px;
+  margin: 0 10px 45px;
+  @media (min-width: 768px) {
+    width: 60%;
+    padding: 10px;
+  }
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 10px;
+
+    &--option {
+      position: relative;
+      width: 100px;
+      height: 50px;
+      background-color: #f2f2f2a5;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      font-size: 1.3rem;
+      @media (min-width: 768px) {
+        width: 150px;
+        height: 60px;
+        font-size: 1.6rem;
+      }
+      img {
+        width: 45px;
+      }
+      div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f2f2f2;
+        color: black;
+        transform: rotateX(-90deg);
+        transform-origin: bottom;
+        transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+      }
+    }
+  }
+}
+
+.mainProfile__list--option:hover div {
+  transform: rotateX(0deg);
+}

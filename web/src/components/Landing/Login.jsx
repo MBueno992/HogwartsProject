@@ -1,6 +1,6 @@
 import '../../scss/layout/Landing.scss';
 
-function Login({ loginUser, loginInput, alertMsg }) {
+function Login({ loginUser, loginInput, loginError }) {
   const handleClick = (ev) => {
     ev.preventDefault();
     loginUser();
@@ -24,7 +24,7 @@ function Login({ loginUser, loginInput, alertMsg }) {
         </button>
       </form>
       <div className="login__register">
-        <p>{alertMsg}</p>
+        <p>{loginError}</p>
         <p>¿Aún no has recibido tu carta de Hogwarts?</p>
       </div>
     </section>

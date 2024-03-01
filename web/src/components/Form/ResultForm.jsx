@@ -29,6 +29,7 @@ function ResultForm({
   userName,
   alertMsg,
   registerWizard,
+  formatDate,
 }) {
   const renderHouse = {
     Gryffindor: <Gryffindor />,
@@ -87,6 +88,7 @@ function ResultForm({
           dataUser={dataUser}
           alertMsg={alertMsg}
           registerWizard={registerWizard}
+          formatDate={formatDate}
         />
       </aside>
     </section>

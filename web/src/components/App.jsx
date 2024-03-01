@@ -11,6 +11,7 @@ import Form from './Form/Form.jsx';
 import questions from '../services/data.json';
 import ResultForm from './Form/ResultForm.jsx';
 import Landing from './Landing/Landing.jsx';
+import Profile from './Landing/Profile.jsx';
 import local from '../services/localStorage.js';
 import connectBack from '../services/Login-User.jsx';
 import AboutMe from './AboutMe.jsx';
@@ -18,24 +19,28 @@ import router from '../services/router';
 import Contact from './Contact.jsx';
 
 function App() {
-  const [userName, setUserName] = useState(local.get('user', ''));
-  const [login, setLogin] = useState({ email: '', password: '' });
+  const [userName, setUserName] = useState('');
+  const [login, setLogin] = useState({ email: '', hashed_password: '' });
+  const [userId, setUserId] = useState('');
+  const [loginError, setLoginError] = useState('');
   const [alertMsg, setAlertMsg] = useState('');
   const [indexCarrusel, setIndexCarrusel] = useState(0);
   const [randomOrder, setRandomOrder] = useState([]);
   const [answerArray, setAnswerArray] = useState([]);
   const [answerSelected, setAnswerSelected] = useState([]);
-  const [houseSelect, setHouseSelect] = useState(local.get('house', ''));
+  const [houseSelect, setHouseSelect] = useState(local.set('house', ''));
   const navigate = useNavigate();
-  const [dataUser, setDataUser] = useState({
-    name: userName,
-    wizardName: '',
-    birthdate: '',
-    house: houseSelect,
-    email: '',
-    password: '',
-    image: '',
-  });
+  const [dataUser, setDataUser] = useState(
+    local.get('userData', {
+      name: '',
+      wizardName: '',
+      birthdate: '',
+      house: houseSelect,
+      email: '',
+      password: '',
+      image: '',
+    })
+  );
 
   useEffect(() => {
     local.set('user', userName);
@@ -48,8 +53,18 @@ function App() {
 
   const loginUser = () => {
     connectBack.sendLogin(login).then((response) => {
-      if (!response.success) {
-        setAlertMsg(response.msg);
+      setAlertMsg('');
+      if (response.success === true) {
+        setUserId(response.userId);
+        console.log(response);
+        local.set('token', response.token);
+        connectBack.getProfile(response.wizardName).then((wizardData) => {
+          setDataUser(wizardData);
+          local.set('userData', wizardData);
+          router.redirect(`/profile/${response.wizardName}`);
+        });
+      } else {
+        setLoginError(response.msg);
       }
     });
   };
@@ -66,6 +81,8 @@ function App() {
     connectBack.sendRegister(dataUser).then((response) => {
       if (response.success === false) {
         setAlertMsg(response.msg);
+      } else {
+        setAlertMsg('Registrado con exito');
       }
     });
   };
@@ -111,6 +128,14 @@ function App() {
     getRandomNumber();
   }, []);
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+  };
+
   return (
     <>
       <Routes>
@@ -121,10 +146,20 @@ function App() {
               <Landing
                 loginUser={loginUser}
                 loginInput={loginInput}
-                login={login}
-                alertMsg={alertMsg}
+                loginError={loginError}
               />
               <Footer style="loginfooter" />
+            </>
+          }
+        />
+        <Route
+          path="/profile/:wizardName"
+          element={
+            <>
+              <div className="backgroundProfile">
+                <Profile data={dataUser} />
+              </div>
+              <Footer />
             </>
           }
         />
@@ -193,6 +228,7 @@ function App() {
                 dataUser={dataUser}
                 alertMsg={alertMsg}
                 registerWizard={registerWizard}
+                formatDate={formatDate}
               />
               <Footer />
             </>

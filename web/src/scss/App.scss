@@ -8,3 +8,19 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
+.backgroundProfile {
+  background-image: url(../images/profile.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+}

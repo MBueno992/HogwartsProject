@@ -9,8 +9,9 @@ function RegisterForm({
   dataUser,
   alertMsg,
   registerWizard,
+  formatDate,
 }) {
-  const { userName, wizardName, birthdate, email, hashed_password, image } =
+  const { name, wizardName, birthdate, email, hashed_password, image } =
     dataUser;
 
   const sendData = (ev) => {
@@ -24,13 +25,13 @@ function RegisterForm({
       <article className="register__data">
         <img src={image || imageHouse[houseSelect].Shield} alt="" />
         <h3>
-          Alumno/a: <span>{userName || ''}</span>{' '}
+          Alumno/a: <span>{name || ''}</span>{' '}
         </h3>
         <h4>
           Apodo: <span>{wizardName || ''} </span>
         </h4>
         <p>
-          Fecha de nacimiento: <span>{birthdate || ''} </span>
+          Fecha de nacimiento: <span>{formatDate(birthdate) || ''} </span>
         </p>
         <p>
           Miembro de la casa: <span>{houseSelect} </span>
@@ -47,7 +48,7 @@ function RegisterForm({
           type="text"
           placeholder="Introduce tu nombre completo"
           id="name"
-          defaultValue={userName}
+          defaultValue={name}
         />
         <label>Apodo</label>
         <input
@@ -69,7 +70,7 @@ function RegisterForm({
         <input
           type="password"
           placeholder="Introduce una contraseña"
-          id="hashed_password"
+          id="password"
           defaultValue={hashed_password}
         />
         <GetAvatar updateAvatar={userRegister} id="image" image={image} />

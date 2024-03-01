@@ -41,8 +41,6 @@ function Letter({ userName, lastName }) {
           <p> Fillius Flitwick </p>
           <p> Director adjunto.</p>
         </div>
-        {/* <Link to="/sombrero-seleccionador" className="letter__btn" /> */}
-        {/* <button className="letter__btn"> </button> */}
       </section>
     </section>
   );

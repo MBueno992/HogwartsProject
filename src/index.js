@@ -62,31 +62,37 @@ const validateEmail = (email) => {
 //Iniciar el servidor
 const serverPort = process.env.PORT || 4000;
 server.listen(serverPort, () => {
-  console.log(`http://localhost:${serverPort}`);
+  console.log(`host:${serverPort}`);
 });
 
 // Login
 server.post('/', async (req, resp) => {
   const { email, password } = req.body;
-  console.log(req.body);
   const connect = await getConnection();
   const selectUser = 'SELECT * FROM users WHERE email = ?';
   const [resultSelect] = await connect.query(selectUser, [email]);
-  console.log(resultSelect);
   if (resultSelect.length !== 0) {
     const isOkPass = await bcrypt.compare(
       password,
       resultSelect[0].hashed_password
     );
-
     if (isOkPass) {
+      const id = resultSelect[0].idUser;
+      const selectWizard = 'SELECT wizardName FROM wizards WHERE fk_idUser = ?';
+      const [resultWizard] = await connect.query(selectWizard, [id]);
+      const wizardName = resultWizard[0].wizardName;
       const infoToken = {
         id: resultSelect[0].idUser,
         email: resultSelect[0].email,
+        wizardName: wizardName,
       };
-      console.log(infoToken);
       const token = generateToken(infoToken);
-      resp.json({ success: true, token: token });
+      resp.json({
+        success: true,
+        token: token,
+        userId: infoToken.id,
+        wizardName: infoToken.wizardName,
+      });
     } else {
       resp.json({
         success: false,
@@ -145,16 +151,21 @@ server.post('/register', async (req, resp) => {
 });
 
 //Perfil usuario
-server.get('/profile', authenticate, async (req, res) => {
-  const sql = 'SELECT * FROM users WHERE email = ?';
+server.get('/profile/:wizardName', authenticate, async (req, res) => {
+  console.log(req.params);
+  const wizard = req.params.wizardName;
+  const sql = 'SELECT * FROM wizards WHERE wizardName = ?';
   const connect = await getConnection();
-  const [results] = await connect.query(sql, [req.user.email]);
+  const [results] = await connect.query(sql, [wizard]);
   connect.end();
   res.json({
     success: true,
-    user: results,
+    user: results[0],
   });
 });
+// server.post('/profile', (req, res) => {
+//   console.log(req.body);
+// });
 
 const staticServer = './src/public-react';
 server.use(express.static(staticServer));
