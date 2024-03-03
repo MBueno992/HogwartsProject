@@ -1,11 +1,42 @@
+@import '../core/variables';
+
 .contact {
+  font-family: $playfair;
   display: flex;
   flex-direction: column;
   color: white;
   margin: 0 auto;
   width: 300px;
   font-size: 1.4rem;
-  input {
-    margin: 5px 0 15px;
+  @media (min-width: 768px) {
+    width: 50%;
+    font-size: 1.6rem;
+  }
+  p {
+    margin-bottom: 100px;
+    text-align: center;
+  }
+  input,
+  textarea {
+    margin: 10px 0 15px;
+    border: none;
+    padding: 1rem;
+    border-radius: 1rem;
+    background: #e8e8e8bb;
+    box-shadow: 1px 1px 4px #c5c5c5, -1px -1px 4px #ffffff;
+    transition: 0.3s;
+    font-style: italic;
+    cursor: pointer;
+    &:focus {
+      outline-color: #e8e8e8;
+      background: #e8e8e8;
+      transition: 0.3s;
+    }
+  }
+  button {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 50px;
   }
 }

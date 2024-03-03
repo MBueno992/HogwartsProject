@@ -3,8 +3,14 @@ import '../scss/layout/Contact.scss';
 function Contact() {
   return (
     <>
-      <form className="contact">
-        <p>Texto agradecimiento</p>
+      <form
+        className="contact"
+        action="https://formspree.io/f/mkndblzv"
+        method="POST"
+      >
+        <p>
+          Muchas gracias por dedicar unos minutillos a ofrecerme tu feedback.{' '}
+        </p>
         <label>Nombre:</label>
         <input type="text" id="nombre" name="nombre" required />
 

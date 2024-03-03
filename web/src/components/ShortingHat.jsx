@@ -11,7 +11,7 @@ function ShortingHat() {
         Ha llegado la hora de averiguar cuál es tu casa. <br />
         ¿Estás preparado/a para adentrarte en la mejor escuela de Magia y
         Hechicería de todos los tiempos? <br />
-        Sólo tendrás que responder el siguiente cuestionario, son 10 preguntas
+        Sólo tendrás que responder el siguiente cuestionario, son 6 preguntas
         sencillas con 4 posibles soluciones, ninguna es incorrecta, y cuando
         termines, podrás averiguar en qué casa deberás estar. <br /> Además,
         después del test, verás un apartado para generar tu ficha de alumno.
