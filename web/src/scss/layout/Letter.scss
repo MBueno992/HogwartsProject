@@ -18,6 +18,7 @@
   animation: fadeIn ease 5s;
   padding: 30px;
   height: auto;
+  overflow-x: auto;
   @media (min-width: 768px) {
     margin: 40px;
   }

@@ -6,11 +6,14 @@
   flex-direction: column;
   // justify-content: space-around;
   align-items: center;
-  height: 15vh;
+  height: auto;
   width: 100vw;
   color: white;
   font-family: $playfair;
   padding: 20px;
+  @media (min-width: 768px) {
+    height: 15vh;
+  }
   &__hogwarts {
     display: flex;
     flex-direction: column;
@@ -71,6 +74,30 @@
     color: white;
   }
 }
-.loginfooter {
-  background-color: #310000e7;
+
+.footerGryffindor {
+  background-color: rgba(150, 34, 54, 1);
+  color: #ffae00;
+  i {
+    color: #ffae00;
+  }
+  a {
+    color: #ffae00;
+  }
+}
+.footerHufflepuff {
+  background-color: black;
+  color: rgba(199, 168, 0, 1);
+  i {
+    color: rgba(199, 168, 0, 1);
+  }
+  a {
+    color: rgba(199, 168, 0, 1);
+  }
+}
+.footerSlytherin {
+  background-color: rgba(10, 54, 55, 1);
+}
+.footerRavenclaw {
+  background-color: rgba(18, 53, 96, 1);
 }

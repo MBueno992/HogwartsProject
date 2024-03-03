@@ -24,8 +24,9 @@ function Login({ loginUser, loginInput, loginError }) {
         </button>
       </form>
       <div className="login__register">
-        <p>{loginError}</p>
-        <p>¿Aún no has recibido tu carta de Hogwarts?</p>
+        <p className={!loginError ? '' : 'login__register--msg'}>
+          {loginError}
+        </p>
       </div>
     </section>
   );

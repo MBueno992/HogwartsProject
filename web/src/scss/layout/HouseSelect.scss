@@ -419,11 +419,21 @@
       box-shadow: 1px 1px 4px #c5c5c5, -1px -1px 4px #ffffff;
       transition: 0.3s;
       font-style: italic;
+      cursor: pointer;
       &:focus {
         outline-color: #e8e8e8;
         background: #e8e8e8;
         transition: 0.3s;
       }
+    }
+    select {
+      border: none;
+      padding: 1rem;
+      border-radius: 1rem;
+      background: #e8e8e8bb;
+      box-shadow: 1px 1px 4px #c5c5c5, -1px -1px 4px #ffffff;
+      font-style: italic;
+      cursor: pointer;
     }
     button {
       margin: 10px;
@@ -438,11 +448,14 @@
       -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
       box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
       transition: all 250ms;
-      // &:hover {
-      //   border: 1px solid #eca300;
-      //   color: #eca300;
-      //   background-color: rgba(187, 45, 69, 1);
-      // }
+    }
+    &--gender {
+      display: flex;
+      gap: 15px;
+      input {
+        box-shadow: none;
+        cursor: pointer;
+      }
     }
     &--img {
       margin: 10px auto;

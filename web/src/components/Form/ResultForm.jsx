@@ -61,23 +61,7 @@ function ResultForm({
   };
 
   return (
-    <section className={houseSelect}>
-      <div>
-        <div className="header__houses">
-          <div className="header__houses--flag">
-            <img src={imageHouse[houseSelect].flagLong} alt={houseSelect} />
-            <img src={imageHouse[houseSelect].flagShort} alt={houseSelect} />
-          </div>
-          <div className="header__houses--shield">
-            <img src={imageHouse[houseSelect].Shield} alt="Hogwarts Shield" />
-            <h2>¡{houseSelect}!</h2>
-          </div>
-          <div className="header__houses--flag">
-            <img src={imageHouse[houseSelect].flagShort} alt={houseSelect} />
-            <img src={imageHouse[houseSelect].flagLong} alt={houseSelect} />
-          </div>
-        </div>
-      </div>
+    <section>
       <aside className="house">
         {renderHouse[houseSelect]}
         <RegisterForm

@@ -17,6 +17,8 @@ import connectBack from '../services/Login-User.jsx';
 import AboutMe from './AboutMe.jsx';
 import router from '../services/router';
 import Contact from './Contact.jsx';
+import Wizards from './Wizards/Wizards.jsx';
+import WizardDetail from './Wizards/WizardDetail.jsx';
 
 function App() {
   const [userName, setUserName] = useState('');
@@ -28,14 +30,18 @@ function App() {
   const [randomOrder, setRandomOrder] = useState([]);
   const [answerArray, setAnswerArray] = useState([]);
   const [answerSelected, setAnswerSelected] = useState([]);
-  const [houseSelect, setHouseSelect] = useState(local.set('house', ''));
+  const [houseSelect, setHouseSelect] = useState(local.get('house', ''));
   const navigate = useNavigate();
+  const [wizardsList, setWizardsList] = useState([]);
   const [dataUser, setDataUser] = useState(
     local.get('userData', {
+      gender: '',
       name: '',
       wizardName: '',
       birthdate: '',
-      house: houseSelect,
+      province: '',
+      city: '',
+      house: '',
       email: '',
       password: '',
       image: '',
@@ -56,7 +62,6 @@ function App() {
       setAlertMsg('');
       if (response.success === true) {
         setUserId(response.userId);
-        console.log(response);
         local.set('token', response.token);
         connectBack.getProfile(response.wizardName).then((wizardData) => {
           setDataUser(wizardData);
@@ -77,12 +82,22 @@ function App() {
     setDataUser({ ...dataUser, [key]: value });
   };
 
+  useEffect(() => {
+    setDataUser((dataUser) => ({
+      ...dataUser,
+      house: houseSelect,
+    }));
+  }, [houseSelect]);
+
   const registerWizard = () => {
     connectBack.sendRegister(dataUser).then((response) => {
       if (response.success === false) {
         setAlertMsg(response.msg);
       } else {
         setAlertMsg('Registrado con exito');
+        setTimeout(() => {
+          router.redirect(`/profile/${dataUser.wizardName}`);
+        }, 800);
       }
     });
   };
@@ -136,30 +151,43 @@ function App() {
     return `${day}-${month}-${year}`;
   };
 
+  const logout = () => {
+    connectBack.logoutUser().then((response) => {
+      if (response.success === true) {
+        router.redirect('/');
+        router.reload();
+        local.clear();
+      } else {
+        setAlertMsg('No se ha podido cerrar la sesión');
+      }
+    });
+  };
+
   return (
     <>
       <Routes>
         <Route
           path="/"
           element={
-            <>
+            <div className="backgroundProfile">
               <Landing
                 loginUser={loginUser}
                 loginInput={loginInput}
                 loginError={loginError}
               />
-              <Footer style="loginfooter" />
-            </>
+              <Footer />
+            </div>
           }
         />
         <Route
           path="/profile/:wizardName"
           element={
             <>
-              <div className="backgroundProfile">
-                <Profile data={dataUser} />
+              <div className={`${!houseSelect ? 'background' : houseSelect}`}>
+                <Header houseSelect={houseSelect} />
+                <Profile data={dataUser} logout={logout} />
+                <Footer houseSelect={houseSelect} />
               </div>
-              <Footer />
             </>
           }
         />
@@ -220,7 +248,8 @@ function App() {
         <Route
           path="/register"
           element={
-            <>
+            <div className={houseSelect ? houseSelect : 'background'}>
+              <Header houseSelect={houseSelect} />
               <ResultForm
                 userName={userName}
                 houseSelect={houseSelect}
@@ -230,8 +259,8 @@ function App() {
                 registerWizard={registerWizard}
                 formatDate={formatDate}
               />
-              <Footer />
-            </>
+              <Footer houseSelect={houseSelect} />
+            </div>
           }
         />
         <Route
@@ -250,6 +279,27 @@ function App() {
             <div className="background">
               <Header />
               <Contact />
+              <Footer />
+            </div>
+          }
+        />
+        <Route
+          path="/wizards"
+          element={
+            <div className="background">
+              <Header />
+              <Wizards data={wizardsList} setWizardsList={setWizardsList} />
+              <Footer />
+            </div>
+          }
+        />
+
+        <Route
+          path="/wizards/:idWizard"
+          element={
+            <div className="background">
+              <Header />
+              <WizardDetail data={wizardsList} />
               <Footer />
             </div>
           }

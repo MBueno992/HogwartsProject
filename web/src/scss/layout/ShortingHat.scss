@@ -1,32 +1,38 @@
 @import '../core/variables';
 
 .shortingHat {
-  background-color: rgba(151, 12, 12, 0.836);
+  background: radial-gradient(
+    circle,
+    rgba(226, 184, 100, 0.9) 0%,
+    rgba(190, 142, 45, 0.9) 50%
+  );
+
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 30px;
   padding: 10px;
-  border-image: url('../../images/marco1.png');
-  border-image-slice: 8%;
-  border-image-outset: 5px;
+  border-image-source: url('/src/images/marcoDorado.png');
+  border-image-slice: 50;
   border-style: solid;
-  border-width: 30px;
+  border-width: 20px;
+  padding: 20px 0;
   background-clip: padding-box;
   color: rgba(255, 255, 255, 0.884);
-  font-family: $sofia;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+  font-family: $playfair;
   text-align: center;
-  // height: 45vh;
   @media (min-width: 768px) {
-    width: 70%;
+    width: 540px;
     margin: 50px auto;
     border-style: solid;
     border-width: 40px;
   }
-
+  @media (min-width: 1024px) {
+    width: 750px;
+  }
+  &__img {
+    width: 130px;
+  }
   &__title {
     font-size: 2rem;
     @media (min-width: 768px) {

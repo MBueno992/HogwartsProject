@@ -62,7 +62,7 @@ const validateEmail = (email) => {
 //Iniciar el servidor
 const serverPort = process.env.PORT || 4000;
 server.listen(serverPort, () => {
-  console.log(`host:${serverPort}`);
+  console.log(`http://localhost:${serverPort}`);
 });
 
 // Login
@@ -110,8 +110,18 @@ server.post('/', async (req, resp) => {
 
 //Registro
 server.post('/register', async (req, resp) => {
-  const { name, wizardName, birthdate, house, image, email, password } =
-    req.body;
+  const {
+    gender,
+    name,
+    wizardName,
+    birthdate,
+    province,
+    city,
+    house,
+    image,
+    email,
+    password,
+  } = req.body;
   console.log(req.body);
   const connect = await getConnection();
   const selectUser = 'SELECT * FROM users WHERE email = ?';
@@ -132,11 +142,14 @@ server.post('/register', async (req, resp) => {
     ]);
     const userId = resultUser.insertId;
     const insertWizard =
-      'INSERT INTO wizards (name, wizardName, birthdate, house, image, fk_idUser) VALUES (?, ?, ?, ?, ?, ?)';
+      'INSERT INTO wizards (gender, name, wizardName, birthdate, province, city, house, image, fk_idUser) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
     const [resultWizard] = await connect.query(insertWizard, [
+      gender,
       name,
       wizardName,
       birthdate,
+      province,
+      city,
       house,
       image,
       userId,
@@ -163,9 +176,36 @@ server.get('/profile/:wizardName', authenticate, async (req, res) => {
     user: results[0],
   });
 });
-// server.post('/profile', (req, res) => {
-//   console.log(req.body);
-// });
+
+//Logout
+server.put('/logout', (req, res) => {
+  const token = req.headers['Authorization'];
+  // const token = tokenHeader.split(' ')[1];
+  //Al token que creaste, asígnale el valor vacío, y signale un valor de expiracion de 1s y le asigno la función de lo que quiero hacer cuando esto expire
+  jwt.sign(token, 'secret_key', { expiresIn: '1s' }, (logoutToken, error) => {
+    if (logoutToken) {
+      res.json({ success: true, message: 'Token eliminado correctamente' });
+    } else {
+      res.json({ success: false, message: 'Ha ocurrido un error' });
+    }
+  });
+});
+
+//Listado citas
+server.get('/quote', async (req, res) => {
+  const connect = await getConnection();
+  const quoteSQL = 'SELECT * FROM Quotes';
+  const [resultQuote] = await connect.query(quoteSQL);
+  res.json(resultQuote);
+});
+
+//Listado magos
+server.get('/wizards', async (req, res) => {
+  const connect = await getConnection();
+  const wizardsSQL = 'SELECT * FROM wizards';
+  const [resultWizards] = await connect.query(wizardsSQL);
+  res.json(resultWizards);
+});
 
 const staticServer = './src/public-react';
 server.use(express.static(staticServer));

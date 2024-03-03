@@ -28,7 +28,7 @@ const sendRegister = (data) => {
 };
 
 const sendProfile = (userId, data) => {
-  return fetch('http//localhost:4000/profile', {
+  return fetch('https://hogwartsproject.onrender.com/profile', {
     method: 'POST',
     body: JSON.stringify(userId),
     headers: { 'Content-Type': 'application/json' },
@@ -52,11 +52,22 @@ const getProfile = (wizard) => {
     });
 };
 
+const logoutUser = () => {
+  return fetch(`https://hogwartsproject.onrender.com/logout`, {
+    method: 'PUT',
+    headers: {
+      Authorization: `${tokenOk}`,
+      'Content-Type': 'application/json',
+    },
+  }).then((response) => response.json());
+};
+
 const connectBack = {
   sendLogin: sendLogin,
   sendRegister: sendRegister,
   sendProfile: sendProfile,
   getProfile: getProfile,
+  logoutUser: logoutUser,
 };
 
 export default connectBack;

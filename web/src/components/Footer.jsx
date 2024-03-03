@@ -2,9 +2,11 @@ import { Link } from 'react-router-dom';
 import hogwartsFooter from '../images/escudo.png';
 import '../scss/layout/Footer.scss';
 
-function Footer({ style }) {
+function Footer({ houseSelect }) {
   return (
-    <footer className={`footer ${style}`}>
+    <footer
+      className={`${!houseSelect ? 'footer' : `footer footer${houseSelect}`}`}
+    >
       <section className="footer__hogwarts">
         <Link to="/">
           <img

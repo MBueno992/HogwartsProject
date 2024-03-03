@@ -2,7 +2,8 @@ import FormOptions from './FormOptions.jsx';
 import '../../scss/layout/Form.scss';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+
+import route from '../../services/router.jsx';
 
 function Form({
   questions,
@@ -15,7 +16,6 @@ function Form({
 }) {
   const [newQuest, setNewQuest] = useState(1);
   const quest = questions.find((qu) => qu.id === newQuest);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const mix = randomOrder.map((num) => {
@@ -30,7 +30,7 @@ function Form({
       setTimeout(() => setNewQuest(newQuest + 1), 300);
     } else {
       resultForm();
-      navigate('/register');
+      route.redirect('/register');
     }
   };
 

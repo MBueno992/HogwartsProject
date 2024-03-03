@@ -1,58 +1,81 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import '../../scss/layout/HouseSelect.scss';
 import '../../scss/layout/Profile.scss';
 import DownloadPDF from '../Profile/DownloadPDF';
-import Letter from '../Letter/Letter';
 import letterGif from '../../images/letterGif.gif';
+import pluma from '../../images/pluma.gif';
+import Carousel from '../Letter/Carousel';
+import varita from '../../images/varita.gif';
+import snitch from '../../images/snitch.gif';
+import solemnly from '../../images/solemnly.gif';
 
-function Profile({ data }) {
+function Profile({ data, logout, quotes, setQuotes }) {
   const { wizardName } = useParams();
 
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    const day = date.getDate().toString().padStart(2, '0');
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const year = date.getFullYear();
-    return `${day}-${month}-${year}`;
+  const handleClick = () => {
+    logout();
   };
 
   return (
     <>
-      <section className={` profile ${data.house}`}>
-        <article className="register__data profile__data">
-          <img src={data.image || ''} alt={data.name} />
-          <h3>
-            Alumno/a: <span>{data.name}</span>{' '}
-          </h3>
-          <h4>
-            Apodo: <span>{data.wizardName} </span>
-          </h4>
-          <p>
-            Fecha de nacimiento: <span>{formatDate(data.birthdate)} </span>
-          </p>
-          <p>
-            Miembro de la casa: <span>{data.house} </span>
-          </p>
-        </article>
-      </section>
-
-      <nav className="mainProfile">
-        <ul className="mainProfile__list">
-          <li className="mainProfile__list--option">
-            <DownloadPDF userName={data.name} />
-          </li>
-          <li className="mainProfile__list--option">
-            <img src={letterGif} alt="" />
-            <div>
-              <p>Descarga tu carta</p>
+      <section className="profile">
+        <nav className="mainProfile">
+          <ul className="mainProfile__list">
+            <li className="mainProfile__list--option">
+              <div>
+                <DownloadPDF userName={data.name} />
+              </div>
+            </li>
+            <li className="mainProfile__list--option">
+              <img src={letterGif} alt="" />
+              <div>
+                <button>Ver tu carta</button>
+              </div>
+            </li>
+            <li className="mainProfile__list--option">
+              <img src={varita} alt="" />
+              <div>
+                <Link to="/wizards" target="_blank">
+                  Conocer otros magos
+                </Link>
+              </div>
+            </li>
+            <li className="mainProfile__list--option">
+              <img src={pluma} alt="" />
+              <div>
+                <p>Modifica tus datos</p>
+              </div>
+            </li>
+            <li className="mainProfile__list--option">
+              <img src={snitch} alt="" />
+              <div>Mini juegos</div>
+            </li>
+            <li className="mainProfile__list--option">
+              <img src={solemnly} alt="" />
+              <div>
+                {' '}
+                <button onClick={handleClick}>Cerrar sesión</button>
+              </div>
+            </li>
+          </ul>
+        </nav>
+        <div className="profilePage">
+          <article className="register__data profilePage__data ">
+            <img src={data.image || ''} alt={data.name} />
+            <div className="profilePage__data--text">
+              <h3>
+                Alumno/a: <span>{data.name}</span>{' '}
+              </h3>
+              <h4>
+                Apodo: <span>{data.wizardName} </span>
+              </h4>
+              <p>
+                Miembro de la casa: <span>{data.house} </span>
+              </p>
             </div>
-          </li>
-          <li className="mainProfile__list--option">Carta de Hogwarts</li>
-          <li className="mainProfile__list--option">Modificar datos</li>
-          <li className="mainProfile__list--option">Mini juegos</li>
-          <li className="mainProfile__list--option">Cerrar sesión</li>
-        </ul>
-      </nav>
+          </article>
+        </div>
+      </section>
     </>
   );
 }

@@ -11,23 +11,14 @@ import HogwartsShield from '../../images/logo.png';
 import FilliusSignature from '../../images/filius.webp';
 
 function LetterPDF({ userName }) {
-  Font.register({
-    family: 'Princess Sofia',
-    src: {
-      local: 'Princess Sofia',
-      url: 'http://fonts.gstatic.com/s/princesssofia/v4/8g5l8r9BM0t1QsXLTajDe64AS0QnXBppPPVySeuncSg.ttf',
-    },
-    format: 'truetype',
-  });
   const styles = StyleSheet.create({
     page: {
       display: 'flex',
       flexDirection: 'column',
-      backgroundColor: 'white',
+      backgroundColor: '#f5e4b1',
       fontSize: 18,
       padding: 30,
       color: 'black',
-      fontFamily: 'Princess Sofia',
     },
     shield: {
       width: 50,
