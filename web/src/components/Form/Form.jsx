@@ -25,7 +25,7 @@ function Form({
   }, [newQuest, randomOrder]);
 
   const changeQuestion = () => {
-    if (newQuest < 10) {
+    if (newQuest < 6) {
       setTimeout(() => getRandomNumber(), 300);
       setTimeout(() => setNewQuest(newQuest + 1), 300);
     } else {

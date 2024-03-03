@@ -183,10 +183,12 @@ function App() {
           path="/profile/:wizardName"
           element={
             <>
-              <div className={`${!houseSelect ? 'background' : houseSelect}`}>
-                <Header houseSelect={houseSelect} />
+              <div
+                className={`${!dataUser.house ? 'background' : dataUser.house}`}
+              >
+                <Header houseSelect={dataUser.house} />
                 <Profile data={dataUser} logout={logout} />
-                <Footer houseSelect={houseSelect} />
+                <Footer houseSelect={dataUser.house} />
               </div>
             </>
           }

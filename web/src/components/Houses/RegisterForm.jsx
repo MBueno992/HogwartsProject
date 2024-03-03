@@ -16,7 +16,6 @@ function RegisterForm({
     name,
     wizardName,
     birthdate,
-    province,
     city,
     email,
     hashed_password,
@@ -95,7 +94,8 @@ function RegisterForm({
           Apodo: <span>{wizardName || ''} </span>
         </h4>
         <p>
-          Fecha de nacimiento: <span>{formatDate(birthdate) || ''} </span>
+          Fecha de nacimiento:{' '}
+          <span>{!birthdate ? '' : formatDate(birthdate)} </span>
         </p>
         <p>
           Miembro de la casa: <span>{houseSelect} </span>
@@ -148,7 +148,7 @@ function RegisterForm({
           <option value="">Seleccionar provincia</option>
           {provincias.map((prov, i) => {
             return (
-              <option value="prov" key={i}>
+              <option value={prov} key={i}>
                 {prov}
               </option>
             );

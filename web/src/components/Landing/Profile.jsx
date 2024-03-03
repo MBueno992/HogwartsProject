@@ -4,10 +4,11 @@ import '../../scss/layout/Profile.scss';
 import DownloadPDF from '../Profile/DownloadPDF';
 import letterGif from '../../images/letterGif.gif';
 import pluma from '../../images/pluma.gif';
-import Carousel from '../Letter/Carousel';
 import varita from '../../images/varita.gif';
 import snitch from '../../images/snitch.gif';
 import solemnly from '../../images/solemnly.gif';
+import mujer from '../../images/chica.jpeg';
+import hombre from '../../images/chico.jpeg';
 
 function Profile({ data, logout, quotes, setQuotes }) {
   const { wizardName } = useParams();
@@ -61,7 +62,16 @@ function Profile({ data, logout, quotes, setQuotes }) {
         </nav>
         <div className="profilePage">
           <article className="register__data profilePage__data ">
-            <img src={data.image || ''} alt={data.name} />
+            <img
+              src={
+                data.image !== ''
+                  ? data.image
+                  : data.gender === 'Mujer'
+                  ? mujer
+                  : hombre
+              }
+              alt={data.name}
+            />
             <div className="profilePage__data--text">
               <h3>
                 Alumno/a: <span>{data.name}</span>{' '}
