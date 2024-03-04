@@ -35,6 +35,9 @@ function Footer({ houseSelect }) {
             <Link to="/about-me">Sobre mí</Link>{' '}
           </li>
           <li>
+            <Link to="/contact">Contacto</Link>{' '}
+          </li>
+          <li>
             <a
               href="https://www.linkedin.com/in/mbueno992/"
               target="_blank"
