@@ -1,4 +1,5 @@
 import '../../scss/layout/Landing.scss';
+import PropTypes from 'prop-types';
 
 function Login({ loginUser, loginInput, loginError }) {
   const handleClick = (ev) => {
@@ -31,5 +32,11 @@ function Login({ loginUser, loginInput, loginError }) {
     </section>
   );
 }
+
+Login.propTypes = {
+  loginUser: PropTypes.func,
+  loginInput: PropTypes.func,
+  loginError: PropTypes.string,
+};
 
 export default Login;

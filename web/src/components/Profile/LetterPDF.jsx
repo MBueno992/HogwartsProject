@@ -9,6 +9,7 @@ import {
 } from '@react-pdf/renderer';
 import HogwartsShield from '../../images/logo.png';
 import FilliusSignature from '../../images/filius.webp';
+import PropTypes from 'prop-types';
 
 function LetterPDF({ userName }) {
   const styles = StyleSheet.create({
@@ -68,5 +69,7 @@ function LetterPDF({ userName }) {
     </Document>
   );
 }
-
+LetterPDF.propTypes = {
+  userName: PropTypes.string,
+};
 export default LetterPDF;

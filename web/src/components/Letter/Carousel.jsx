@@ -1,8 +1,9 @@
 import Carousel from 'react-bootstrap/Carousel';
 import Letter from './Letter';
 import Materials from './Materials';
+import PropTypes from 'prop-types';
 
-function CarouselFadeExample({ index, selectCarousel, userName, lastName }) {
+function CarouselFadeExample({ index, selectCarousel, userName }) {
   return (
     <Carousel
       fade
@@ -11,7 +12,7 @@ function CarouselFadeExample({ index, selectCarousel, userName, lastName }) {
       interval={null}
     >
       <Carousel.Item>
-        {<Letter userName={userName} lastName={lastName} />}
+        {<Letter userName={userName} />}
         <Carousel.Caption></Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -21,5 +22,9 @@ function CarouselFadeExample({ index, selectCarousel, userName, lastName }) {
     </Carousel>
   );
 }
-
+CarouselFadeExample.propTypes = {
+  index: PropTypes.number,
+  selectCarousel: PropTypes.func,
+  userName: PropTypes.string,
+};
 export default CarouselFadeExample;

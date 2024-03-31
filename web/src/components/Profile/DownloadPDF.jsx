@@ -1,5 +1,6 @@
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import LetterPDF from './LetterPDF';
+import PropTypes from 'prop-types';
 
 function DownloadPDF({ userName }) {
   return (
@@ -21,5 +22,7 @@ function DownloadPDF({ userName }) {
     </div>
   );
 }
-
+DownloadPDF.propTypes = {
+  userName: PropTypes.string,
+};
 export default DownloadPDF;

@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
-
-import GetAvatar from '../Houses/GetAvatar';
+import GetAvatar from './GetAvatar';
 import InputText from './InputText';
 import Card from '../Card';
+import PropTypes from 'prop-types';
+// import Register from '../Landing/Register';
 
 function RegisterForm({
   imageHouse,
@@ -169,5 +170,15 @@ function RegisterForm({
     </section>
   );
 }
+
+RegisterForm.propTypes = {
+  houseSelect: PropTypes.string,
+  userRegister: PropTypes.func,
+  dataUser: PropTypes.string,
+  userName: PropTypes.string,
+  alertMsg: PropTypes.string,
+  registerWizard: PropTypes.func,
+  formatDate: PropTypes.func,
+};
 
 export default RegisterForm;

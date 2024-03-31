@@ -1,7 +1,7 @@
 import ministery from '../images/ministery.webp';
 import '../scss/layout/Ministery.scss';
 
-function Ministery({ click, handleInput, text, userName, lastName }) {
+function Ministery({ click, handleInput, text, userName }) {
   const handleClick = (ev) => {
     ev.preventDefault();
     click();

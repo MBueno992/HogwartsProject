@@ -1,8 +1,9 @@
 import '../../scss/layout/Letter.scss';
 import HogwartsShield from '../../images/logo.png';
 import FilliusSignature from '../../images/filius.webp';
+import PropTypes from 'prop-types';
 
-function Letter({ userName, lastName }) {
+function Letter({ userName }) {
   return (
     <section className="letterMain">
       <section className="letter">
@@ -18,11 +19,7 @@ function Letter({ userName, lastName }) {
           de la Orden del Fénix)
         </h5>
         <p className="letter__text">
-          Estimado Sr./Sra{' '}
-          <span className="js-userName">
-            {userName} {lastName}
-          </span>
-          ,
+          Estimado Sr./Sra <span className="js-userName">{userName}</span>,
         </p>
         <p className="letter__text">
           Nos complace informarle de que dispone de una plaza en el Colegio
@@ -46,4 +43,7 @@ function Letter({ userName, lastName }) {
   );
 }
 
+Letter.propTypes = {
+  userName: PropTypes.string,
+};
 export default Letter;

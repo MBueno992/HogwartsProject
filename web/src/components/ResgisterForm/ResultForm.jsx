@@ -1,4 +1,5 @@
 import '../../scss/layout/HouseSelect.scss';
+import PropTypes from 'prop-types';
 
 import RegisterForm from './RegisterForm';
 import Gryffindor from '../Houses/Gryffindor';
@@ -78,5 +79,15 @@ function ResultForm({
     </section>
   );
 }
+
+ResultForm.propTypes = {
+  houseSelect: PropTypes.string,
+  userRegister: PropTypes.func,
+  dataUser: PropTypes.object,
+  userName: PropTypes.string,
+  alertMsg: PropTypes.string,
+  registerWizard: PropTypes.func,
+  formatDate: PropTypes.func,
+};
 
 export default ResultForm;

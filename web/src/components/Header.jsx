@@ -1,10 +1,8 @@
-// import gryffindor from '../images/GryffindorLong.png';
-// import slytherin from '../images/SlytherinShort.png';
-// import ravenclaw from '../images/RavenclawShort.png';
-// import hufflepuff from '../images/HufflepuffLong.png';
 import shield from '../images/escudo.png';
 import hogwarts from '../images/hogwarts.png';
 import '../scss/layout/Header.scss';
+import PropTypes from 'prop-types';
+
 //Gryffindor
 import GryffindorShield from '../images/GryffindorShield.png';
 import GryffindorShort from '../images/GryffindorShort.png';
@@ -84,5 +82,8 @@ function Header({ houseSelect }) {
     </header>
   );
 }
+Header.propTypes = {
+  houseSelect: PropTypes.string,
+};
 
 export default Header;

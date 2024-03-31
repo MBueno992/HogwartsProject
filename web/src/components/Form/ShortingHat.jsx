@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import '../scss/layout/ShortingHat.scss';
-import sombrero from '../images/sombrero.png';
+import '../../scss/layout/ShortingHat.scss';
+import sombrero from '../../images/sombrero.png';
 
 function ShortingHat() {
   return (

@@ -1,16 +1,19 @@
 import { Link, useParams } from 'react-router-dom';
 import '../../scss/layout/HouseSelect.scss';
 import '../../scss/layout/Profile.scss';
-import DownloadPDF from '../Profile/DownloadPDF';
+import DownloadPDF from './DownloadPDF';
 import letterGif from '../../images/letterGif.gif';
 import pluma from '../../images/pluma.gif';
 import varita from '../../images/varita.gif';
 import snitch from '../../images/snitch.gif';
 import solemnly from '../../images/solemnly.gif';
-import mujer from '../../images/chica.jpeg';
-import hombre from '../../images/chico.jpeg';
+// import mujer from '../../images/chica.jpeg';
+// import hombre from '../../images/chico.jpeg';
+import Card from '../Card';
+import LetterPDF from './LetterPDF';
+import PropTypes from 'prop-types';
 
-function Profile({ data, logout, quotes, setQuotes }) {
+function Profile({ data, logout }) {
   const { wizardName } = useParams();
 
   const handleClick = () => {
@@ -61,7 +64,8 @@ function Profile({ data, logout, quotes, setQuotes }) {
           </ul>
         </nav>
         <article className="profilePage">
-          <article className="register__data profilePage__data ">
+          <Card dataUser={data} />
+          {/* <article className="register__data profilePage__data ">
             <img
               src={
                 data.image !== ''
@@ -83,12 +87,18 @@ function Profile({ data, logout, quotes, setQuotes }) {
                 Miembro de la casa: <span>{data.house} </span>
               </p>
             </div>
-          </article>
+          </article> */}
         </article>
-        <section className="userSelection"></section>
+        <section className="userSelection">
+          <LetterPDF />
+        </section>
       </div>
     </>
   );
 }
 
+Profile.propTypes = {
+  data: PropTypes.object,
+  logout: PropTypes.func,
+};
 export default Profile;
