@@ -1,6 +1,6 @@
 import '../../scss/layout/HouseSelect.scss';
 
-import RegisterForm from '../Houses/RegisterForm';
+import RegisterForm from './RegisterForm';
 import Gryffindor from '../Houses/Gryffindor';
 import Slytherin from '../Houses/Slytherin';
 import Hufflepuff from '../Houses/Hufflepuff';

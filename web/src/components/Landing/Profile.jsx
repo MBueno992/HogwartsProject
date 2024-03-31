@@ -19,7 +19,7 @@ function Profile({ data, logout, quotes, setQuotes }) {
 
   return (
     <>
-      <section className="profile">
+      <div className="profile">
         <nav className="mainProfile">
           <ul className="mainProfile__list">
             <li className="mainProfile__list--option">
@@ -36,7 +36,7 @@ function Profile({ data, logout, quotes, setQuotes }) {
             <li className="mainProfile__list--option">
               <img src={varita} alt="" />
               <div>
-                <Link to="/wizards" target="_blank">
+                <Link to="/wizards" target="_blank" rel="no_referrer">
                   Conocer otros magos
                 </Link>
               </div>
@@ -60,7 +60,7 @@ function Profile({ data, logout, quotes, setQuotes }) {
             </li>
           </ul>
         </nav>
-        <div className="profilePage">
+        <article className="profilePage">
           <article className="register__data profilePage__data ">
             <img
               src={
@@ -84,8 +84,9 @@ function Profile({ data, logout, quotes, setQuotes }) {
               </p>
             </div>
           </article>
-        </div>
-      </section>
+        </article>
+        <section className="userSelection"></section>
+      </div>
     </>
   );
 }

@@ -1,5 +1,5 @@
 const quote = () => {
-  return fetch('https://hogwartsproject.onrender.com/quote')
+  return fetch('http://localhost:4000/quote')
     .then((response) => response.json())
     .then((data) => {
       return data;
@@ -7,7 +7,7 @@ const quote = () => {
 };
 
 const wizardsDb = () => {
-  return fetch('https://hogwartsproject.onrender.com/wizards')
+  return fetch('http://localhost:4000/wizards')
     .then((response) => response.json())
     .then((data) => {
       return data;

@@ -9,7 +9,7 @@ import CarouselFadeExample from './Letter/Carousel.jsx';
 import ShortingHat from './ShortingHat.jsx';
 import Form from './Form/Form.jsx';
 import questions from '../services/data.json';
-import ResultForm from './Form/ResultForm.jsx';
+import ResultForm from './ResgisterForm/ResultForm.jsx';
 import Landing from './Landing/Landing.jsx';
 import Profile from './Landing/Profile.jsx';
 import local from '../services/localStorage.js';
@@ -23,7 +23,7 @@ import WizardDetail from './Wizards/WizardDetail.jsx';
 function App() {
   const [userName, setUserName] = useState('');
   const [login, setLogin] = useState({ email: '', hashed_password: '' });
-  const [userId, setUserId] = useState('');
+  // const [userId, setUserId] = useState('');
   const [loginError, setLoginError] = useState('');
   const [alertMsg, setAlertMsg] = useState('');
   const [indexCarrusel, setIndexCarrusel] = useState(0);

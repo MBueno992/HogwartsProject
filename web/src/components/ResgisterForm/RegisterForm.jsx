@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
-import router from '../../services/router';
-import GetAvatar from './GetAvatar';
+
+import GetAvatar from '../Houses/GetAvatar';
+import InputText from './InputText';
+import Card from '../Card';
 
 function RegisterForm({
   imageHouse,
@@ -85,22 +87,12 @@ function RegisterForm({
   return (
     <section className="register">
       <h3>Crea tu ficha de alumno/a</h3>
-      <article className="register__data">
-        <img src={image || imageHouse[houseSelect].Shield} alt="" />
-        <h3>
-          Alumno/a: <span>{name || ''}</span>{' '}
-        </h3>
-        <h4>
-          Apodo: <span>{wizardName || ''} </span>
-        </h4>
-        <p>
-          Fecha de nacimiento:{' '}
-          <span>{!birthdate ? '' : formatDate(birthdate)} </span>
-        </p>
-        <p>
-          Miembro de la casa: <span>{houseSelect} </span>
-        </p>
-      </article>
+      <Card
+        dataUser={dataUser}
+        imageHouse={imageHouse}
+        formatDate={formatDate}
+        houseSelect={houseSelect}
+      />
       <form
         className="register__form"
         onChange={(ev) => {
@@ -124,23 +116,21 @@ function RegisterForm({
           />
           <label> Mujer</label>
         </div>
+        <InputText
+          inputType="text"
+          text="Nombre completo"
+          desc="Introduce tu nombre completo"
+          value="name"
+          data={dataUser.name}
+        />
+        <InputText
+          inputType="text"
+          text="Apodo"
+          desc="Introduce tu apodo de mago/a"
+          value="wizardName"
+          data={dataUser.wizardName}
+        />
 
-        <label>Nombre completo </label>
-        <input
-          type="text"
-          placeholder="Introduce tu nombre completo"
-          id="name"
-          defaultValue={name}
-          required
-        />
-        <label>Apodo</label>
-        <input
-          type="text"
-          placeholder="Introduce tu apodo de mago/a"
-          id="wizardName"
-          defaultValue={wizardName}
-          required
-        />
         <label>Fecha de nacimiento</label>
         <input type="date" id="birthdate" defaultValue={birthdate} required />
         <label>Provincia</label>
@@ -156,21 +146,19 @@ function RegisterForm({
         </select>
         <label>Población</label>
         <input type="text" id="city" defaultValue={city} required />
-        <label>E-mail</label>
-        <input
-          type="text"
-          placeholder="Introduce tu e-mail"
-          id="email"
-          defaultValue={email}
-          required
+        <InputText
+          inputType="text"
+          text="E-mail"
+          desc="Introduce tu e-mail"
+          value="email"
+          data={dataUser.email}
         />
-        <label>Contraseña</label>
-        <input
-          type="password"
-          placeholder="Introduce una contraseña"
-          id="password"
-          defaultValue={hashed_password}
-          required
+        <InputText
+          inputType="password"
+          text="Contraseña"
+          desc="Introduce una contraseña"
+          value="password"
+          data={dataUser.hashed_password}
         />
         <GetAvatar updateAvatar={userRegister} id="image" image={image} />
         <p className="register__form--msg">{alertMsg}</p>
