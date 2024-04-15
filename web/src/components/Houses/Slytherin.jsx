@@ -1,4 +1,4 @@
-import gif from '../../images/slytherinGif.gif';
+import gif from '../../images/SlytherinGif.gif';
 
 function Slytherin() {
   return (

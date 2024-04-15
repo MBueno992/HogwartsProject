@@ -1,5 +1,5 @@
-@import 'core/variables';
 @import 'core/reset';
+@import 'core/variables';
 @import 'core/Mixins';
 
 .background {
@@ -14,6 +14,9 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  display: flex;
+  flex-direction: column;
+
   // height: 85vh;
   // display: flex;
   // flex-direction: column;

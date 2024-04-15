@@ -1,4 +1,4 @@
-import gif from '../../images/hufflepuffGif.gif';
+import gif from '../../images/HufflepuffGif.gif';
 function Hufflepuff() {
   return (
     <article className="house__art">

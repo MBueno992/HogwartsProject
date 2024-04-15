@@ -1,4 +1,4 @@
-import gif from '../../images/ravenclawGif.gif';
+import gif from '../../images/RavenclawGif.gif';
 
 function Ravenclaw() {
   return (
