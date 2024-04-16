@@ -1,7 +1,7 @@
 let tokenOk = '';
 
 const sendLogin = (data) => {
-  return fetch('http://localhost:4000/', {
+  return fetch('https://hogwarts-project-beta.vercel.app/', {
     method: 'POST',
     body: JSON.stringify(data),
     headers: { 'Content-Type': 'application/json' },
@@ -16,7 +16,7 @@ const sendLogin = (data) => {
 };
 
 const sendRegister = (data) => {
-  return fetch('http://localhost:4000/register', {
+  return fetch('https://hogwarts-project-beta.vercel.app/register', {
     method: 'POST',
     body: JSON.stringify(data),
     headers: { 'Content-Type': 'application/json' },
@@ -28,7 +28,7 @@ const sendRegister = (data) => {
 };
 
 const sendProfile = (userId, data) => {
-  return fetch('http://localhost:4000/profile', {
+  return fetch('https://hogwarts-project-beta.vercel.app/profile', {
     method: 'POST',
     body: JSON.stringify(userId),
     headers: { 'Content-Type': 'application/json' },
@@ -38,7 +38,7 @@ const sendProfile = (userId, data) => {
 };
 
 const getProfile = (wizard) => {
-  return fetch(`http://localhost:4000/profile/${wizard}`, {
+  return fetch(`https://hogwarts-project-beta.vercel.app/profile/${wizard}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ const getProfile = (wizard) => {
 };
 
 const logoutUser = () => {
-  return fetch(`http://localhost:4000/logout`, {
+  return fetch(`https://hogwarts-project-beta.vercel.app/logout`, {
     method: 'PUT',
     headers: {
       Authorization: `${tokenOk}`,
