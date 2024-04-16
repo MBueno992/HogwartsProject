@@ -2,6 +2,7 @@ import shield from '../images/escudo.png';
 import hogwarts from '../images/hogwarts.png';
 import '../scss/layout/Header.scss';
 import PropTypes from 'prop-types';
+import { Sling as Hamburger } from 'hamburger-react';
 
 //Gryffindor
 import GryffindorShield from '../images/GryffindorShield.png';
@@ -19,6 +20,8 @@ import HufflepuffLong from '../images/HufflepuffLong.png';
 import SlytherinShield from '../images/SlytherinShield.png';
 import SlytherinShort from '../images/SlytherinShort.png';
 import SlytherinLong from '../images/SlytherinLong.png';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Header({ houseSelect }) {
   const imageHouse = {
@@ -43,8 +46,31 @@ function Header({ houseSelect }) {
       flagShort: SlytherinShort,
     },
   };
+
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <header className="header">
+      <nav className="header__nav">
+        <Hamburger
+          toggled={isOpen}
+          toggle={setIsOpen}
+          direction="right"
+          easing="ease-in"
+          size={25}
+        />
+        <ul className={isOpen ? 'header__nav--main' : 'hidden'}>
+          <li>Juegos</li>
+          <li>Carta personalizada</li>
+          <li>
+            <Link to="/quest-intro">Sombrero seleccionador</Link>
+          </li>
+        </ul>
+        <ul className="header__nav--login">
+          <li className="loginBtn">Iniciar sesión</li>
+          <li className="signupBtn">Regístrate</li>
+        </ul>
+      </nav>
       <div className="header__houses">
         <div className="header__houses--flag">
           <img

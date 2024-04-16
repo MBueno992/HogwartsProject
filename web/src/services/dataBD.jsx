@@ -1,8 +1,8 @@
 const quote = () => {
-  return fetch('https://hogwarts-project-beta.vercel.app/quote')
+  return fetch('http://localhost:4000/quote')
     .then((response) => response.json())
     .then((data) => {
-      return data;
+      return data.result;
     });
 };
 

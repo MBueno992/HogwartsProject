@@ -196,7 +196,7 @@ server.get('/quote', async (req, res) => {
   const connect = await getConnection();
   const quoteSQL = 'SELECT * FROM Quotes';
   const [resultQuote] = await connect.query(quoteSQL);
-  res.json(resultQuote);
+  res.json({ success: true, result: resultQuote });
 });
 
 //Listado magos

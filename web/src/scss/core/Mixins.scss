@@ -11,3 +11,21 @@
     }
   }
 }
+
+@mixin navBtn($text, $back, $border, $texthover, $backhover) {
+  color: $text;
+  background-color: $back;
+  padding: 3px 10px;
+  border: $border;
+  border-radius: 50px;
+  @media (min-width: 768px) {
+    padding: 5px 15px;
+    font-size: 1.4rem;
+  }
+  &:hover {
+    cursor: pointer;
+    background-color: $backhover;
+    color: $texthover;
+    transition: background-color 0.3s ease-in-out 0s, color 0.3s ease-in-out 0s;
+  }
+}

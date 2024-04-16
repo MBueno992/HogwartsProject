@@ -19,10 +19,12 @@ import router from '../services/router';
 import Contact from './Contact.jsx';
 import Wizards from './Wizards/Wizards.jsx';
 import WizardDetail from './Wizards/WizardDetail.jsx';
+import dataBase from '../services/dataBD.jsx';
 
 function App() {
   const [userName, setUserName] = useState('');
   const [login, setLogin] = useState({ email: '', hashed_password: '' });
+  const [randomQuote, setRandomQuote] = useState([]);
   // const [userId, setUserId] = useState('');
   const [loginError, setLoginError] = useState('');
   const [alertMsg, setAlertMsg] = useState('');
@@ -52,6 +54,14 @@ function App() {
     local.set('user', userName);
     local.set('house', houseSelect);
   }, [userName, houseSelect]);
+
+  useEffect(() => {
+    let number = Math.floor(Math.random() * 57);
+    dataBase.quote().then((resp) => {
+      setRandomQuote(resp[number]);
+    });
+    console.log(randomQuote);
+  }, []);
 
   const loginInput = (ev) => {
     setLogin({ ...login, [ev.target.id]: ev.target.value });
@@ -169,12 +179,14 @@ function App() {
         <Route
           path="/"
           element={
-            <div className="backgroundProfile">
-              <Landing
+            <div className="background">
+              <Header />
+              <Landing randomQuote={randomQuote} />
+              {/* <Landing
                 loginUser={loginUser}
                 loginInput={loginInput}
                 loginError={loginError}
-              />
+              /> */}
               <Footer />
             </div>
           }

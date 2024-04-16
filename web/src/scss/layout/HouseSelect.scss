@@ -192,101 +192,101 @@
     }
   }
 }
-.header {
-  height: 230px;
-  @media (min-width: 768px) {
-    height: auto;
-  }
-  &__houses {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    padding: 0 5px;
-    @media (min-width: 768px) {
-      padding: 0 15px;
-    }
-    @media (min-width: 1024px) {
-      padding: 0 50px;
-    }
-    &--flag {
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      gap: 5px;
-      @media (min-width: 768px) {
-        gap: 15px;
-      }
-      img {
-        width: 40px;
-        @media (min-width: 768px) {
-          width: 100px;
-        }
-        @media (min-width: 1024px) {
-          width: 130px;
-        }
-      }
-    }
-    &--shield {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 80px 0 0;
-      gap: 10px;
-      text-align: center;
-      @media (min-width: 768px) {
-        margin: 40px 40px;
-      }
-      img {
-        width: 150px;
+// .header {
+//   height: 230px;
+//   @media (min-width: 768px) {
+//     height: auto;
+//   }
+//   &__houses {
+//     width: 100%;
+//     display: flex;
+//     justify-content: space-around;
+//     padding: 0 5px;
+//     @media (min-width: 768px) {
+//       padding: 0 15px;
+//     }
+//     @media (min-width: 1024px) {
+//       padding: 0 50px;
+//     }
+//     &--flag {
+//       display: flex;
+//       flex-direction: row;
+//       align-items: flex-start;
+//       gap: 5px;
+//       @media (min-width: 768px) {
+//         gap: 15px;
+//       }
+//       img {
+//         width: 40px;
+//         @media (min-width: 768px) {
+//           width: 100px;
+//         }
+//         @media (min-width: 1024px) {
+//           width: 130px;
+//         }
+//       }
+//     }
+//     &--shield {
+//       display: flex;
+//       flex-direction: column;
+//       align-items: center;
+//       margin: 80px 0 0;
+//       gap: 10px;
+//       text-align: center;
+//       @media (min-width: 768px) {
+//         margin: 40px 40px;
+//       }
+//       img {
+//         width: 150px;
 
-        @media (min-width: 768px) {
-          width: 250px;
-        }
-        @media (min-width: 1024px) {
-          width: 350px;
-        }
-      }
-      h2 {
-        color: white;
-        font-family: $harry;
-        font-size: 2.4rem;
-        letter-spacing: 2px;
-        margin-top: 10px;
-        -webkit-animation: text-focus-in 1s
-          cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
-        animation: text-focus-in 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
-        @media (min-width: 768px) {
-          font-size: 3.5rem;
-          margin-top: 30px;
-        }
-      }
-      @-webkit-keyframes text-focus-in {
-        0% {
-          -webkit-filter: blur(12px);
-          filter: blur(12px);
-          opacity: 0;
-        }
-        100% {
-          -webkit-filter: blur(0px);
-          filter: blur(0px);
-          opacity: 1;
-        }
-      }
-      @keyframes text-focus-in {
-        0% {
-          -webkit-filter: blur(12px);
-          filter: blur(12px);
-          opacity: 0;
-        }
-        100% {
-          -webkit-filter: blur(0px);
-          filter: blur(0px);
-          opacity: 1;
-        }
-      }
-    }
-  }
-}
+//         @media (min-width: 768px) {
+//           width: 250px;
+//         }
+//         @media (min-width: 1024px) {
+//           width: 350px;
+//         }
+//       }
+//       h2 {
+//         color: white;
+//         font-family: $harry;
+//         font-size: 2.4rem;
+//         letter-spacing: 2px;
+//         margin-top: 10px;
+//         -webkit-animation: text-focus-in 1s
+//           cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+//         animation: text-focus-in 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+//         @media (min-width: 768px) {
+//           font-size: 3.5rem;
+//           margin-top: 30px;
+//         }
+//       }
+//       @-webkit-keyframes text-focus-in {
+//         0% {
+//           -webkit-filter: blur(12px);
+//           filter: blur(12px);
+//           opacity: 0;
+//         }
+//         100% {
+//           -webkit-filter: blur(0px);
+//           filter: blur(0px);
+//           opacity: 1;
+//         }
+//       }
+//       @keyframes text-focus-in {
+//         0% {
+//           -webkit-filter: blur(12px);
+//           filter: blur(12px);
+//           opacity: 0;
+//         }
+//         100% {
+//           -webkit-filter: blur(0px);
+//           filter: blur(0px);
+//           opacity: 1;
+//         }
+//       }
+//     }
+//   }
+// }
 
 .house {
   display: flex;
