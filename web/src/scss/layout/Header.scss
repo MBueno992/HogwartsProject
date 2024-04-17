@@ -4,19 +4,12 @@
 .header {
   display: flex;
   flex-direction: column;
-  // height: 25vh;
-  // gap: 20px;
   position: relative;
-  // @media (min-width: 768px) {
-  //   height: auto;
-  // }
   &__nav {
     background-color: #001441;
     color: white;
     font-family: $playfair;
-    // font-weight: bold;
     font-size: 1.4rem;
-    // height: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -71,6 +64,7 @@
   &__houses {
     width: 100%;
     display: flex;
+    align-items: flex-start;
     justify-content: space-around;
     padding: 0 5px;
     @media (min-width: 768px) {
@@ -94,9 +88,6 @@
         @media (min-width: 768px) {
           width: 40%;
         }
-        // @media (min-width: 1024px) {
-        //   width: 130px;
-        // }
       }
     }
     &--school {
@@ -105,9 +96,6 @@
       align-items: center;
       margin: 40px 0;
       gap: 10px;
-      // @media (min-width: 768px) {
-      //   margin: 40px 40px;
-      // }
       img {
         width: 60%;
 

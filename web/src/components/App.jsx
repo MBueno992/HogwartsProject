@@ -174,21 +174,16 @@ function App() {
   };
 
   return (
-    <>
+    <div className="background">
       <Routes>
         <Route
           path="/"
           element={
-            <div className="background">
+            <>
               <Header />
               <Landing randomQuote={randomQuote} />
-              {/* <Landing
-                loginUser={loginUser}
-                loginInput={loginInput}
-                loginError={loginError}
-              /> */}
               <Footer />
-            </div>
+            </>
           }
         />
         <Route
@@ -232,11 +227,11 @@ function App() {
         <Route
           path="/quest-intro"
           element={
-            <div className="background">
+            <>
               <Header />
               <ShortingHat questions={questions} />
               <Footer />
-            </div>
+            </>
           }
         />
         <Route
@@ -319,7 +314,7 @@ function App() {
           }
         />
       </Routes>
-    </>
+    </div>
   );
 }
 

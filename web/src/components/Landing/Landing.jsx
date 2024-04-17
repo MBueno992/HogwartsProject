@@ -5,6 +5,7 @@ import Register from './Register';
 import PropTypes from 'prop-types';
 import sombrero from '../../images/sombrero.png';
 import Articles from '../Articles';
+import SwiperComponent from './SwiperComponent';
 
 function Landing({ loginUser, loginInput, loginError, randomQuote }) {
   return (
@@ -16,16 +17,13 @@ function Landing({ loginUser, loginInput, loginError, randomQuote }) {
       />
       <Register /> */}
 
+      <SwiperComponent />
       <aside className="landing__quote">
         <p>{randomQuote.quote}</p>
         <p>{randomQuote.autor}</p>
       </aside>
-      <section className="landing__articles">
-        <Articles />
-        <Articles desc="¿Aún no sabes a qué casa perteneces?" />
-        <Articles />
-        <Articles />
-      </section>
+
+      <Login />
     </div>
   );
 }

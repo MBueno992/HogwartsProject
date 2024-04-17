@@ -9,7 +9,11 @@ function Login({ loginUser, loginInput, loginError }) {
 
   return (
     <section className="login">
-      <h3 className="login__title">Iniciar sesión</h3>
+      <div className="login__title">
+        <hr />
+        <h3 className="login__title--text">Iniciar sesión</h3>
+        <hr />
+      </div>
       <form
         className="login__form"
         onChange={(ev) => {

@@ -1,9 +1,13 @@
-function Articles({ desc }) {
+import { Link } from 'react-router-dom';
+
+function Articles({ photo, desc, linkText, url }) {
   return (
     <article className="entrance">
-      <img src="" alt="" className="entrance_img" />
-      <h3></h3>
-      <p>{desc}</p>
+      <img src={photo} alt={photo} className="entrance_img" />
+      <p className="entrance__text">{desc}</p>
+      <Link to={url} className="entrance__more">
+        {linkText}
+      </Link>
     </article>
   );
 }

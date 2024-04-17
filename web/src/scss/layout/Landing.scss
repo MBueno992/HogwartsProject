@@ -1,20 +1,18 @@
 @import '../core/variables';
 
 .landing {
-  // height: 85vh;
-  // width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  gap: 20px;
+  gap: 30px;
+  margin-bottom: 50px;
   @media (min-width: 768px) {
     justify-content: center;
     flex-direction: row;
     margin: 0 auto;
     width: 80vw;
     gap: 80px;
-    // height: 52vh;
   }
   a {
     text-decoration: none;
@@ -27,7 +25,6 @@
     border-style: solid;
     border-width: 20px;
     padding: 10px;
-    // background-clip: padding-box;
     font-family: $playfair;
     display: flex;
     flex-direction: column;
@@ -42,63 +39,80 @@
     justify-content: center;
   }
 
-  &__login {
-    height: 50vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    // @media (min-width: 768px) {
-    //   // width: 50vw;
-    //   // height: 85vh;
-    // }
-  }
-  &__register {
-    // width: 100vw;
-    height: 35vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-    @media (min-width: 768px) {
-      margin-bottom: 0;
-      width: 35vw;
-      //   // height: 85vh;
-    }
-  }
+  // &__login {
+  //   height: 50vh;
+  //   width: 100vw;
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   // @media (min-width: 768px) {
+  //   //   // width: 50vw;
+  //   //   // height: 85vh;
+  //   // }
+  // }
+  // &__register {
+  //   // width: 100vw;
+  //   height: 35vh;
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   margin-bottom: 20px;
+  //   @media (min-width: 768px) {
+  //     margin-bottom: 0;
+  //     width: 35vw;
+  //     //   // height: 85vh;
+  //   }
+  // }
 }
 .entrance {
-  background-color: red;
-  width: 175px;
-  height: 250px;
-  &__img {
-    width: 250px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.61);
+  font-family: $playfair;
+  padding: 5px;
+  border-radius: 5px;
+  &__text {
+    text-align: center;
+    margin: 3px 0 0;
+  }
+  &__more {
+    text-align: right;
+    color: white;
+    text-decoration: none;
+    padding-right: 10px;
+    &:hover {
+      color: black;
+      text-decoration: underline;
+      transition: color 0.5s ease-in 0s underline 0.5s ease-in 0s;
+    }
   }
 }
 
 .login {
-  // height: 320px;
   width: 300px;
   border-radius: 10px;
   border: 1px solid white;
   padding: 20px;
-  color: #001441;
-  background: transparent;
-  backdrop-filter: blur(10px);
+  color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  // margin-top: 30px;
+  font-family: $playfair;
   @media (min-width: 768px) {
     width: 350px;
     height: 408px;
-    // margin: 0 20px;
   }
   &__title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    hr {
+      border: 1px solid white;
+      width: 35px;
+    }
     @media (min-width: 768px) {
       font-size: 2.4rem;
     }
@@ -108,10 +122,12 @@
     flex-direction: column;
     margin-top: 15px;
     width: 90%;
+    font-size: 1.2rem;
     @media (min-width: 768px) {
       margin-top: 25px;
       font-size: 1.6rem;
     }
+
     input {
       margin-top: 8px;
       margin-bottom: 15px;
@@ -120,7 +136,6 @@
       border-radius: 1rem;
       background: #e8e8e8bb;
       transition: 0.3s;
-      font-style: italic;
       &:focus {
         outline-color: #e8e8e8;
         background: #e8e8e8;
@@ -129,32 +144,28 @@
     }
     &--btn {
       width: 100%;
-      background: linear-gradient(
-        180deg,
-        rgba(52, 99, 204, 1) 0%,
-        rgba(10, 38, 102, 1) 50%
+      background: radial-gradient(
+        circle,
+        rgba(255, 174, 0, 1) 50%,
+        rgba(205, 140, 0, 1) 100%
       );
+      background-color: #ffae00;
       padding: 0.75rem;
       text-align: center;
       color: white;
       border: none;
       border-radius: 0.375rem;
-      font-weight: 600;
+      // font-weight: 600;
       transition: all 0.5s ease;
       margin-top: 10px;
       letter-spacing: 1.5px;
       &:hover {
         letter-spacing: 3px;
-        background: linear-gradient(
-          180deg,
-          rgba(255, 208, 117, 1) 0%,
-          rgba(190, 141, 45, 1) 50%
-        );
-        color: white;
-        box-shadow: rgba(190, 141, 45, 1) 0px 7px 29px 0px;
+        color: black;
+        box-shadow: rgba(190, 141, 45, 1) 0px 2px 29px 0px;
       }
       &:active {
-        transform: translateY(10px);
+        transform: translateY(5px);
         transition: 100ms;
       }
     }
