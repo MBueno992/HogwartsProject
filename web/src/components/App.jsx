@@ -20,6 +20,7 @@ import Contact from './Contact.jsx';
 import Wizards from './Wizards/Wizards.jsx';
 import WizardDetail from './Wizards/WizardDetail.jsx';
 import dataBase from '../services/dataBD.jsx';
+import ParticlesBack from './ParticlesBack.jsx';
 
 function App() {
   const [userName, setUserName] = useState('');
@@ -175,6 +176,7 @@ function App() {
 
   return (
     <div className="background">
+      <ParticlesBack />
       <Routes>
         <Route
           path="/"
