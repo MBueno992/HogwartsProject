@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
 import '../../scss/layout/ShortingHat.scss';
-import sombrero from '../../images/sombrero.png';
+import sombrero from '../../images/sombrero.jpeg';
 
 function ShortingHat() {
   return (
     <section className="shortingHat">
       <img src={sombrero} alt="" className="shortingHat__img" />
       <h2 className="shortingHat__title">Bienvenido a Hogwarts </h2>
+      <hr />
       <p className="shortingHat__text">
         Ha llegado la hora de averiguar cuál es tu casa. <br />
         ¿Estás preparado/a para adentrarte en la mejor escuela de Magia y

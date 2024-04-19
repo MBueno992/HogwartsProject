@@ -1,0 +1,49 @@
+@import '../core/Mixins.scss';
+@import '../core/variables';
+
+.login {
+  @include forms;
+  &__register {
+    text-align: center;
+    margin: 15px;
+    @media (min-width: 768px) {
+      font-size: 1.4rem;
+    }
+  }
+}
+
+.register {
+  @include forms;
+  margin: 15px auto 50px;
+  @media (min-width: 768px) {
+    width: 450px;
+  }
+  &__title {
+    &--welcome {
+      font-size: 1.2rem;
+      text-align: center;
+      margin: 10px;
+      @media (min-width: 768px) {
+        font-size: 1.6rem;
+        margin: 10px 5px;
+      }
+    }
+  }
+  &__form {
+    &--gender {
+      display: flex;
+      align-items: baseline;
+      gap: 15px;
+      input {
+        box-shadow: none;
+        cursor: pointer;
+      }
+    }
+    &--btn {
+      margin-bottom: 30px;
+    }
+    &--msg {
+      margin: 10px auto 15px;
+    }
+  }
+}

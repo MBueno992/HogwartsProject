@@ -13,7 +13,11 @@ function Landing({ loginUser, loginInput, loginError, randomQuote }) {
           <p>{randomQuote.autor}</p>
         </aside>
       </div>
-      <Login />
+      <Login
+        loginInput={loginInput}
+        loginUser={loginUser}
+        loginError={loginError}
+      />
     </div>
   );
 }

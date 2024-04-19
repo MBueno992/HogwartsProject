@@ -13,7 +13,6 @@
 }
 
 @mixin navBtn($text, $back, $border, $texthover, $backhover) {
-  color: $text;
   background-color: $back;
   padding: 3px 10px;
   border: $border;
@@ -25,7 +24,107 @@
   &:hover {
     cursor: pointer;
     background-color: $backhover;
-    color: $texthover;
     transition: background-color 0.3s ease-in-out 0s, color 0.3s ease-in-out 0s;
+  }
+  a {
+    text-decoration: none;
+    color: $text;
+    &:hover {
+      color: $texthover;
+    }
+  }
+}
+
+@mixin forms() {
+  width: 300px;
+  border-radius: 10px;
+  border: 1px solid white;
+  padding: 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: $playfair;
+  @media (min-width: 768px) {
+    width: 350px;
+  }
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 0;
+    &--text {
+      text-align: center;
+      font-size: 1.8rem;
+      @media (min-width: 768px) {
+        font-size: 2.4rem;
+      }
+    }
+    hr {
+      border: 1px solid white;
+      width: 35px;
+    }
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    width: 90%;
+    font-size: 1.2rem;
+    @media (min-width: 768px) {
+      margin-top: 25px;
+      font-size: 1.6rem;
+    }
+    input {
+      margin-top: 8px;
+      margin-bottom: 15px;
+      border: none;
+      padding: 1rem;
+      border-radius: 1rem;
+      background: #e8e8e8bb;
+      transition: 0.3s;
+      &:focus {
+        outline-color: #e8e8e8;
+        background: #e8e8e8;
+        transition: 0.3s;
+      }
+    }
+    &--btn {
+      width: 100%;
+      background: radial-gradient(
+        circle,
+        rgba(255, 174, 0, 1) 50%,
+        rgba(205, 140, 0, 1) 100%
+      );
+      background-color: #ffae00;
+      padding: 0.75rem;
+      text-align: center;
+      color: white;
+      border: none;
+      border-radius: 0.375rem;
+      text-decoration: none;
+      transition: all 0.5s ease;
+      margin-top: 10px;
+      letter-spacing: 1.5px;
+      &:hover {
+        letter-spacing: 3px;
+        color: black;
+        box-shadow: rgba(190, 141, 45, 1) 0px 2px 29px 0px;
+      }
+      &:active {
+        transform: translateY(5px);
+        transition: 100ms;
+      }
+    }
+    &--msg {
+      font-style: italic;
+      max-width: 250px;
+      color: white;
+      background-color: rgba(190, 142, 45, 0.582);
+      padding: 5px;
+      border-radius: 5px;
+      text-align: center;
+    }
   }
 }

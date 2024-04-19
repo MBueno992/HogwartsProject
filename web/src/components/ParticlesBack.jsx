@@ -19,25 +19,31 @@ function ParticlesBack() {
 
   const options = useMemo(
     () => ({
+      background: {
+        // color: {
+        //   value: '#0d47a1',
+        // },
+        fullScreen: {
+          enable: true,
+          zIndex: -2,
+        },
+      },
+      fpsLimit: 190,
       interactivity: {
-        detect_on: 'canvas',
         events: {
-          onhover: {
-            enable: true,
-            mode: 'bubble',
-          },
-          onclick: {
+          onClick: {
             enable: true,
             mode: 'repulse',
+          },
+          onHover: {
+            enable: true,
+            mode: 'bubble',
           },
           resize: true,
         },
         modes: {
-          grab: {
-            distance: 400,
-            line_linked: {
-              opacity: 1,
-            },
+          push: {
+            quantity: 4,
           },
           bubble: {
             distance: 250,
@@ -47,23 +53,17 @@ function ParticlesBack() {
             speed: 3,
           },
           repulse: {
-            distance: 400,
+            distance: 200,
             duration: 0.4,
-          },
-          push: {
-            particles_nb: 4,
-          },
-          remove: {
-            particles_nb: 2,
           },
         },
       },
       particles: {
         number: {
-          value: 160,
+          value: 1100,
           density: {
             enable: true,
-            value_area: 1104.8066982851817,
+            value_area: 2,
           },
         },
         color: {
@@ -76,16 +76,16 @@ function ParticlesBack() {
             color: '#000000',
           },
           polygon: {
-            nb_sides: 5,
+            nb_sides: 6,
           },
-          image: {
-            src: 'img/github.svg',
-            width: 100,
-            height: 100,
-          },
+          // image: {
+          //   src: 'img/github.svg',
+          //   width: 100,
+          //   height: 100,
+          // },
         },
         opacity: {
-          value: 1,
+          value: 0.5,
           random: true,
           anim: {
             enable: true,
@@ -95,12 +95,12 @@ function ParticlesBack() {
           },
         },
         size: {
-          value: 3,
+          value: 2,
           random: true,
           anim: {
             enable: false,
-            speed: 4,
-            size_min: 0.3,
+            speed: 2,
+            size_min: 0.5,
             sync: false,
           },
         },
@@ -113,7 +113,7 @@ function ParticlesBack() {
         },
         move: {
           enable: true,
-          speed: 0.8,
+          speed: 1,
           direction: 'none',
           random: true,
           straight: true,

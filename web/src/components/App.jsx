@@ -21,6 +21,7 @@ import Wizards from './Wizards/Wizards.jsx';
 import WizardDetail from './Wizards/WizardDetail.jsx';
 import dataBase from '../services/dataBD.jsx';
 import ParticlesBack from './ParticlesBack.jsx';
+import Register from './Landing/Register.jsx';
 
 function App() {
   const [userName, setUserName] = useState('');
@@ -72,7 +73,7 @@ function App() {
     connectBack.sendLogin(login).then((response) => {
       setAlertMsg('');
       if (response.success === true) {
-        setUserId(response.userId);
+        // setUserId(response.userId);
         local.set('token', response.token);
         connectBack.getProfile(response.wizardName).then((wizardData) => {
           setDataUser(wizardData);
@@ -176,14 +177,44 @@ function App() {
 
   return (
     <div className="background">
-      <ParticlesBack />
+      {/* <ParticlesBack /> */}
       <Routes>
         <Route
           path="/"
           element={
             <>
               <Header />
-              <Landing randomQuote={randomQuote} />
+              <Landing
+                randomQuote={randomQuote}
+                loginInput={loginInput}
+                loginUser={loginUser}
+                loginError={loginError}
+              />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <>
+              <Header />
+              <Register
+                dataUser={dataUser}
+                alertMsg={alertMsg}
+                registerWizard={registerWizard}
+                userRegister={userRegister}
+              />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/quest-intro"
+          element={
+            <>
+              <Header />
+              <ShortingHat questions={questions} />
               <Footer />
             </>
           }
@@ -227,16 +258,6 @@ function App() {
           }
         />
         <Route
-          path="/quest-intro"
-          element={
-            <>
-              <Header />
-              <ShortingHat questions={questions} />
-              <Footer />
-            </>
-          }
-        />
-        <Route
           path="/quest"
           element={
             <div className="background">
@@ -256,7 +277,7 @@ function App() {
             </div>
           }
         />
-        <Route
+        {/* <Route
           path="/register"
           element={
             <div className={houseSelect ? houseSelect : 'background'}>
@@ -273,7 +294,7 @@ function App() {
               <Footer houseSelect={houseSelect} />
             </div>
           }
-        />
+        /> */}
         <Route
           path="/about-me"
           element={

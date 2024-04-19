@@ -1,4 +1,4 @@
-import '../../scss/layout/Landing.scss';
+import '../../scss/layout/LoginRegister.scss';
 import PropTypes from 'prop-types';
 
 function Login({ loginUser, loginInput, loginError }) {

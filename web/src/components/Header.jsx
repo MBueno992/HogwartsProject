@@ -61,14 +61,20 @@ function Header({ houseSelect }) {
         />
         <ul className={isOpen ? 'header__nav--main' : 'hidden'}>
           <li>Juegos</li>
-          <li>Carta personalizada</li>
           <li>
-            <Link to="/quest-intro">Sombrero seleccionador</Link>
+            <Link to="/ministery">Carta personalizada</Link>
+          </li>
+          <li>
+            <Link to="/quest-intro" className="header__nav--url">
+              Sombrero seleccionador
+            </Link>
           </li>
         </ul>
         <ul className="header__nav--login">
           <li className="loginBtn">Iniciar sesión</li>
-          <li className="signupBtn">Regístrate</li>
+          <li className="signupBtn">
+            <Link to="/register">Regístrate</Link>
+          </li>
         </ul>
       </nav>
       <div className="header__houses">
@@ -87,7 +93,9 @@ function Header({ houseSelect }) {
           />
         </div>
         <div className="header__houses--school">
-          <img src={shield} alt="Hogwarts Shield" />
+          <Link to="/">
+            <img src={shield} alt="Hogwarts Shield" />
+          </Link>
           <img src={hogwarts} alt="Hogwarts" />
         </div>
         <div className="header__houses--flag">

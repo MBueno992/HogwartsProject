@@ -1,5 +1,5 @@
 const quote = () => {
-  return fetch('http://localhost:4000/quote')
+  return fetch('https://hogwarts-project-smoky.vercel.app/quote')
     .then((response) => response.json())
     .then((data) => {
       return data.result;
@@ -7,7 +7,7 @@ const quote = () => {
 };
 
 const wizardsDb = () => {
-  return fetch('https://hogwarts-project-beta.vercel.app/wizards')
+  return fetch('https://hogwarts-project-smoky.vercel.app/wizards')
     .then((response) => response.json())
     .then((data) => {
       return data;
