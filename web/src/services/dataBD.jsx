@@ -14,9 +14,18 @@ const wizardsDb = () => {
     });
 };
 
+const wordsGame = () => {
+  return fetch('http://localhost:4000/words').then((response) =>
+    response.json().then((data) => {
+      return data.result;
+    })
+  );
+};
+
 const dataBd = {
   quote: quote,
   wizardsDb: wizardsDb,
+  wordsGame: wordsGame,
 };
 
 export default dataBd;

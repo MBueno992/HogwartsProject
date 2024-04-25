@@ -30,7 +30,7 @@ function Form({
       setTimeout(() => setNewQuest(newQuest + 1), 300);
     } else {
       resultForm();
-      route.redirect('/register');
+      route.redirect('/house');
     }
   };
 

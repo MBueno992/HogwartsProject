@@ -207,5 +207,12 @@ server.get('/wizards', async (req, res) => {
   res.json(resultWizards);
 });
 
+//JUEGO AHORCADO
+server.get('/words', async (req, res) => {
+  const connect = await getConnection();
+  const wordsSQL = 'SELECT * FROM words';
+  const [resultWords] = await connect.query(wordsSQL);
+  res.json({ success: true, result: resultWords });
+});
 const staticServer = './src/public-react';
 server.use(express.static(staticServer));

@@ -22,6 +22,9 @@ import WizardDetail from './Wizards/WizardDetail.jsx';
 import dataBase from '../services/dataBD.jsx';
 import ParticlesBack from './ParticlesBack.jsx';
 import Register from './Landing/Register.jsx';
+import HogwartsHouse from './Houses/HogwartsHouse.jsx';
+import HangedGame from './games/hanged/HangedGame.jsx';
+import { number } from 'prop-types';
 
 function App() {
   const [userName, setUserName] = useState('');
@@ -51,6 +54,12 @@ function App() {
       image: '',
     })
   );
+  //Ahorcado
+  const [word, setWord] = useState('');
+  const [numberOfErrors, setNumberOfErrors] = useState(0);
+  const [lastLetter, setLastLetter] = useState('');
+  const [gameMsg, setGameMsg] = useState('');
+  const [userLetters, setUserLetters] = useState([]);
 
   useEffect(() => {
     local.set('user', userName);
@@ -64,6 +73,63 @@ function App() {
     });
     console.log(randomQuote);
   }, []);
+
+  //Juego Ahorcado
+  useEffect(() => {
+    let number = Math.floor(Math.random() * 115);
+    dataBase.wordsGame().then((resp) => {
+      setWord(resp[number].palabra);
+    });
+  }, []);
+
+  const inputLetter = (ev) => {
+    const letter = ev.target.value;
+    if (letter.match(/[a-zA-ZñÑ]/)) {
+      setLastLetter(letter);
+      setGameMsg('');
+      if (!userLetters.includes(letter)) {
+        setUserLetters([...userLetters, letter]);
+      }
+      if (!word.includes(letter)) {
+        setNumberOfErrors(numberOfErrors + 1);
+      }
+    } else {
+      setGameMsg('Introduce un carácter válido');
+      setLastLetter('');
+    }
+  };
+
+  const renderSolutionLetters = () => {
+    const wordLetters = word.split('');
+    const letterLines = wordLetters.map((letter, i) => {
+      if (userLetters.includes(letter)) {
+        return (
+          <li key={i} className="letter">
+            {letter}
+          </li>
+        );
+      } else {
+        return <li key={i} className="letter"></li>;
+      }
+    });
+    return letterLines;
+  };
+
+  const renderErrorLetters = () => {
+    const wordLetters = word.split('');
+    const errorLetters = userLetters.filter(
+      (letter) => !wordLetters.includes(letter)
+    );
+    return errorLetters.map((letter, i) => {
+      return (
+        <li key={i} className="letter">
+          {letter}
+        </li>
+      );
+    });
+  };
+
+  //Fin ahorcado
 
   const loginInput = (ev) => {
     setLogin({ ...login, [ev.target.id]: ev.target.value });
@@ -277,7 +343,37 @@ function App() {
             </div>
           }
         />
+        <Route
+          path="/house"
+          element={
+            <div className={houseSelect ? houseSelect : 'background'}>
+              <Header houseSelect={houseSelect} />
+              <HogwartsHouse houseSelect={houseSelect} />
+              <Footer houseSelect={houseSelect} />
+            </div>
+          }
+        />
+        <Route
+          path="/hangedGame"
+          element={
+            <>
+              <Header />
+              <HangedGame
+                word={word}
+                renderSolutionLetters={renderSolutionLetters}
+                renderErrorLetters={renderErrorLetters}
+                numberOfErrors={numberOfErrors}
+                inputLetter={inputLetter}
+                lastLetter={lastLetter}
+                gameMsg={gameMsg}
+              />
+              <Footer />
+            </>
+          }
+        />
         {/* <Route
+          <Footer houseSelect={houseSelect} />
+            </div> />
           path="/register"
           element={
             <div className={houseSelect ? houseSelect : 'background'}>

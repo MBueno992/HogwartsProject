@@ -94,9 +94,16 @@ function Header({ houseSelect }) {
         </div>
         <div className="header__houses--school">
           <Link to="/">
-            <img src={shield} alt="Hogwarts Shield" />
+            <img
+              src={`${!houseSelect ? shield : imageHouse[houseSelect].Shield}`}
+              alt="Hogwarts Shield"
+            />
           </Link>
-          <img src={hogwarts} alt="Hogwarts" />
+          {!houseSelect ? <img src={hogwarts} alt="Hogwarts" /> : null}
+          {/* <img
+            src={`${!houseSelect ? hogwarts : imageHouse[houseSelect].Shield}`}
+            alt="Hogwarts"
+          /> */}
         </div>
         <div className="header__houses--flag">
           <img
