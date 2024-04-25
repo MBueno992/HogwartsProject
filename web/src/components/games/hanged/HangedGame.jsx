@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import '../../../scss/layout/HangedGame.scss';
 import dataBD from '../../../services/dataBD';
 import Dummy from './Dummy';
-import SolutionLetters from '../../SolutionLetters';
+import SolutionLetters from './SolutionLetters';
 import ErrorLetters from './ErrorLetters';
+import Result from './Result';
 
 function HangedGame({
   word,
@@ -15,21 +16,19 @@ function HangedGame({
   gameMsg,
 }) {
   return (
-    <div className="page">
-      <header>
-        <h1 className="header__title">Juego del ahorcado</h1>
-      </header>
-      <main className="main">
-        <section>
+    <div>
+      <div className="hangedGame">
+        <section className="hangedGame__panel">
+          <h1 className="hangedGame__title">Juego del ahorcado</h1>
           <SolutionLetters renderSolutionLetters={renderSolutionLetters} />
           <ErrorLetters renderErrorLetters={renderErrorLetters} />
-          <form className="form">
+          <form className="hangedGame__form">
             <label className="title" htmlFor="last-letter">
               Escribe una letra:
             </label>
             <input
               autoComplete="off"
-              className="form__input"
+              className="hangedGame__form--input"
               maxLength="1"
               type="text"
               name="last-letter"
@@ -38,10 +37,14 @@ function HangedGame({
               onChange={inputLetter}
             />
           </form>
-          {gameMsg ? <p>{gameMsg}</p> : null}
+          {gameMsg ? (
+            <p className="hangedGame__msg">
+              --{'>'} {gameMsg} {'<'}--
+            </p>
+          ) : null}
         </section>
         <Dummy numberOfErrors={numberOfErrors} />
-      </main>
+      </div>
     </div>
   );
 }

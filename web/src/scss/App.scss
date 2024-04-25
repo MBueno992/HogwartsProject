@@ -3,11 +3,14 @@
 @import 'core/Mixins';
 
 .background {
-  height: 100%;
+  min-height: 100vh;
   // background-image: url(../images/Particles.gif);
   // background-size: cover;
   // background-repeat: no-repeat;
   // background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background: rgb(0, 35, 115);
   background: radial-gradient(
     circle,

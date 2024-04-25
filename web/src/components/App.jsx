@@ -25,6 +25,7 @@ import Register from './Landing/Register.jsx';
 import HogwartsHouse from './Houses/HogwartsHouse.jsx';
 import HangedGame from './games/hanged/HangedGame.jsx';
 import { number } from 'prop-types';
+import LandingGames from './games/LandingGames.jsx';
 
 function App() {
   const [userName, setUserName] = useState('');
@@ -83,7 +84,9 @@ function App() {
   }, []);
 
   const inputLetter = (ev) => {
-    const letter = ev.target.value;
+    const input = ev.target.value;
+    const letter = input.trim().slice(-1);
+
     if (letter.match(/[a-zA-ZñÑ]/)) {
       setLastLetter(letter);
       setGameMsg('');
@@ -92,6 +95,9 @@ function App() {
       }
       if (!word.includes(letter)) {
         setNumberOfErrors(numberOfErrors + 1);
+        if (numberOfErrors === 12) {
+          setGameMsg('Has perdido');
+        }
       }
     } else {
       setGameMsg('Introduce un carácter válido');
@@ -102,14 +108,16 @@ function App() {
   const renderSolutionLetters = () => {
     const wordLetters = word.split('');
     const letterLines = wordLetters.map((letter, i) => {
-      if (userLetters.includes(letter)) {
+      if (letter === ' ') {
+        return <span key={i} className="space"></span>;
+      } else if (userLetters.includes(letter)) {
         return (
-          <li key={i} className="letter">
+          <li key={i} className="hangedGame__letters--letter">
             {letter}
           </li>
         );
       } else {
-        return <li key={i} className="letter"></li>;
+        return <li key={i} className="hangedGame__letters--letter"></li>;
       }
     });
     return letterLines;
@@ -122,7 +130,7 @@ function App() {
     );
     return errorLetters.map((letter, i) => {
       return (
-        <li key={i} className="letter">
+        <li key={i} className="hangedGame__letters--letter">
           {letter}
         </li>
       );
@@ -351,6 +359,16 @@ function App() {
               <HogwartsHouse houseSelect={houseSelect} />
               <Footer houseSelect={houseSelect} />
             </div>
+          }
+        />
+        <Route
+          path="/games"
+          element={
+            <>
+              <Header />
+              <LandingGames />
+              <Footer />
+            </>
           }
         />
         <Route

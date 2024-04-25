@@ -1,8 +1,8 @@
 function ErrorLetters({ renderErrorLetters }) {
   return (
-    <div className="error">
+    <div className="hangedGame__error">
       <h2 className="title">Letras falladas:</h2>
-      <ul className="letters">{renderErrorLetters()}</ul>
+      <ul className="hangedGame__letters">{renderErrorLetters()}</ul>
     </div>
   );
 }

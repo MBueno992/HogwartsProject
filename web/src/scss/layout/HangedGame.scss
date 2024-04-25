@@ -1,3 +1,4 @@
+@import '../core/variables';
 // COMMON STYLES
 
 .title {
@@ -6,8 +7,17 @@
   line-height: 1;
   text-align: center;
   color: white;
+  font-family: $playfair;
 }
 
+.header__title {
+  padding-bottom: 2rem;
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  font-family: $playfair;
+}
 // PAGE
 
 // .page {
@@ -21,9 +31,88 @@
 
 // MAIN
 
-.main {
+.hangedGame {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  border: 2px solid white;
+  border-radius: 15px;
+  padding: 20px 15px;
+  margin: 50px 30px;
+  font-family: $playfair;
+  color: white;
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+  &__title {
+    padding-bottom: 2rem;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    // color: white;
+    // font-family: $playfair;
+  }
+  &__panel {
+    display: flex;
+    flex-direction: column;
+  }
+  &__form {
+    margin-bottom: 1rem;
+    text-align: center;
+
+    &--input {
+      background-color: transparent;
+      border: none;
+      border-bottom: 3px solid white;
+      text-align: center;
+      font-size: 4rem;
+      outline: none;
+      animation-name: borderBottomInput;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+      font-family: $playfair;
+      color: #ffae00;
+      &[maxLength='1'] {
+        width: 5rem;
+      }
+
+      &[maxLength='15'] {
+        width: 25rem;
+      }
+
+      &::selection {
+        background-color: rgba(255, 255, 255, 0.25);
+      }
+    }
+  }
+  &__msg {
+    text-align: center;
+    font-family: $playfair;
+    color: white;
+    font-style: italic;
+  }
+  &__solution,
+  &__error {
+    margin-bottom: 3.75rem;
+  }
+  &__letters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    min-height: 25px;
+    color: white;
+    font-family: $playfair;
+    margin: 10px auto;
+    &--letter {
+      margin: 0 0.25rem;
+      min-width: 1.5rem;
+      font-size: 2rem;
+      border-bottom: 3px solid white;
+      text-align: center;
+    }
+  }
 }
 
 $dummyEnabledColor: white;
@@ -167,34 +256,35 @@ $dummyTransitionTime: 1s;
   }
 }
 
-.form {
-  margin-bottom: 1rem;
-  text-align: center;
+// .form {
+//   margin-bottom: 1rem;
+//   text-align: center;
 
-  &__input {
-    background-color: transparent;
-    border: none;
-    border-bottom: 3px solid white;
-    text-align: center;
-    font-size: 4rem;
-    outline: none;
-    animation-name: borderBottomInput;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
+//   &__input {
+//     background-color: transparent;
+//     border: none;
+//     border-bottom: 3px solid white;
+//     text-align: center;
+//     font-size: 4rem;
+//     outline: none;
+//     animation-name: borderBottomInput;
+//     animation-duration: 2s;
+//     animation-iteration-count: infinite;
+//     font-family: $playfair;
+//     color: #ffae00;
+//     &[maxLength='1'] {
+//       width: 5rem;
+//     }
 
-    &[maxLength='1'] {
-      width: 5rem;
-    }
+//     &[maxLength='15'] {
+//       width: 25rem;
+//     }
 
-    &[maxLength='15'] {
-      width: 25rem;
-    }
-
-    &::selection {
-      background-color: rgba(255, 255, 255, 0.25);
-    }
-  }
-}
+//     &::selection {
+//       background-color: rgba(255, 255, 255, 0.25);
+//     }
+//   }
+// }
 
 @keyframes borderBottomInput {
   from {
@@ -207,13 +297,7 @@ $dummyTransitionTime: 1s;
     border-bottom-color: white;
   }
 }
-.header__title {
-  padding-bottom: 2rem;
-  font-size: 3rem;
-  font-weight: bold;
-  text-align: center;
-  color: white;
-}
+
 .instructions {
   max-width: 30rem;
   line-height: 2.25;
@@ -222,26 +306,56 @@ $dummyTransitionTime: 1s;
     padding-bottom: 2rem;
   }
 }
-.solution,
-.error {
-  margin-bottom: 3.75rem;
-}
-
-.letters {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  list-style: none;
-  min-height: 3.5625rem;
-
-  .letter {
-    margin: 0 0.25rem;
-    min-width: 1.5rem;
-    font-size: 2rem;
-    border-bottom: 3px solid white;
+.game {
+  &__solution,
+  &__error {
+    margin-bottom: 3.75rem;
+  }
+  &__letters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    min-height: 25px;
+    color: white;
+    font-family: $playfair;
+    margin: 10px auto;
+    &--letter {
+      margin: 0 0.25rem;
+      min-width: 1.5rem;
+      font-size: 2rem;
+      border-bottom: 3px solid white;
+      text-align: center;
+    }
+  }
+  &__msg {
     text-align: center;
+    font-family: $playfair;
+    color: white;
+    font-style: italic;
   }
 }
+
+// .solution,
+// .error {
+//   margin-bottom: 3.75rem;
+// }
+
+// .letters {
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: center;
+//   list-style: none;
+//   min-height: 25px;
+
+//   .letter {
+//     margin: 0 0.25rem;
+//     min-width: 1.5rem;
+//     font-size: 2rem;
+//     border-bottom: 3px solid white;
+//     text-align: center;
+//   }
+// }
 .loading {
   position: fixed;
   top: 2rem;
@@ -286,4 +400,14 @@ $dummyTransitionTime: 1s;
     width: 1.5rem;
     height: 1.5rem;
   }
+}
+
+.space {
+  width: 20px;
+}
+
+.result {
+  width: 100%;
+  height: 100%;
+  background-color: black;
 }
