@@ -60,7 +60,9 @@ function Header({ houseSelect }) {
           size={25}
         />
         <ul className={isOpen ? 'header__nav--main' : 'hidden'}>
-          <li>Juegos</li>
+          <li>
+            <Link to="/games">Juegos</Link>
+          </li>
           <li>
             <Link to="/ministery">Carta personalizada</Link>
           </li>
