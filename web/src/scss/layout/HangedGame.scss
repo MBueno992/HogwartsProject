@@ -1,5 +1,5 @@
+@import '../core/Mixins.scss';
 @import '../core/variables';
-// COMMON STYLES
 
 .title {
   display: block;
@@ -18,44 +18,36 @@
   color: white;
   font-family: $playfair;
 }
-// PAGE
-
-// .page {
-//   padding: 2rem;
-//   width: 100%;
-//   min-height: 100vh;
-//   background-image: url('../images/blackboard.jpg');
-//   background-size: cover;
-//   background-position: center center;
-// }
-
-// MAIN
 
 .hangedGame {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  border: 2px solid white;
-  border-radius: 15px;
-  padding: 20px 15px;
-  margin: 50px 30px;
-  font-family: $playfair;
-  color: white;
-  @media (min-width: 768px) {
-    flex-direction: row;
-  }
+  z-index: 1;
+
   &__title {
     padding-bottom: 2rem;
     font-size: 3rem;
     font-weight: bold;
     text-align: center;
-    // color: white;
-    // font-family: $playfair;
   }
   &__panel {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+    border-radius: 15px;
+    padding: 20px 15px;
+    margin: 50px 30px;
+    font-family: $playfair;
+    color: white;
+    background-color: #001441;
+    @media (min-width: 768px) {
+      width: 75%;
+      flex-direction: row;
+      padding: 40px 0;
+    }
   }
   &__form {
     margin-bottom: 1rem;
@@ -73,14 +65,7 @@
       animation-iteration-count: infinite;
       font-family: $playfair;
       color: #ffae00;
-      &[maxLength='1'] {
-        width: 5rem;
-      }
-
-      &[maxLength='15'] {
-        width: 25rem;
-      }
-
+      width: 30px;
       &::selection {
         background-color: rgba(255, 255, 255, 0.25);
       }
@@ -256,36 +241,6 @@ $dummyTransitionTime: 1s;
   }
 }
 
-// .form {
-//   margin-bottom: 1rem;
-//   text-align: center;
-
-//   &__input {
-//     background-color: transparent;
-//     border: none;
-//     border-bottom: 3px solid white;
-//     text-align: center;
-//     font-size: 4rem;
-//     outline: none;
-//     animation-name: borderBottomInput;
-//     animation-duration: 2s;
-//     animation-iteration-count: infinite;
-//     font-family: $playfair;
-//     color: #ffae00;
-//     &[maxLength='1'] {
-//       width: 5rem;
-//     }
-
-//     &[maxLength='15'] {
-//       width: 25rem;
-//     }
-
-//     &::selection {
-//       background-color: rgba(255, 255, 255, 0.25);
-//     }
-//   }
-// }
-
 @keyframes borderBottomInput {
   from {
     border-bottom-color: white;
@@ -336,26 +291,6 @@ $dummyTransitionTime: 1s;
   }
 }
 
-// .solution,
-// .error {
-//   margin-bottom: 3.75rem;
-// }
-
-// .letters {
-//   display: flex;
-//   flex-wrap: wrap;
-//   justify-content: center;
-//   list-style: none;
-//   min-height: 25px;
-
-//   .letter {
-//     margin: 0 0.25rem;
-//     min-width: 1.5rem;
-//     font-size: 2rem;
-//     border-bottom: 3px solid white;
-//     text-align: center;
-//   }
-// }
 .loading {
   position: fixed;
   top: 2rem;
@@ -410,4 +345,45 @@ $dummyTransitionTime: 1s;
   width: 100%;
   height: 100%;
   background-color: black;
+}
+.return {
+  display: flex;
+  gap: 5px;
+  font-size: 1.2rem;
+  align-items: baseline;
+  text-decoration: none;
+  color: black;
+  background-color: #ffae00;
+  padding: 3px 10px;
+  border-radius: 50px;
+  @media (min-width: 768px) {
+    font-size: 1.4rem;
+    padding: 5px 15px;
+  }
+  &:hover {
+    transition: color 0.5s ease 0s;
+    color: white;
+  }
+}
+
+.gameOptions {
+  display: flex;
+  gap: 15px;
+  font-size: 1.4rem;
+  margin-bottom: 50px;
+  cursor: pointer;
+  &__btn {
+    padding: 3px 5px;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 50px;
+    color: white;
+    font-family: $playfair;
+    &:hover {
+      transition: font-size 0.2s ease-in 0s;
+      background-color: white;
+      color: #001411;
+      font-size: 1.5rem;
+    }
+  }
 }

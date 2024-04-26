@@ -125,7 +125,7 @@
 }
 
 .loginBtn {
-  @include navBtn(white, none, 1px solid white, #001441, white);
+  @include navBtn(white, none, 1px solid, white, #001441);
   @media (max-width: 768px) {
     display: none;
   }

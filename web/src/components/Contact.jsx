@@ -26,7 +26,9 @@ function Contact() {
           required
         ></textarea>
 
-        <button type="submit">Enviar</button>
+        <button className="contact__btn" type="submit">
+          Enviar
+        </button>
       </form>
     </>
   );

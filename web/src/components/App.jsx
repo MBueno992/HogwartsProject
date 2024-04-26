@@ -55,6 +55,7 @@ function App() {
       image: '',
     })
   );
+
   //Ahorcado
   const [word, setWord] = useState('');
   const [numberOfErrors, setNumberOfErrors] = useState(0);
@@ -84,9 +85,9 @@ function App() {
   }, []);
 
   const inputLetter = (ev) => {
-    const input = ev.target.value;
-    const letter = input.trim().slice(-1);
-
+    const input = ev.target.value.trim().split('');
+    const letter = input[input.length - 1];
+    setLastLetter('');
     if (letter.match(/[a-zA-ZñÑ]/)) {
       setLastLetter(letter);
       setGameMsg('');
@@ -97,12 +98,20 @@ function App() {
         setNumberOfErrors(numberOfErrors + 1);
         if (numberOfErrors === 12) {
           setGameMsg('Has perdido');
+          restartGame();
         }
       }
     } else {
       setGameMsg('Introduce un carácter válido');
       setLastLetter('');
     }
+  };
+
+  const restartGame = () => {
+    setLastLetter('');
+    setGameMsg('');
+    setUserLetters([]);
+    setNumberOfErrors(0);
   };
 
   const renderSolutionLetters = () => {
@@ -251,7 +260,7 @@ function App() {
 
   return (
     <div className="background">
-      {/* <ParticlesBack /> */}
+      <ParticlesBack />
       <Routes>
         <Route
           path="/"
@@ -384,6 +393,7 @@ function App() {
                 inputLetter={inputLetter}
                 lastLetter={lastLetter}
                 gameMsg={gameMsg}
+                restartGame={restartGame}
               />
               <Footer />
             </>

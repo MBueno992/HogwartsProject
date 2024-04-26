@@ -1,5 +1,5 @@
 const quote = () => {
-  return fetch('https://hogwarts-project-smoky.vercel.app/quote')
+  return fetch('https://hogwarts-project-back.vercel.app/quote')
     .then((response) => response.json())
     .then((data) => {
       return data.result;
@@ -7,7 +7,7 @@ const quote = () => {
 };
 
 const wizardsDb = () => {
-  return fetch('https://hogwarts-project-smoky.vercel.app/wizards')
+  return fetch('https://hogwarts-project-back.vercel.app/wizards')
     .then((response) => response.json())
     .then((data) => {
       return data;
@@ -15,10 +15,11 @@ const wizardsDb = () => {
 };
 
 const wordsGame = () => {
-  return fetch('http://localhost:4000/words').then((response) =>
-    response.json().then((data) => {
-      return data.result;
-    })
+  return fetch('https://hogwarts-project-back.vercel.app/words').then(
+    (response) =>
+      response.json().then((data) => {
+        return data.result;
+      })
   );
 };
 

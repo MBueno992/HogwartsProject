@@ -20,12 +20,12 @@ function ParticlesBack() {
   const options = useMemo(
     () => ({
       background: {
-        // color: {
-        //   value: '#0d47a1',
-        // },
+        color: {
+          value: 'rgb(0, 35, 115)',
+        },
+        zIndex: -1,
         fullScreen: {
           enable: true,
-          zIndex: -2,
         },
       },
       fpsLimit: 190,
@@ -50,7 +50,7 @@ function ParticlesBack() {
             size: 0,
             duration: 2,
             opacity: 0,
-            speed: 3,
+            speed: 1,
           },
           repulse: {
             distance: 200,

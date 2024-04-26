@@ -11,13 +11,13 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: rgb(0, 35, 115);
-  background: radial-gradient(
-    circle,
-    rgba(0, 35, 115, 1) 54%,
-    rgba(0, 20, 65, 1) 100%,
-    rgba(0, 20, 65, 1) 100%
-  );
+  // background: rgb(0, 35, 115);
+  // background: radial-gradient(
+  //   circle,
+  //   rgba(0, 35, 115, 1) 54%,
+  //   rgba(0, 20, 65, 1) 100%,
+  //   rgba(0, 20, 65, 1) 100%
+  // );
 }
 .backgroundProfile {
   background-image: url(../images/profile.png);

@@ -25,7 +25,7 @@ function Footer({ houseSelect }) {
         <ul className="footer__nav">
           <li>
             <a
-              href="https://beta.adalab.es/modulo-3-evaluacion-final-MBueno992/"
+              href="https://mbueno992.github.io/Harry-Potter-characters/"
               target="_blank"
               rel="noreferrer"
             >
