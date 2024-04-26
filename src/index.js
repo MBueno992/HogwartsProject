@@ -13,10 +13,10 @@ server.use(express.json({ limit: '25mb' }));
 //Conexión a la BD
 const getConnection = async () => {
   const connection = await mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'root.123456',
-    database: 'Hogwarts',
+    host: process.env.HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
   });
   await connection.connect();
   return connection;
@@ -205,6 +205,14 @@ server.get('/wizards', async (req, res) => {
   const wizardsSQL = 'SELECT * FROM wizards';
   const [resultWizards] = await connect.query(wizardsSQL);
   res.json(resultWizards);
+});
+
+//JUEGO AHORCADO
+server.get('/words', async (req, res) => {
+  const connect = await getConnection();
+  const wordsSQL = 'SELECT * FROM words';
+  const [resultWords] = await connect.query(wordsSQL);
+  res.json({ success: true, result: resultWords });
 });
 
 const staticServer = './src/public-react';
