@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 function Card({ dataUser, houseSelect, imageHouse, formatDate }) {
   const { name, wizardName, birthdate, gender, house, image } = dataUser;
   return (
-    <article className="register__data">
+    <article className="adminForm__data">
       <img
         src={
           image !== ''
@@ -17,6 +17,7 @@ function Card({ dataUser, houseSelect, imageHouse, formatDate }) {
             : imageHouse[houseSelect].Shield
         }
         alt={wizardName || ''}
+        className="adminForm__data--img"
       />
       <h3>
         Alumno/a: <span>{name || ''}</span>{' '}
@@ -24,13 +25,6 @@ function Card({ dataUser, houseSelect, imageHouse, formatDate }) {
       <h4>
         Apodo: <span>{wizardName || ''} </span>
       </h4>
-      <p>
-        Fecha de nacimiento:{' '}
-        <span>{!birthdate ? '' : formatDate(birthdate)} </span>
-      </p>
-      <p>
-        Miembro de la casa: <span>{house || houseSelect} </span>
-      </p>
     </article>
   );
 }

@@ -29,6 +29,7 @@
       }
     }
   }
+
   &__form {
     &--gender {
       display: flex;
@@ -38,6 +39,16 @@
         box-shadow: none;
         cursor: pointer;
       }
+    }
+    &--select {
+      margin-top: 8px;
+      margin-bottom: 15px;
+      border: none;
+      padding: 1rem;
+      border-radius: 1rem;
+      background: #e8e8e8bb;
+      font-style: italic;
+      cursor: pointer;
     }
     &--btn {
       margin-bottom: 30px;

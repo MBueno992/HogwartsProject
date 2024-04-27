@@ -110,18 +110,7 @@ server.post('/', async (req, resp) => {
 
 //Registro
 server.post('/register', async (req, resp) => {
-  const {
-    gender,
-    name,
-    wizardName,
-    birthdate,
-    province,
-    city,
-    house,
-    image,
-    email,
-    password,
-  } = req.body;
+  const { gender, name, wizardName, birthdate, email, password } = req.body;
   console.log(req.body);
   const connect = await getConnection();
   const selectUser = 'SELECT * FROM users WHERE email = ?';
@@ -142,16 +131,12 @@ server.post('/register', async (req, resp) => {
     ]);
     const userId = resultUser.insertId;
     const insertWizard =
-      'INSERT INTO wizards (gender, name, wizardName, birthdate, province, city, house, image, fk_idUser) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
+      'INSERT INTO wizards (gender, name, wizardName, birthdate, fk_idUser) VALUES (?, ?, ?, ?, ?)';
     const [resultWizard] = await connect.query(insertWizard, [
       gender,
       name,
       wizardName,
       birthdate,
-      province,
-      city,
-      house,
-      image,
       userId,
     ]);
     resp.json({ success: true, data: resultUser });
@@ -161,6 +146,49 @@ server.post('/register', async (req, resp) => {
       msg: 'Ese correo electrónico ya está registrado.',
     });
   }
+});
+
+// //Modificar datos
+server.put('/admin/wizard', async (req, res) => {
+  const { userId, gender, name, wizardName, birthdate, province, image } =
+    req.body;
+  const connect = await getConnection();
+
+  const updateData =
+    'UPDATE wizards SET gender = ?, name = ?, wizardName = ?, birthdate = ?, province = ?, image = ? WHERE fk_idUser = ?';
+  const [resultUpdate] = await connect.query(updateData, [
+    gender,
+    name,
+    wizardName,
+    birthdate,
+    province,
+    image,
+    userId,
+  ]);
+  res.json({ success: true, result: 'Datos actualizados correctamente.' });
+});
+
+//Modificar email y contraseña
+server.put('/admin/email', async (req, res) => {
+  const { userId, email, password } = req.body;
+  const connect = await getConnection();
+  const selectUser = 'SELECT * FROM wizards WHERE fk_idUser = ?';
+  const [resultSelect] = await connect.query(selectUser, [userId]);
+  console.log(resultSelect);
+  if (resultSelect.length === 0) {
+    res.json({ success: false, result: 'Usuario no encontrado' });
+  }
+  if (email && email !== resultSelect[0].email) {
+    const findOutEmail = 'SELECT * FROM users WHERE email = ?';
+    const [resultFindOutEmail] = await connect.query(findOutEmail, [email]);
+    if (resultFindOutEmail.length > 0) {
+      res.json({
+        success: false,
+        result: 'Ese correo electrónico ya está registrado',
+      });
+    }
+  }
+  const updateUser = 'UPDATE users SET email = ? WHERE idUser = ?';
 });
 
 //Perfil usuario

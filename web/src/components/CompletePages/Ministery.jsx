@@ -1,5 +1,5 @@
-import ministery from '../images/ministery.webp';
-import '../scss/layout/Ministery.scss';
+import ministery from '../../images/ministery.webp';
+import '../../scss/layout/Ministery.scss';
 
 function Ministery({ click, handleInput, text, userName }) {
   const handleClick = (ev) => {

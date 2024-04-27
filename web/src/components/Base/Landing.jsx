@@ -1,7 +1,7 @@
-import Login from './Login';
+import Login from '../Form/Login';
 import '../../scss/layout/Landing.scss';
 import PropTypes from 'prop-types';
-import SwiperComponent from './SwiperComponent';
+import SwiperComponent from '../Landing/SwiperComponent';
 
 function Landing({ loginUser, loginInput, loginError, randomQuote }) {
   return (
@@ -9,7 +9,7 @@ function Landing({ loginUser, loginInput, loginError, randomQuote }) {
       <div className="landing__random">
         <SwiperComponent />
         <aside className="landing__random--quote">
-          <p>{randomQuote.quote}</p>
+          <p>{randomQuote.cita}</p>
           <p>{randomQuote.autor}</p>
         </aside>
       </div>

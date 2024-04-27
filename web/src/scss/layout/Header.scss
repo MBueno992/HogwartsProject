@@ -133,3 +133,16 @@
 .signupBtn {
   @include navBtn(black, #ffae00, none, white, #ffae00);
 }
+
+.logoutBtn {
+  @include navBtn(black, white, 1px solid, $blueNight, transparent);
+
+  button {
+    border: none;
+    background-color: transparent;
+    color: $blueNight;
+    &:hover {
+      color: white;
+    }
+  }
+}

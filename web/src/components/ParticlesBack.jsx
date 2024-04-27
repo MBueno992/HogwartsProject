@@ -23,16 +23,17 @@ function ParticlesBack() {
         color: {
           value: 'rgb(0, 35, 115)',
         },
-        zIndex: -1,
+        // zIndex: -1,
         fullScreen: {
           enable: true,
         },
       },
-      fpsLimit: 190,
+      fpsLimit: 144,
       interactivity: {
+        detect_on: 'canvas',
         events: {
           onClick: {
-            enable: true,
+            enable: false,
             mode: 'repulse',
           },
           onHover: {
@@ -42,28 +43,37 @@ function ParticlesBack() {
           resize: true,
         },
         modes: {
-          push: {
-            quantity: 4,
+          // push: {
+          //   particles_nb: 4,
+          // },
+          grab: {
+            distance: 400,
+            line_linked: {
+              opacity: 1,
+            },
           },
           bubble: {
             distance: 250,
             size: 0,
             duration: 2,
             opacity: 0,
-            speed: 1,
+            // speed: 3,
           },
           repulse: {
-            distance: 200,
-            duration: 0.4,
+            distance: 400,
+            // duration: 0.4,
           },
+          // remove: {
+          //   particles_nb: 2,
+          // },
         },
       },
       particles: {
         number: {
-          value: 1100,
+          value: 170,
           density: {
             enable: true,
-            value_area: 2,
+            value_area: 800,
           },
         },
         color: {
@@ -85,7 +95,7 @@ function ParticlesBack() {
           // },
         },
         opacity: {
-          value: 0.5,
+          value: 1,
           random: true,
           anim: {
             enable: true,
@@ -95,12 +105,12 @@ function ParticlesBack() {
           },
         },
         size: {
-          value: 2,
+          value: 4,
           random: true,
           anim: {
             enable: false,
-            speed: 2,
-            size_min: 0.5,
+            speed: 4,
+            size_min: 0.3,
             sync: false,
           },
         },
@@ -116,7 +126,7 @@ function ParticlesBack() {
           speed: 1,
           direction: 'none',
           random: true,
-          straight: true,
+          straight: false,
           out_mode: 'out',
           bounce: false,
           attract: {

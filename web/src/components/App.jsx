@@ -2,34 +2,36 @@ import { useState, useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../scss/App.scss';
-import Footer from './Footer.jsx';
-import Ministery from './Ministery.jsx';
-import Header from './Header.jsx';
+import Footer from './Base/Footer.jsx';
+import Ministery from './CompletePages/Ministery.jsx';
+import Header from './Base/Header.jsx';
 import CarouselFadeExample from './Letter/Carousel.jsx';
 import ShortingHat from './Form/ShortingHat.jsx';
 import Form from './Form/Form.jsx';
 import questions from '../services/data.json';
 import ResultForm from './ResgisterForm/ResultForm.jsx';
-import Landing from './Landing/Landing.jsx';
+import Landing from './Base/Landing.jsx';
 import Profile from './Profile/Profile.jsx';
 import local from '../services/localStorage.js';
 import connectBack from '../services/Login-User.jsx';
-import AboutMe from './AboutMe.jsx';
+import AboutMe from './CompletePages/AboutMe.jsx';
 import router from '../services/router';
-import Contact from './Contact.jsx';
+import Contact from './CompletePages/Contact.jsx';
 import Wizards from './Wizards/Wizards.jsx';
 import WizardDetail from './Wizards/WizardDetail.jsx';
 import dataBase from '../services/dataBD.jsx';
 import ParticlesBack from './ParticlesBack.jsx';
-import Register from './Landing/Register.jsx';
+import Register from './Form/Register.jsx';
 import HogwartsHouse from './Houses/HogwartsHouse.jsx';
 import HangedGame from './games/hanged/HangedGame.jsx';
 import { number } from 'prop-types';
 import LandingGames from './games/LandingGames.jsx';
+import AdminData from './CompletePages/AdminData.jsx';
 
 function App() {
   const [userName, setUserName] = useState('');
   const [login, setLogin] = useState({ email: '', hashed_password: '' });
+  const [isLoggedIn, setIsLoggedIn] = useState(local.get('isLogged', false));
   const [randomQuote, setRandomQuote] = useState([]);
   // const [userId, setUserId] = useState('');
   const [loginError, setLoginError] = useState('');
@@ -56,7 +58,7 @@ function App() {
     })
   );
 
-  //Ahorcado
+  //V.Estado Ahorcado
   const [word, setWord] = useState('');
   const [numberOfErrors, setNumberOfErrors] = useState(0);
   const [lastLetter, setLastLetter] = useState('');
@@ -66,17 +68,20 @@ function App() {
   useEffect(() => {
     local.set('user', userName);
     local.set('house', houseSelect);
-  }, [userName, houseSelect]);
+    local.set('isLogged', isLoggedIn);
+  }, [userName, houseSelect, isLoggedIn]);
 
+  //Carga las frases
   useEffect(() => {
     let number = Math.floor(Math.random() * 57);
     dataBase.quote().then((resp) => {
+      console.log(resp[number]);
       setRandomQuote(resp[number]);
     });
-    console.log(randomQuote);
   }, []);
 
   //Juego Ahorcado
+
   useEffect(() => {
     let number = Math.floor(Math.random() * 115);
     dataBase.wordsGame().then((resp) => {
@@ -160,6 +165,7 @@ function App() {
         local.set('token', response.token);
         connectBack.getProfile(response.wizardName).then((wizardData) => {
           setDataUser(wizardData);
+          setIsLoggedIn(true);
           local.set('userData', wizardData);
           router.redirect(`/profile/${response.wizardName}`);
         });
@@ -194,6 +200,15 @@ function App() {
           router.redirect(`/profile/${dataUser.wizardName}`);
         }, 800);
       }
+    });
+  };
+
+  const updateUserData = () => {
+    connectBack.modifyUser(dataUser).then((response) => {
+      setAlertMsg(response.result);
+      setTimeout(() => {
+        router.redirect('/');
+      }, 800);
     });
   };
 
@@ -255,25 +270,26 @@ function App() {
       } else {
         setAlertMsg('No se ha podido cerrar la sesión');
       }
+      setIsLoggedIn(false);
     });
   };
 
   return (
-    <div className="background">
-      <ParticlesBack />
+    <div className={houseSelect ? houseSelect : 'background'}>
+      {/* <ParticlesBack /> */}
+      <Header isLoggedIn={isLoggedIn} logout={logout} />
       <Routes>
         <Route
           path="/"
           element={
             <>
-              <Header />
+              {/* <Header /> */}
               <Landing
                 randomQuote={randomQuote}
                 loginInput={loginInput}
                 loginUser={loginUser}
                 loginError={loginError}
               />
-              <Footer />
             </>
           }
         />
@@ -281,14 +297,13 @@ function App() {
           path="/register"
           element={
             <>
-              <Header />
+              {/* <Header /> */}
               <Register
                 dataUser={dataUser}
                 alertMsg={alertMsg}
                 registerWizard={registerWizard}
                 userRegister={userRegister}
               />
-              <Footer />
             </>
           }
         />
@@ -296,9 +311,8 @@ function App() {
           path="/quest-intro"
           element={
             <>
-              <Header />
+              {/* <Header /> */}
               <ShortingHat questions={questions} />
-              <Footer />
             </>
           }
         />
@@ -309,9 +323,8 @@ function App() {
               <div
                 className={`${!dataUser.house ? 'background' : dataUser.house}`}
               >
-                <Header houseSelect={dataUser.house} />
+                {/* <Header /> */}
                 <Profile data={dataUser} logout={logout} />
-                <Footer houseSelect={dataUser.house} />
               </div>
             </>
           }
@@ -336,7 +349,6 @@ function App() {
                 selectCarousel={selectCarousel}
                 index={indexCarrusel}
               />
-              <Footer />
             </div>
           }
         />
@@ -344,7 +356,7 @@ function App() {
           path="/quest"
           element={
             <div className="background">
-              <Header />
+              {/* <Header /> */}
               <Form
                 questions={questions}
                 getRandomNumber={getRandomNumber}
@@ -356,27 +368,25 @@ function App() {
                 resultForm={resultForm}
                 navigate={navigate}
               />
-              <Footer />
             </div>
           }
         />
         <Route
           path="/house"
           element={
-            <div className={houseSelect ? houseSelect : 'background'}>
+            <>
               <Header houseSelect={houseSelect} />
               <HogwartsHouse houseSelect={houseSelect} />
               <Footer houseSelect={houseSelect} />
-            </div>
+            </>
           }
         />
         <Route
           path="/games"
           element={
             <>
-              <Header />
+              {/* <Header /> */}
               <LandingGames />
-              <Footer />
             </>
           }
         />
@@ -384,7 +394,7 @@ function App() {
           path="/hangedGame"
           element={
             <>
-              <Header />
+              {/* <Header /> */}
               <HangedGame
                 word={word}
                 renderSolutionLetters={renderSolutionLetters}
@@ -395,7 +405,6 @@ function App() {
                 gameMsg={gameMsg}
                 restartGame={restartGame}
               />
-              <Footer />
             </>
           }
         />
@@ -420,12 +429,27 @@ function App() {
           }
         /> */}
         <Route
+          path="/admin"
+          element={
+            <AdminData
+              dataUser={dataUser}
+              alertMsg={alertMsg}
+              registerWizard={registerWizard}
+              userRegister={userRegister}
+              formatDate={formatDate}
+              houseSelect={houseSelect}
+              isLoggedIn={isLoggedIn}
+              updateUserData={updateUserData}
+            />
+          }
+        />
+
+        <Route
           path="/about-me"
           element={
             <div className="background">
-              <Header />
+              {/* <Header /> */}
               <AboutMe />
-              <Footer />
             </div>
           }
         />
@@ -433,9 +457,8 @@ function App() {
           path="/contact"
           element={
             <div className="background">
-              <Header />
+              {/* <Header /> */}
               <Contact />
-              <Footer />
             </div>
           }
         />
@@ -443,9 +466,8 @@ function App() {
           path="/wizards"
           element={
             <div className="background">
-              <Header />
+              {/* <Header /> */}
               <Wizards data={wizardsList} setWizardsList={setWizardsList} />
-              <Footer />
             </div>
           }
         />
@@ -454,13 +476,13 @@ function App() {
           path="/wizards/:idWizard"
           element={
             <div className="background">
-              <Header />
+              {/* <Header /> */}
               <WizardDetail data={wizardsList} />
-              <Footer />
             </div>
           }
         />
       </Routes>
+      <Footer />
     </div>
   );
 }

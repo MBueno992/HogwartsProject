@@ -1,29 +1,29 @@
-import shield from '../images/escudo.png';
-import hogwarts from '../images/hogwarts.png';
-import '../scss/layout/Header.scss';
-import PropTypes from 'prop-types';
-import { Sling as Hamburger } from 'hamburger-react';
-
-//Gryffindor
-import GryffindorShield from '../images/GryffindorShield.png';
-import GryffindorShort from '../images/GryffindorShort.png';
-import GryffindorLong from '../images/GryffindorLong.png';
-//Ravenclaw
-import RavenclawShield from '../images/RavenclawShield.png';
-import RavenclawShort from '../images/RavenclawShort.png';
-import RavenclawLong from '../images/RavenclawLong.png';
-//Hufflepuff
-import HufflepuffShield from '../images/HufflepuffShield.png';
-import HufflepuffShort from '../images/HufflepuffShort.png';
-import HufflepuffLong from '../images/HufflepuffLong.png';
-//Slytherin
-import SlytherinShield from '../images/SlytherinShield.png';
-import SlytherinShort from '../images/SlytherinShort.png';
-import SlytherinLong from '../images/SlytherinLong.png';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Sling as Hamburger } from 'hamburger-react';
+import shield from '../../images/escudo.png';
+import hogwarts from '../../images/hogwarts.png';
+import '../../scss/layout/Header.scss';
+import PropTypes from 'prop-types';
 
-function Header({ houseSelect }) {
+//Gryffindor
+import GryffindorShield from '../../images/GryffindorShield.png';
+import GryffindorShort from '../../images/GryffindorShort.png';
+import GryffindorLong from '../../images/GryffindorLong.png';
+//Ravenclaw
+import RavenclawShield from '../../images/RavenclawShield.png';
+import RavenclawShort from '../../images/RavenclawShort.png';
+import RavenclawLong from '../../images/RavenclawLong.png';
+//Hufflepuff
+import HufflepuffShield from '../../images/HufflepuffShield.png';
+import HufflepuffShort from '../../images/HufflepuffShort.png';
+import HufflepuffLong from '../../images/HufflepuffLong.png';
+//Slytherin
+import SlytherinShield from '../../images/SlytherinShield.png';
+import SlytherinShort from '../../images/SlytherinShort.png';
+import SlytherinLong from '../../images/SlytherinLong.png';
+
+function Header({ houseSelect, isLoggedIn, logout }) {
   const imageHouse = {
     Gryffindor: {
       Shield: GryffindorShield,
@@ -48,6 +48,10 @@ function Header({ houseSelect }) {
   };
 
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleClick = () => {
+    logout();
+  };
 
   return (
     <header className="header">
@@ -76,12 +80,24 @@ function Header({ houseSelect }) {
             </Link>
           </li>
         </ul>
-        <ul className="header__nav--login">
-          <li className="loginBtn">Iniciar sesión</li>
-          <li className="signupBtn">
-            <Link to="/register">Regístrate</Link>
-          </li>
-        </ul>
+
+        {isLoggedIn ? (
+          <ul className="header__nav--login">
+            <li className="signupBtn">
+              <Link to="/admin">Modificar datos</Link>
+            </li>
+            <li className="logoutBtn">
+              <button onClick={handleClick}>Cerrar sesión</button>
+            </li>
+          </ul>
+        ) : (
+          <ul className="header__nav--login">
+            <li className="loginBtn">Iniciar sesión</li>
+            <li className="signupBtn">
+              <Link to="/register">Regístrate</Link>
+            </li>{' '}
+          </ul>
+        )}
       </nav>
       <div className="header__houses">
         <div className="header__houses--flag">

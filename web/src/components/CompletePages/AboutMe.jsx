@@ -1,6 +1,6 @@
-import '../scss/layout/AboutMe.scss';
-import FrontImg from '../images/AboutMe.jpg';
-import BackImg from '../images/AboutMeReal.jpg';
+import '../../scss/layout/AboutMe.scss';
+import FrontImg from '../../images/AboutMe.jpg';
+import BackImg from '../../images/AboutMeReal.jpg';
 import { Link } from 'react-router-dom';
 
 function AboutMe() {

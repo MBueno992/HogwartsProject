@@ -13,7 +13,7 @@ import Card from '../Card';
 import LetterPDF from './LetterPDF';
 import PropTypes from 'prop-types';
 
-function Profile({ data, logout }) {
+function Profile({ logout }) {
   const { wizardName } = useParams();
 
   const handleClick = () => {
@@ -26,9 +26,7 @@ function Profile({ data, logout }) {
         <nav className="mainProfile">
           <ul className="mainProfile__list">
             <li className="mainProfile__list--option">
-              <div>
-                <DownloadPDF userName={data.name} />
-              </div>
+              <div>{/* <DownloadPDF /> */}</div>
             </li>
             <li className="mainProfile__list--option">
               <img src={letterGif} alt="" />
@@ -64,7 +62,7 @@ function Profile({ data, logout }) {
           </ul>
         </nav>
         <article className="profilePage">
-          <Card dataUser={data} />
+          {/* <Card /> */}
           {/* <article className="register__data profilePage__data ">
             <img
               src={

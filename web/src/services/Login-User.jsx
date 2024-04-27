@@ -62,12 +62,25 @@ const logoutUser = () => {
   }).then((response) => response.json());
 };
 
+const modifyUser = () => {
+  return fetch(`http://localhost:4000/admin/wizard`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      return data;
+    });
+};
+
 const connectBack = {
   sendLogin: sendLogin,
   sendRegister: sendRegister,
   sendProfile: sendProfile,
   getProfile: getProfile,
   logoutUser: logoutUser,
+  modifyUser: modifyUser,
 };
 
 export default connectBack;

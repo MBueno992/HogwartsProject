@@ -1,0 +1,48 @@
+@import '../core/variables';
+@import '../core/Mixins.scss';
+
+.adminForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: $playfair;
+  &__data {
+    border: 2px solid $orangeWeb;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: rgba(white, 0.4);
+    height: auto;
+    margin: 15px auto;
+    &--img {
+      width: 230px;
+      margin: 0 auto 20px;
+      border-radius: 10px;
+
+      @media (min-width: 768px) {
+        width: 280px;
+      }
+    }
+    span {
+      color: white;
+    }
+  }
+  &__getAvatar {
+    margin: 10px auto;
+    width: 150px;
+    padding: 5px 15px;
+    border: unset;
+    border-radius: 15px;
+    color: $blueNight;
+    text-align: center;
+    background: $orangeWeb;
+    font-size: 1.4rem;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    transition: all 250ms;
+    &:hover {
+      border: 1px solid white;
+      color: white;
+      background-color: rgba(white, 0.2);
+    }
+  }
+}

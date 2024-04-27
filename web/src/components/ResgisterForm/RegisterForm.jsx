@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import GetAvatar from './GetAvatar';
+import GetAvatar from '../Reusable/GetAvatar';
 import InputText from './InputText';
 import Card from '../Card';
 import PropTypes from 'prop-types';

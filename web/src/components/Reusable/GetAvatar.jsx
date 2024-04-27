@@ -58,7 +58,7 @@ function GetAvatar({ updateAvatar, id, image }) {
   };
 
   return (
-    <label className="register__form--img">
+    <label className="adminForm__getAvatar">
       Sube una imagen
       <input
         type="file"

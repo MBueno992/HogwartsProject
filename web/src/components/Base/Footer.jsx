@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import hogwartsFooter from '../images/escudo.png';
-import '../scss/layout/Footer.scss';
+import hogwartsFooter from '../../images/escudo.png';
+import '../../scss/layout/Footer.scss';
 import PropTypes from 'prop-types';
 
 function Footer({ houseSelect }) {

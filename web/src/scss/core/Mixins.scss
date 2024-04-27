@@ -134,3 +134,31 @@
     transition: 100ms;
   }
 }
+
+@mixin house($gradient, $backHedFot, $houseBack, $houseBorder, $text) {
+  background: $gradient;
+  .header__nav {
+    background-color: $backHedFot;
+  }
+  .house {
+    background-color: $houseBack;
+    border: 3px solid $houseBorder;
+  }
+  .footer {
+    background-color: $backHedFot;
+    color: $text;
+    i {
+      color: $text;
+    }
+    a {
+      color: $text;
+    }
+  }
+}
+
+@mixin background() {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

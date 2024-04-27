@@ -24,7 +24,7 @@ function HangedGame({
       </Link>
 
       <section className="hangedGame__panel">
-        <div>
+        <div className="modalMsg">
           <h1 className="hangedGame__title">Juego del ahorcado</h1>
           <SolutionLetters renderSolutionLetters={renderSolutionLetters} />
           <ErrorLetters renderErrorLetters={renderErrorLetters} />
@@ -47,8 +47,8 @@ function HangedGame({
               --{'>'} {gameMsg} {'<'}--
             </p>
           ) : null}
+          <Dummy numberOfErrors={numberOfErrors} />
         </div>
-        <Dummy numberOfErrors={numberOfErrors} />
       </section>
       <aside className="gameOptions">
         <button className="gameOptions__btn">Instrucciones</button>
