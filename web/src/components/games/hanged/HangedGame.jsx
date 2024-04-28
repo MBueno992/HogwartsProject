@@ -5,6 +5,8 @@ import ErrorLetters from './ErrorLetters';
 import Result from './Result';
 import LandingGames from '../LandingGames';
 import { Link } from 'react-router-dom';
+import ReturnBtn from '../../Reusable/ReturnBtn';
+import Instructions from '../Instructions';
 
 function HangedGame({
   word,
@@ -18,10 +20,7 @@ function HangedGame({
 }) {
   return (
     <div className="hangedGame">
-      <Link to="/games" className="return">
-        <i className="fa-solid fa-wand-sparkles"></i>
-        Volver a juegos
-      </Link>
+      <ReturnBtn url="/games" text="Volver a juegos" />
 
       <section className="hangedGame__panel">
         <div className="modalMsg">
@@ -50,6 +49,16 @@ function HangedGame({
           <Dummy numberOfErrors={numberOfErrors} />
         </div>
       </section>
+      <Instructions
+        juego="El ahorcado"
+        text1=" El objetivo del juego es adivinar la palabra antes de que el muñeco se
+        complete el dibujo del muñeco ahorcado. Para ello, deberás adivinar cada
+        letra hasta completar la palabra."
+        text2="  En esta versión del juego, cada palabra está relacionada con el mundo de
+        Harry Potter, desde nombres de personajes, utensilios mágicos, lugares,
+        hechizos... ¿Serás capaz de adivinar la palabra antes de que el muñeco
+        termine ahorcado?"
+      />
       <aside className="gameOptions">
         <button className="gameOptions__btn">Instrucciones</button>
         <button className="gameOptions__btn" onClick={restartGame}>

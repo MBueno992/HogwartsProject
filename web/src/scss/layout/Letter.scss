@@ -23,15 +23,14 @@
   align-items: flex-start;
   font-size: 1.8rem;
   width: 85%;
-  margin: 0 auto;
-  box-shadow: -26px -26px 52px #0f0f0f, 26px 26px 52px #131212;
+  margin: 10px auto;
+  box-shadow: -12px -12px 32px #0f0f0f, 12px 12px 32px #131212;
   animation: fadeIn ease 5s;
   padding: 30px;
-  height: auto;
-  // overflow-x: auto;
+  max-height: 700px;
+  overflow-x: auto;
   @media (min-width: 768px) {
     margin: 40px;
-    // width: 75%;
   }
   &__shield {
     width: 50%;

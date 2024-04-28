@@ -1,7 +1,7 @@
 import Login from '../Form/Login';
 import '../../scss/layout/Landing.scss';
 import PropTypes from 'prop-types';
-import SwiperComponent from '../Landing/SwiperComponent';
+import SwiperComponent from '../Swipers/SwiperComponent';
 import Card from '../Card';
 
 function Landing({

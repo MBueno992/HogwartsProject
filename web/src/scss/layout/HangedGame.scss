@@ -346,25 +346,6 @@ $dummyTransitionTime: 1s;
   height: 100%;
   background-color: black;
 }
-.return {
-  display: flex;
-  gap: 5px;
-  font-size: 1.2rem;
-  align-items: baseline;
-  text-decoration: none;
-  color: black;
-  background-color: #ffae00;
-  padding: 3px 10px;
-  border-radius: 50px;
-  @media (min-width: 768px) {
-    font-size: 1.4rem;
-    padding: 5px 15px;
-  }
-  &:hover {
-    transition: color 0.5s ease 0s;
-    color: white;
-  }
-}
 
 .gameOptions {
   display: flex;

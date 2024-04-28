@@ -1,16 +1,16 @@
 import gryffindorGif from '../../images/GryffindorGif.gif';
-import Article from '../Reusable/Article';
+import HouseWin from '../Reusable/HouseWin';
 
 function Gryffindor() {
   return (
-    <Article
+    <HouseWin
       gif={gryffindorGif}
-      welcome="Bienvenido/a a Gryffindor"
-      text="   Un Gryffindor destaca por ser valiente, audaz, decidido/a y tener un
+      welcome="¡Eres un/a Gryffindor!"
+      text=" Los Gryffindor destacan por ser valientes, audaces, decididos/as y tener un
     fuerte sentido del honor y la justicia. Son individuos que actúan con
     coraje frente a los desafíos y están dispuestos a defender lo que
     consideran correcto, sin importar las dificultades que puedan
-    enfrentar. Los Gryffindor valoran la valentía y la lealtad, y están
+    enfrentar. Valoran la valentía y la lealtad, y están
     dispuestos a arriesgarlo todo por el bien común y por proteger a los
     más vulnerables. También son conocidos por su espíritu aventurero y su
     disposición para enfrentarse a los peligros con determinación y

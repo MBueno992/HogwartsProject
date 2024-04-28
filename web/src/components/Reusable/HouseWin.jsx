@@ -1,4 +1,6 @@
-function Article({ gif, welcome, text }) {
+// import confetti from 'https://cdn.skypack.dev/canvas-confetti@1.3.2';
+function HouseWin({ gif, welcome, text }) {
+  // confetti();
   return (
     <article className="house">
       <img src={gif} alt="" className="house__gif" />
@@ -10,4 +12,4 @@ function Article({ gif, welcome, text }) {
   );
 }
 
-export default Article;
+export default HouseWin;

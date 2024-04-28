@@ -1,0 +1,23 @@
+.return {
+  display: flex;
+  gap: 5px;
+  font-size: 1.2rem;
+  align-items: baseline;
+  text-decoration: none;
+  color: black;
+  background-color: #ffae00;
+  padding: 3px 10px;
+  border-radius: 50px;
+  max-width: 120px;
+  margin: 10px auto;
+  @media (min-width: 768px) {
+    font-size: 1.4rem;
+    padding: 5px 15px;
+    max-width: 140px;
+    margin-bottom: 50px;
+  }
+  &:hover {
+    transition: color 0.5s ease 0s;
+    color: white;
+  }
+}

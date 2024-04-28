@@ -14,6 +14,13 @@
   -webkit-box-shadow: 20px 19px 27px 13px rgba(62, 66, 66, 0.35);
   -moz-box-shadow: 20px 19px 27px 13px rgba(62, 66, 66, 0.35);
   box-shadow: 20px 19px 27px 13px rgba(62, 66, 66, 0.35);
+  padding: 20px 0;
+  @media (min-width: 768px) {
+    max-width: 600px;
+    width: 75%;
+    padding: 50px 20px;
+    margin: 50px auto;
+  }
 }
 .ministeryMsg {
   display: flex;
@@ -44,7 +51,7 @@
       border-right: 3px solid black;
       animation: typing 2s steps(20), blink 0.5s step-end infinite alternate;
       @media (min-width: 768px) {
-        font-size: 3rem;
+        font-size: 2.8rem;
       }
     }
     @include typewriter();
@@ -52,7 +59,7 @@
       font-size: 1.8rem;
       animation: fadeIn ease 5s;
       @media (min-width: 768px) {
-        font-size: 2.3rem;
+        font-size: 2rem;
       }
     }
     @keyframes fadeIn {
@@ -69,7 +76,7 @@
       margin: 20px;
       animation: fadeIn ease 5s;
       @media (min-width: 768px) {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
       }
     }
     @keyframes fadeIn {

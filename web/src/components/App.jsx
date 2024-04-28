@@ -1,32 +1,34 @@
+//Hooks
 import { useState, useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
+
+//Estilos
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../scss/App.scss';
-import Footer from './Base/Footer.jsx';
-import Ministery from './CompletePages/Ministery.jsx';
+//Componentes
 import Header from './Base/Header.jsx';
+import Footer from './Base/Footer.jsx';
+import Landing from './Base/Landing.jsx';
+import Register from './Form/Register.jsx';
+import Ministery from './CompletePages/Ministery.jsx';
 import ShortingHat from './Form/ShortingHat.jsx';
 import Form from './Form/Form.jsx';
-import questions from '../services/data.json';
-import ResultForm from './ResgisterForm/ResultForm.jsx';
-import Landing from './Base/Landing.jsx';
 import Profile from './Profile/Profile.jsx';
-import local from '../services/localStorage.js';
-import connectBack from '../services/Login-User.jsx';
-import AboutMe from './CompletePages/AboutMe.jsx';
-import router from '../services/router';
-import Contact from './CompletePages/Contact.jsx';
 import Wizards from './Wizards/Wizards.jsx';
 import WizardDetail from './Wizards/WizardDetail.jsx';
-import dataBase from '../services/dataBD.jsx';
-import ParticlesBack from './ParticlesBack.jsx';
-import Register from './Form/Register.jsx';
 import HogwartsHouse from './Houses/HogwartsHouse.jsx';
-import HangedGame from './games/hanged/HangedGame.jsx';
-import { number } from 'prop-types';
 import LandingGames from './games/LandingGames.jsx';
+import HangedGame from './games/hanged/HangedGame.jsx';
 import AdminData from './CompletePages/AdminData.jsx';
-import SwiperLetter from './Reusable/SwiperLetter.jsx';
+import SwiperLetter from './Swipers/SwiperLetter.jsx';
+import AboutMe from './CompletePages/AboutMe.jsx';
+import Contact from './CompletePages/Contact.jsx';
+//Services
+import questions from '../services/data.json';
+import local from '../services/localStorage.js';
+import connectBack from '../services/Login-User.jsx';
+import dataBase from '../services/dataBD.jsx';
+import router from '../services/router';
 
 function App() {
   const [userName, setUserName] = useState('');
@@ -36,7 +38,6 @@ function App() {
   // const [userId, setUserId] = useState('');
   const [loginError, setLoginError] = useState('');
   const [alertMsg, setAlertMsg] = useState('');
-  const [indexCarrusel, setIndexCarrusel] = useState(0);
   const [randomOrder, setRandomOrder] = useState([]);
   const [answerArray, setAnswerArray] = useState([]);
   const [answerSelected, setAnswerSelected] = useState([]);
@@ -275,15 +276,14 @@ function App() {
   };
 
   return (
-    <div className={houseSelect ? houseSelect : 'background'}>
+    <div className="background">
       {/* <ParticlesBack /> */}
-      <Header isLoggedIn={isLoggedIn} logout={logout} />
       <Routes>
         <Route
           path="/"
           element={
             <>
-              {/* <Header /> */}
+              <Header isLoggedIn={isLoggedIn} logout={logout} />
               <Landing
                 data={dataUser}
                 randomQuote={randomQuote}
@@ -293,6 +293,7 @@ function App() {
                 logout={logout}
                 isLoggedIn={isLoggedIn}
               />
+              <Footer />
             </>
           }
         />
@@ -300,13 +301,14 @@ function App() {
           path="/register"
           element={
             <>
-              {/* <Header /> */}
+              <Header isLoggedIn={isLoggedIn} logout={logout} />
               <Register
                 dataUser={dataUser}
                 alertMsg={alertMsg}
                 registerWizard={registerWizard}
                 userRegister={userRegister}
               />
+              <Footer />
             </>
           }
         />
@@ -314,8 +316,9 @@ function App() {
           path="/quest-intro"
           element={
             <>
-              {/* <Header /> */}
+              <Header isLoggedIn={isLoggedIn} logout={logout} />
               <ShortingHat questions={questions} />
+              <Footer />
             </>
           }
         />
@@ -323,7 +326,7 @@ function App() {
           path="/profile/:wizardName"
           element={
             <>
-              {/* <Header /> */}
+              <Header isLoggedIn={isLoggedIn} logout={logout} />
               <Landing
                 data={dataUser}
                 randomQuote={randomQuote}
@@ -332,39 +335,41 @@ function App() {
                 isLoggedIn={isLoggedIn}
               />
               <Profile data={dataUser} logout={logout} />
+              <Footer />
             </>
           }
         />
         <Route
           path="/ministery"
           element={
-            <Ministery
-              click={addUserName}
-              handleInput={userNameInput}
-              text={alertMsg}
-              userName={userName}
-              isLoggedIn={isLoggedIn}
-            />
+            <>
+              <Header isLoggedIn={isLoggedIn} logout={logout} />
+              <Ministery
+                click={addUserName}
+                handleInput={userNameInput}
+                text={alertMsg}
+                userName={userName}
+                isLoggedIn={isLoggedIn}
+              />
+              <Footer />
+            </>
           }
         />
         <Route
           path="/hogwarts-letter"
           element={
             <>
+              <Header isLoggedIn={isLoggedIn} logout={logout} />
               <SwiperLetter userName={userName} name={dataUser.name} />
-              {/* <CarouselFadeExample
-                userName={userName}
-                selectCarousel={selectCarousel}
-                index={indexCarrusel}
-              /> */}
+              <Footer />
             </>
           }
         />
         <Route
           path="/quest"
           element={
-            <div className="background">
-              {/* <Header /> */}
+            <>
+              <Header isLoggedIn={isLoggedIn} logout={logout} />
               <Form
                 questions={questions}
                 getRandomNumber={getRandomNumber}
@@ -376,7 +381,8 @@ function App() {
                 resultForm={resultForm}
                 navigate={navigate}
               />
-            </div>
+              <Footer />
+            </>
           }
         />
         <Route
@@ -393,8 +399,9 @@ function App() {
           path="/games"
           element={
             <>
-              {/* <Header /> */}
+              <Header isLoggedIn={isLoggedIn} logout={logout} />
               <LandingGames />
+              <Footer />
             </>
           }
         />
@@ -402,7 +409,7 @@ function App() {
           path="/hangedGame"
           element={
             <>
-              {/* <Header /> */}
+              <Header isLoggedIn={isLoggedIn} logout={logout} />
               <HangedGame
                 word={word}
                 renderSolutionLetters={renderSolutionLetters}
@@ -413,84 +420,72 @@ function App() {
                 gameMsg={gameMsg}
                 restartGame={restartGame}
               />
+              <Footer />
             </>
           }
         />
-        {/* <Route
-          <Footer houseSelect={houseSelect} />
-            </div> />
-          path="/register"
-          element={
-            <div className={houseSelect ? houseSelect : 'background'}>
-              <Header houseSelect={houseSelect} />
-              <ResultForm
-                userName={userName}
-                houseSelect={houseSelect}
-                userRegister={userRegister}
-                dataUser={dataUser}
-                alertMsg={alertMsg}
-                registerWizard={registerWizard}
-                formatDate={formatDate}
-              />
-              <Footer houseSelect={houseSelect} />
-            </div>
-          }
-        /> */}
         <Route
           path="/admin"
           element={
-            <AdminData
-              dataUser={dataUser}
-              alertMsg={alertMsg}
-              registerWizard={registerWizard}
-              userRegister={userRegister}
-              formatDate={formatDate}
-              houseSelect={houseSelect}
-              isLoggedIn={isLoggedIn}
-              updateUserData={updateUserData}
-            />
+            <>
+              <Header isLoggedIn={isLoggedIn} logout={logout} />
+              <AdminData
+                dataUser={dataUser}
+                alertMsg={alertMsg}
+                registerWizard={registerWizard}
+                userRegister={userRegister}
+                formatDate={formatDate}
+                houseSelect={houseSelect}
+                isLoggedIn={isLoggedIn}
+                updateUserData={updateUserData}
+              />
+              <Footer />
+            </>
           }
         />
 
         <Route
           path="/about-me"
           element={
-            <div className="background">
-              {/* <Header /> */}
+            <>
+              <Header isLoggedIn={isLoggedIn} logout={logout} />
               <AboutMe />
-            </div>
+              <Footer />
+            </>
           }
         />
         <Route
           path="/contact"
           element={
-            <div className="background">
-              {/* <Header /> */}
+            <>
+              <Header isLoggedIn={isLoggedIn} logout={logout} />
               <Contact />
-            </div>
+              <Footer />
+            </>
           }
         />
         <Route
           path="/wizards"
           element={
-            <div className="background">
-              {/* <Header /> */}
+            <>
+              <Header isLoggedIn={isLoggedIn} logout={logout} />
               <Wizards data={wizardsList} setWizardsList={setWizardsList} />
-            </div>
+              <Footer />
+            </>
           }
         />
 
         <Route
           path="/wizards/:idWizard"
           element={
-            <div className="background">
-              {/* <Header /> */}
+            <>
+              <Header isLoggedIn={isLoggedIn} logout={logout} />
               <WizardDetail data={wizardsList} />
-            </div>
+              <Footer />
+            </>
           }
         />
       </Routes>
-      <Footer />
     </div>
   );
 }
