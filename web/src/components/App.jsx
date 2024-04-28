@@ -5,7 +5,6 @@ import '../scss/App.scss';
 import Footer from './Base/Footer.jsx';
 import Ministery from './CompletePages/Ministery.jsx';
 import Header from './Base/Header.jsx';
-import CarouselFadeExample from './Letter/Carousel.jsx';
 import ShortingHat from './Form/ShortingHat.jsx';
 import Form from './Form/Form.jsx';
 import questions from '../services/data.json';
@@ -27,6 +26,7 @@ import HangedGame from './games/hanged/HangedGame.jsx';
 import { number } from 'prop-types';
 import LandingGames from './games/LandingGames.jsx';
 import AdminData from './CompletePages/AdminData.jsx';
+import SwiperLetter from './Reusable/SwiperLetter.jsx';
 
 function App() {
   const [userName, setUserName] = useState('');
@@ -285,10 +285,13 @@ function App() {
             <>
               {/* <Header /> */}
               <Landing
+                data={dataUser}
                 randomQuote={randomQuote}
                 loginInput={loginInput}
                 loginUser={loginUser}
                 loginError={loginError}
+                logout={logout}
+                isLoggedIn={isLoggedIn}
               />
             </>
           }
@@ -320,12 +323,15 @@ function App() {
           path="/profile/:wizardName"
           element={
             <>
-              <div
-                className={`${!dataUser.house ? 'background' : dataUser.house}`}
-              >
-                {/* <Header /> */}
-                <Profile data={dataUser} logout={logout} />
-              </div>
+              {/* <Header /> */}
+              <Landing
+                data={dataUser}
+                randomQuote={randomQuote}
+                loginInput={loginInput}
+                logout={logout}
+                isLoggedIn={isLoggedIn}
+              />
+              <Profile data={dataUser} logout={logout} />
             </>
           }
         />
@@ -337,19 +343,21 @@ function App() {
               handleInput={userNameInput}
               text={alertMsg}
               userName={userName}
+              isLoggedIn={isLoggedIn}
             />
           }
         />
         <Route
           path="/hogwarts-letter"
           element={
-            <div className="background">
-              <CarouselFadeExample
+            <>
+              <SwiperLetter userName={userName} name={dataUser.name} />
+              {/* <CarouselFadeExample
                 userName={userName}
                 selectCarousel={selectCarousel}
                 index={indexCarrusel}
-              />
-            </div>
+              /> */}
+            </>
           }
         />
         <Route

@@ -2,8 +2,17 @@ import Login from '../Form/Login';
 import '../../scss/layout/Landing.scss';
 import PropTypes from 'prop-types';
 import SwiperComponent from '../Landing/SwiperComponent';
+import Card from '../Card';
 
-function Landing({ loginUser, loginInput, loginError, randomQuote }) {
+function Landing({
+  loginUser,
+  loginInput,
+  loginError,
+  randomQuote,
+  logout,
+  data,
+  isLoggedIn,
+}) {
   return (
     <div className="landing">
       <div className="landing__random">
@@ -13,11 +22,15 @@ function Landing({ loginUser, loginInput, loginError, randomQuote }) {
           <p>{randomQuote.autor}</p>
         </aside>
       </div>
-      <Login
-        loginInput={loginInput}
-        loginUser={loginUser}
-        loginError={loginError}
-      />
+      {isLoggedIn ? (
+        <Card dataUser={data} />
+      ) : (
+        <Login
+          loginInput={loginInput}
+          loginUser={loginUser}
+          loginError={loginError}
+        />
+      )}
     </div>
   );
 }

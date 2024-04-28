@@ -1,7 +1,8 @@
 import ministery from '../../images/ministery.webp';
 import '../../scss/layout/Ministery.scss';
+import router from '../../services/router';
 
-function Ministery({ click, handleInput, text, userName }) {
+function Ministery({ click, handleInput, text, userName, isLoggedIn }) {
   const handleClick = (ev) => {
     ev.preventDefault();
     click();
@@ -26,24 +27,43 @@ function Ministery({ click, handleInput, text, userName }) {
             Durante la Segunda Guerra Mágica, muchos expedientes de futuros
             magos fueron destruidos. Desde el Ministerio de Magia llevamos años
             intentando localizar a todos aquellos magos que no pudieron acceder
-            a sus estudios en Hogwarts. Si crees que eres uno de ellos, por
-            favor, introduce tu nombre y comprueba si apareces en el listado de
-            alumnos de Howgarts.
+            a sus estudios en Hogwarts.{' '}
           </p>
-          <form className="loginForm">
-            <input
-              className="loginForm__input"
-              type="text"
-              placeholder="Nombre y apellido"
-              onChange={(ev) => {
-                handleInput(ev.target.value);
-              }}
-              value={userName}
-            />
-            <button className="loginForm__btn" onClick={handleClick}>
-              Continuar
-            </button>
-          </form>
+          {isLoggedIn ? (
+            <>
+              <p className="ministeryMsg__text--intro">
+                Vamos a comprobar si formas parte del listado de alumnos de
+                Hogwarts.
+              </p>
+            </>
+          ) : (
+            <>
+              <p className="ministeryMsg__text--intro">
+                Si crees que eres uno de ellos, por favor, introduce tu nombre y
+                comprueba si apareces en el listado de alumnos de Howgarts.
+              </p>
+              <form className="loginForm">
+                <input
+                  className="loginForm__input"
+                  type="text"
+                  placeholder="Nombre y apellido"
+                  onChange={(ev) => {
+                    handleInput(ev.target.value);
+                  }}
+                  value={userName}
+                />
+              </form>
+            </>
+          )}
+          <button
+            className="loginForm__btn"
+            onClick={
+              isLoggedIn ? router.redirect('/hogwarts-letter') : handleClick
+            }
+          >
+            Continuar
+          </button>
+
           <p>{text}</p>
         </div>
       </article>

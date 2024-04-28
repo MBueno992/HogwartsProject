@@ -4,19 +4,23 @@
   background-image: url(../../images/parchment.webp);
   background-size: cover;
   background-position: center;
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: auto;
   z-index: 1;
+  border-radius: 5px;
+  width: 90%;
+  margin: 15px auto;
+  -webkit-box-shadow: 20px 19px 27px 13px rgba(62, 66, 66, 0.35);
+  -moz-box-shadow: 20px 19px 27px 13px rgba(62, 66, 66, 0.35);
+  box-shadow: 20px 19px 27px 13px rgba(62, 66, 66, 0.35);
 }
 .ministeryMsg {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 80%;
+  // width: 80%;
   &__img {
     width: 150px;
     margin: 20px;
