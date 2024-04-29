@@ -1,6 +1,13 @@
 import { useState } from 'react';
 
-function Instructions({ juego, text1, text2, instruc, handleInstructions }) {
+function Instructions({
+  juego,
+  text1,
+  text2,
+  text3,
+  instruc,
+  handleInstructions,
+}) {
   return (
     <div className={instruc ? 'gameInstructions ' : 'hiddenGame'}>
       <div className="gameInstructions__text ">
@@ -11,6 +18,7 @@ function Instructions({ juego, text1, text2, instruc, handleInstructions }) {
         <h3>{juego}</h3>
         <p>{text1}</p>
         <p>{text2}</p>
+        {text3 ? text3 : null}
       </div>
     </div>
   );

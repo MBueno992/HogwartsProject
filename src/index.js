@@ -149,9 +149,10 @@ server.post('/register', async (req, resp) => {
 });
 
 // //Modificar datos
-server.put('/admin/wizard', async (req, res) => {
+server.patch('/admin/wizard', async (req, res) => {
   const { userId, gender, name, wizardName, birthdate, province, image } =
     req.body;
+  console.log(req.body);
   const connect = await getConnection();
 
   const updateData =

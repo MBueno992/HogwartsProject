@@ -5,7 +5,7 @@ function Hufflepuff() {
   return (
     <HouseWin
       gif={hufflepuffGif}
-      welcome="Bienvenido/a a Hufflepuff"
+      welcome="¡Eres un/a auténtico/a Hufflepuff!"
       text="  Los miembros de Hufflepuff valoran la igualdad, la amistad y las
     relaciones duraderas. Son personas leales que están dispuestas a
     ayudar a los demás sin esperar nada a cambio. Tienen un fuerte sentido

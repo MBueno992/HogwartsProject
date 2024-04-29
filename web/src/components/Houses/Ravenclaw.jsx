@@ -5,7 +5,7 @@ function Ravenclaw() {
   return (
     <HouseWin
       gif={RavenclawGif}
-      welcome="Bienvenido/a a Ravenclaw"
+      welcome="¡Eres un/a Ravenclaw!"
       text=" Los Ravenclaw son individuos curiosos y ávidos de conocimiento,
     siempre en busca de nuevos desafíos intelectuales. Valoran la
     sabiduría y la originalidad, destacando por su capacidad para resolver

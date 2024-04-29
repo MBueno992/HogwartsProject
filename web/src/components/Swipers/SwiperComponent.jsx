@@ -5,12 +5,13 @@ import 'swiper/css/effect-coverflow';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import '../../scss/layout/SwiperStyle.scss';
+import Articles from '../Articles';
 import arrowLeft from '../../images/arrow-left.svg';
 import arrowRigth from '../../images/arrow-right.svg';
 import sombrero from '../../images/sombrero.jpeg';
 import games from '../../images/games.jpeg';
 import letter from '../../images/letter.jpeg';
-import Articles from '../Articles';
+import characters from '../../images/characters.jpeg';
 
 function SwiperComponent() {
   return (
@@ -25,7 +26,7 @@ function SwiperComponent() {
       slidesPerView="2"
       centeredSlides
       effect={'coverflow'}
-      coverFlowEffect={{
+      coverfloweffect={{
         rotate: 50,
         stretch: 0,
         depth: 100,

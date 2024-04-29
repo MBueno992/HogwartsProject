@@ -1,0 +1,132 @@
+@import '../core/variables';
+
+.rockPaper {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid white;
+  border-radius: 15px;
+  background-color: rgba(white, 0.7);
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  margin: 50px auto;
+  font-family: $playfair;
+  box-shadow: 3px 3px 2px black;
+  @media (min-width: 768px) {
+    max-width: 750px;
+  }
+  &__title {
+    padding: 2rem;
+    font-size: 2.4rem;
+    text-align: center;
+  }
+  &__options {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    align-items: center;
+    padding: 20px;
+    img {
+      width: 80px;
+      -webkit-animation: pulsate-fwd 1s ease-in-out infinite both;
+      animation: pulsate-fwd 1s ease-in-out infinite both;
+      filter: drop-shadow(2px 2px 3px lightgrey);
+      &:hover {
+        width: 90px;
+      }
+      @media (min-width: 768px) {
+        width: 120px;
+      }
+    }
+  }
+  &__games {
+    display: flex;
+    align-items: stretch;
+    gap: 20px;
+    margin: 20px;
+    &--player {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid black;
+      padding: 15px;
+      border-radius: 20px;
+      text-align: center;
+      width: 100px;
+      @media (min-width: 768px) {
+        width: 150px;
+      }
+      img {
+        width: 60px;
+        margin-bottom: 5px;
+        @media (min-width: 768px) {
+          width: 90px;
+        }
+      }
+    }
+  }
+}
+
+@-webkit-keyframes pulsate-fwd {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes pulsate-fwd {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+.ray {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.scoreboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6rem;
+  width: 75%;
+  @media (min-width: 768px) {
+    margin: 20px;
+  }
+  &__msg {
+    text-align: center;
+    background-color: rgba(white, 0.7);
+    padding: 5px 10px;
+    border-radius: 10px 0;
+    box-shadow: 3px 3px 2px black;
+    @media (min-width: 768px) {
+      margin-bottom: 15px;
+    }
+  }
+  &__score {
+    color: white;
+    filter: drop-shadow(2px 2px 2px black);
+    @media (min-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+}

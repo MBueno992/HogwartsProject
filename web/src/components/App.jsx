@@ -29,6 +29,7 @@ import local from '../services/localStorage.js';
 import connectBack from '../services/Login-User.jsx';
 import dataBase from '../services/dataBD.jsx';
 import router from '../services/router';
+import RockPaperScissors from './games/rockPaperScissors/RockPaperScissors.jsx';
 
 function App() {
   const [userName, setUserName] = useState('');
@@ -65,7 +66,8 @@ function App() {
   const [lastLetter, setLastLetter] = useState('');
   const [gameMsg, setGameMsg] = useState('');
   const [userLetters, setUserLetters] = useState([]);
-  const [winner, setWinner] = useState(true);
+  const [winner, setWinner] = useState(false);
+  const [endGame, setEndGame] = useState(false);
 
   useEffect(() => {
     local.set('user', userName);
@@ -77,96 +79,9 @@ function App() {
   useEffect(() => {
     let number = Math.floor(Math.random() * 57);
     dataBase.quote().then((resp) => {
-      console.log(resp[number]);
       setRandomQuote(resp[number]);
     });
   }, []);
-
-  //Juego Ahorcado
-
-  useEffect(() => {
-    let number = Math.floor(Math.random() * 115);
-    dataBase.wordsGame().then((resp) => {
-      setWord(resp[number].palabra);
-    });
-  }, []);
-
-  // const wonGame=()=>{
-  //   setWinner(true)
-
-  // }
-
-  const inputLetter = (ev) => {
-    const input = ev.target.value.trim().split('');
-    const letter = input[input.length - 1];
-    setLastLetter('');
-    if (letter.match(/[a-zA-ZñÑ]/)) {
-      setLastLetter(letter);
-      setGameMsg('');
-      if (!userLetters.includes(letter)) {
-        setUserLetters([...userLetters, letter]);
-      }
-      if (!word.includes(letter)) {
-        setNumberOfErrors(numberOfErrors + 1);
-        if (numberOfErrors === 12) {
-          setGameMsg('Has perdido');
-          restartGame();
-        }
-      }
-    } else {
-      setGameMsg('Introduce un carácter válido');
-      setLastLetter('');
-    }
-  };
-
-  const restartGame = () => {
-    setLastLetter('');
-    setGameMsg('');
-    setUserLetters([]);
-    setNumberOfErrors(0);
-  };
-
-  const renderSolutionLetters = () => {
-    const wordLetters = word.split('');
-    const allLetters = wordLetters.every((letter) =>
-      userLetters.includes(letter)
-    );
-
-    if (allLetters) {
-      setGameMsg('Has ganado');
-    } else {
-      const letterLines = wordLetters.map((letter, i) => {
-        if (letter === ' ') {
-          return <span key={i} className="space"></span>;
-        } else if (userLetters.includes(letter)) {
-          return (
-            <li key={i} className="hangedGame__letters--letter">
-              {letter}
-            </li>
-          );
-        } else {
-          return <li key={i} className="hangedGame__letters--letter"></li>;
-        }
-      });
-      return letterLines;
-    }
-  };
-
-  const renderErrorLetters = () => {
-    const wordLetters = word.split('');
-    const errorLetters = userLetters.filter(
-      (letter) => !wordLetters.includes(letter)
-    );
-    return errorLetters.map((letter, i) => {
-      return (
-        <li key={i} className="hangedGame__letters--letter">
-          {letter}
-        </li>
-      );
-    });
-  };
-
-  //Fin ahorcado
 
   const loginInput = (ev) => {
     setLogin({ ...login, [ev.target.id]: ev.target.value });
@@ -235,10 +150,6 @@ function App() {
     }
   };
 
-  const selectCarousel = (value) => {
-    setIndexCarrusel(value);
-  };
-
   const answerSelect = (value) => {
     setAnswerSelected([...answerSelected, value]);
   };
@@ -287,6 +198,156 @@ function App() {
       }
       setIsLoggedIn(false);
     });
+  };
+
+  //Juego Ahorcado
+
+  useEffect(() => {
+    loadWord();
+  }, []);
+
+  const [instruc, setInstruc] = useState(false);
+  const handleInstructions = () => {
+    setInstruc(!instruc);
+  };
+  const loadWord = () => {
+    let number = Math.ceil(Math.random() * 115);
+    dataBase.wordsGame().then((resp) => {
+      setWord(resp[number].palabra);
+    });
+  };
+
+  const inputLetter = (ev) => {
+    const input = ev.target.value.trim().split('');
+    const letter = input[input.length - 1];
+    setLastLetter('');
+    if (letter.match(/[a-zA-ZñÑ]/)) {
+      setLastLetter(letter);
+      setGameMsg('');
+      if (!userLetters.includes(letter)) {
+        setUserLetters([...userLetters, letter]);
+      }
+      if (!word.includes(letter)) {
+        setNumberOfErrors(numberOfErrors + 1);
+        if (numberOfErrors === 12) {
+          setEndGame(true);
+          restartGame();
+        }
+      }
+    } else {
+      setGameMsg('Introduce un carácter válido');
+      setLastLetter('');
+    }
+  };
+
+  const restartGame = () => {
+    setLastLetter('');
+    setGameMsg('');
+    setUserLetters([]);
+    setNumberOfErrors(0);
+    setWinner(false);
+    loadWord();
+  };
+
+  const renderSolutionLetters = () => {
+    const wordLetters = word.split('');
+    const letterLines = wordLetters.map((letter, i) => {
+      if (letter === ' ') {
+        return <span key={i} className="space"></span>;
+      } else if (userLetters.includes(letter)) {
+        return (
+          <li key={i} className="hangedGame__letters--letter">
+            {letter}
+          </li>
+        );
+      } else {
+        return <li key={i} className="hangedGame__letters--letter"></li>;
+      }
+    });
+    return letterLines;
+  };
+
+  const renderErrorLetters = () => {
+    const wordLetters = word.split('');
+    const errorLetters = userLetters.filter(
+      (letter) => !wordLetters.includes(letter)
+    );
+    return errorLetters.map((letter, i) => {
+      return (
+        <li key={i} className="hangedGame__letters--letter">
+          {letter}
+        </li>
+      );
+    });
+  };
+
+  //Snape, Neville, Nagini
+  const [pcOption, setPcOption] = useState('');
+  const [userOption, setUserOption] = useState('');
+  const [playerScore, setPlayerScore] = useState(0);
+  const [pcScore, setPcScore] = useState(0);
+  const [msgResult, setMsgResult] = useState('Selecciona una jugada');
+
+  const getRandomMove = () => {
+    return Math.ceil(Math.random() * 3);
+  };
+
+  const computerMove = () => {
+    const move = getRandomMove();
+    if (move === 1) {
+      setPcOption('Snape');
+    } else if (move === 2) {
+      setPcOption('Neville');
+    } else {
+      setPcOption('Nagini');
+    }
+    return pcOption;
+  };
+
+  const gameRules = () => {
+    if (userOption === '') {
+      setMsgResult('Selecciona una jugada');
+    } else if (userOption === pcOption) {
+      setMsgResult('¡Empate!');
+    } else if (userOption === 'Snape' && pcOption === 'Neville') {
+      setMsgResult('¡Por las barbas de Merlín, me has ganado!');
+      setPlayerScore(playerScore + 1);
+    } else if (userOption === 'Snape' && pcOption === 'Nagini') {
+      setMsgResult('Mírame, tienes los ojos de tu madre. Has perdido.');
+      setPcScore(pcScore + 1);
+    } else if (userOption === 'Neville' && pcOption === 'Snape') {
+      setMsgResult('¡50 puntos menos para Gryffindor!. Has perdido.');
+      setPcScore(pcScore + 1);
+    } else if (userOption === 'Neville' && pcOption === 'Nagini') {
+      setMsgResult('¡Es hora de terminar esto!. Has ganado.');
+      setPlayerScore(playerScore + 1);
+    } else if (userOption === 'Nagini' && pcOption === 'Snape') {
+      setMsgResult('Always Snape. Has ganado.');
+      setPlayerScore(playerScore + 1);
+    } else if (userOption === 'Nagini' && pcOption === 'Neville') {
+      setMsgResult('Nunca hemos tenido tanto que perder. Has perdido.');
+      setPcScore(pcScore + 1);
+    }
+    finishGame();
+  };
+
+  const finishGame = () => {
+    if (playerScore === 5) {
+      setWinner(true);
+    }
+    if (pcScore === 5) {
+      setEndGame(true);
+    }
+  };
+
+  const resetRockPaper = () => {
+    setPcScore(0);
+    setPlayerScore(0);
+    setUserOption('');
+    setPcOption('');
+    setMsgResult('Selecciona una jugada');
+    setWinner(false);
+    setEndGame(false);
   };
 
   return (
@@ -348,7 +409,7 @@ function App() {
                 logout={logout}
                 isLoggedIn={isLoggedIn}
               />
-              <Profile data={dataUser} logout={logout} />
+              {/* <Profile data={dataUser} logout={logout} /> */}
               <Footer />
             </>
           }
@@ -402,11 +463,11 @@ function App() {
         <Route
           path="/house"
           element={
-            <>
+            <div className={houseSelect ? houseSelect : 'background'}>
               <Header houseSelect={houseSelect} />
               <HogwartsHouse houseSelect={houseSelect} />
               <Footer houseSelect={houseSelect} />
-            </>
+            </div>
           }
         />
         <Route
@@ -426,6 +487,7 @@ function App() {
               <Header isLoggedIn={isLoggedIn} logout={logout} />
               <HangedGame
                 word={word}
+                userLetters={userLetters}
                 renderSolutionLetters={renderSolutionLetters}
                 renderErrorLetters={renderErrorLetters}
                 numberOfErrors={numberOfErrors}
@@ -434,6 +496,37 @@ function App() {
                 gameMsg={gameMsg}
                 restartGame={restartGame}
                 winner={winner}
+                setWinner={setWinner}
+                handleInstructions={handleInstructions}
+                instruc={instruc}
+                endGame={endGame}
+                setEndGame={setEndGame}
+              />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/rockpaper"
+          element={
+            <>
+              <Header />
+              <RockPaperScissors
+                computerMove={computerMove}
+                gameRules={gameRules}
+                pcOption={pcOption}
+                userOption={userOption}
+                setUserOption={setUserOption}
+                pcScore={pcScore}
+                playerScore={playerScore}
+                msgResult={msgResult}
+                handleInstructions={handleInstructions}
+                instruc={instruc}
+                restart={resetRockPaper}
+                winner={winner}
+                setWinner={setWinner}
+                endGame={endGame}
+                setEndGame={setEndGame}
               />
               <Footer />
             </>

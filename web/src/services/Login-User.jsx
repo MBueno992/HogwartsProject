@@ -64,7 +64,7 @@ const logoutUser = () => {
 
 const modifyUser = () => {
   return fetch(`http://localhost:4000/admin/wizard`, {
-    method: 'PUT',
+    method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
   })
     .then((response) => response.json())
