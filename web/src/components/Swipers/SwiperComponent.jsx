@@ -46,6 +46,7 @@ function SwiperComponent() {
           photo={games}
           desc="¿Y si te digo que puedes jugar a juegos clásicos versionados a la increíble historia de Hogwarts y sus personajes?"
           linkText="En construcción"
+          url="/games"
         />
       </SwiperSlide>
       <SwiperSlide>

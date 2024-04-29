@@ -8,12 +8,12 @@
   background-color: #ffae00;
   padding: 3px 10px;
   border-radius: 50px;
-  max-width: 120px;
   margin: 10px auto;
   @media (min-width: 768px) {
     font-size: 1.4rem;
     padding: 5px 15px;
-    max-width: 140px;
+    width: auto;
+
     margin-bottom: 50px;
   }
   &:hover {

@@ -5,8 +5,10 @@ import ErrorLetters from './ErrorLetters';
 import Result from './Result';
 import LandingGames from '../LandingGames';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import ReturnBtn from '../../Reusable/ReturnBtn';
 import Instructions from '../Instructions';
+import ResultGame from '../ResultGame';
 
 function HangedGame({
   word,
@@ -17,11 +19,16 @@ function HangedGame({
   lastLetter,
   gameMsg,
   restartGame,
+  winner,
 }) {
+  const [instruc, setInstruc] = useState(false);
+  const handleInstructions = () => {
+    setInstruc(!instruc);
+  };
+
   return (
     <div className="hangedGame">
       <ReturnBtn url="/games" text="Volver a juegos" />
-
       <section className="hangedGame__panel">
         <div className="modalMsg">
           <h1 className="hangedGame__title">Juego del ahorcado</h1>
@@ -46,10 +53,12 @@ function HangedGame({
               --{'>'} {gameMsg} {'<'}--
             </p>
           ) : null}
-          <Dummy numberOfErrors={numberOfErrors} />
         </div>
+        <Dummy numberOfErrors={numberOfErrors} />
       </section>
       <Instructions
+        handleInstructions={handleInstructions}
+        instruc={instruc}
         juego="El ahorcado"
         text1=" El objetivo del juego es adivinar la palabra antes de que el muñeco se
         complete el dibujo del muñeco ahorcado. Para ello, deberás adivinar cada
@@ -59,8 +68,11 @@ function HangedGame({
         hechizos... ¿Serás capaz de adivinar la palabra antes de que el muñeco
         termine ahorcado?"
       />
+      <ResultGame winner={winner} />
       <aside className="gameOptions">
-        <button className="gameOptions__btn">Instrucciones</button>
+        <button className="gameOptions__btn" onClick={handleInstructions}>
+          Instrucciones
+        </button>
         <button className="gameOptions__btn" onClick={restartGame}>
           Reiniciar partida
         </button>

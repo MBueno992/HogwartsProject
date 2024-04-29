@@ -65,6 +65,7 @@ function App() {
   const [lastLetter, setLastLetter] = useState('');
   const [gameMsg, setGameMsg] = useState('');
   const [userLetters, setUserLetters] = useState([]);
+  const [winner, setWinner] = useState(true);
 
   useEffect(() => {
     local.set('user', userName);
@@ -89,6 +90,11 @@ function App() {
       setWord(resp[number].palabra);
     });
   }, []);
+
+  // const wonGame=()=>{
+  //   setWinner(true)
+
+  // }
 
   const inputLetter = (ev) => {
     const input = ev.target.value.trim().split('');
@@ -122,20 +128,28 @@ function App() {
 
   const renderSolutionLetters = () => {
     const wordLetters = word.split('');
-    const letterLines = wordLetters.map((letter, i) => {
-      if (letter === ' ') {
-        return <span key={i} className="space"></span>;
-      } else if (userLetters.includes(letter)) {
-        return (
-          <li key={i} className="hangedGame__letters--letter">
-            {letter}
-          </li>
-        );
-      } else {
-        return <li key={i} className="hangedGame__letters--letter"></li>;
-      }
-    });
-    return letterLines;
+    const allLetters = wordLetters.every((letter) =>
+      userLetters.includes(letter)
+    );
+
+    if (allLetters) {
+      setGameMsg('Has ganado');
+    } else {
+      const letterLines = wordLetters.map((letter, i) => {
+        if (letter === ' ') {
+          return <span key={i} className="space"></span>;
+        } else if (userLetters.includes(letter)) {
+          return (
+            <li key={i} className="hangedGame__letters--letter">
+              {letter}
+            </li>
+          );
+        } else {
+          return <li key={i} className="hangedGame__letters--letter"></li>;
+        }
+      });
+      return letterLines;
+    }
   };
 
   const renderErrorLetters = () => {
@@ -419,6 +433,7 @@ function App() {
                 lastLetter={lastLetter}
                 gameMsg={gameMsg}
                 restartGame={restartGame}
+                winner={winner}
               />
               <Footer />
             </>
