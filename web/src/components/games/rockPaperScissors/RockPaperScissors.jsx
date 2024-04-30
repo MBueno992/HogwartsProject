@@ -39,7 +39,7 @@ function RockPaperScissors({
   const handleOption = (ev) => {
     setUserOption(ev.target.id);
     computerMove();
-    gameRules();
+    // gameRules();
   };
 
   return (

@@ -46,5 +46,6 @@ function Letter({ userName, name }) {
 
 Letter.propTypes = {
   userName: PropTypes.string,
+  name: PropTypes.string,
 };
 export default Letter;

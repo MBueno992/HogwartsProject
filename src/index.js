@@ -59,6 +59,9 @@ const validateEmail = (email) => {
   return regex.test(email);
 };
 
+//Validación contraseña
+const validatePassword = (pass) => {};
+
 //Iniciar el servidor
 const serverPort = process.env.PORT || 4000;
 server.listen(serverPort, () => {
@@ -150,51 +153,33 @@ server.post('/register', async (req, resp) => {
 
 // //Modificar datos
 server.patch('/admin/wizard', async (req, res) => {
-  const { userId, gender, name, wizardName, birthdate, province, image } =
-    req.body;
-  console.log(req.body);
-  const connect = await getConnection();
-
-  const updateData =
-    'UPDATE wizards SET gender = ?, name = ?, wizardName = ?, birthdate = ?, province = ?, image = ? WHERE fk_idUser = ?';
-  const [resultUpdate] = await connect.query(updateData, [
-    gender,
-    name,
-    wizardName,
-    birthdate,
-    province,
-    image,
-    userId,
-  ]);
-  res.json({ success: true, result: 'Datos actualizados correctamente.' });
-});
-
-//Modificar email y contraseña
-server.put('/admin/email', async (req, res) => {
-  const { userId, email, password } = req.body;
-  const connect = await getConnection();
-  const selectUser = 'SELECT * FROM wizards WHERE fk_idUser = ?';
-  const [resultSelect] = await connect.query(selectUser, [userId]);
-  console.log(resultSelect);
-  if (resultSelect.length === 0) {
-    res.json({ success: false, result: 'Usuario no encontrado' });
+  try {
+    const { fk_idUser, gender, name, wizardName, birthdate, province, image } =
+      req.body;
+    const connect = await getConnection();
+    const updateData =
+      'UPDATE wizards SET gender = ?, name = ?, wizardName = ?, birthdate = ?, province = ?, image = ? WHERE fk_idUser = ?';
+    const [resultUpdate] = await connect.query(updateData, [
+      gender,
+      name,
+      wizardName,
+      birthdate,
+      province,
+      image,
+      fk_idUser,
+    ]);
+    res.json({ success: true, result: 'Datos actualizados correctamente.' });
+  } catch (error) {
+    console.error('Error al actualizar los datos: ', error);
+    res.status(500).son({
+      success: false,
+      result: 'Se ha producido un error al actualizar los datos.',
+    });
   }
-  if (email && email !== resultSelect[0].email) {
-    const findOutEmail = 'SELECT * FROM users WHERE email = ?';
-    const [resultFindOutEmail] = await connect.query(findOutEmail, [email]);
-    if (resultFindOutEmail.length > 0) {
-      res.json({
-        success: false,
-        result: 'Ese correo electrónico ya está registrado',
-      });
-    }
-  }
-  const updateUser = 'UPDATE users SET email = ? WHERE idUser = ?';
 });
 
 //Perfil usuario
 server.get('/profile/:wizardName', authenticate, async (req, res) => {
-  console.log(req.params);
   const wizard = req.params.wizardName;
   const sql = 'SELECT * FROM wizards WHERE wizardName = ?';
   const connect = await getConnection();
@@ -243,5 +228,6 @@ server.get('/words', async (req, res) => {
   const [resultWords] = await connect.query(wordsSQL);
   res.json({ success: true, result: resultWords });
 });
+
 const staticServer = './src/public-react';
 server.use(express.static(staticServer));

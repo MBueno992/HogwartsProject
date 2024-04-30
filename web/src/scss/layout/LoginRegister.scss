@@ -3,6 +3,9 @@
 
 .login {
   @include forms;
+  @media (min-width: 768px) {
+    width: 350px;
+  }
   &__register {
     text-align: center;
     margin: 15px;
@@ -14,9 +17,11 @@
 
 .register {
   @include forms;
+  width: 90%;
+  max-width: 450px;
   margin: 15px auto 50px;
   @media (min-width: 768px) {
-    width: 450px;
+    max-width: 450px;
   }
   &__title {
     &--welcome {
@@ -57,4 +62,9 @@
       margin: 10px auto 15px;
     }
   }
+}
+
+.modifyData {
+  display: flex;
+  flex-direction: column;
 }

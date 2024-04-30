@@ -48,9 +48,7 @@
   font-family: $playfair;
   z-index: 3;
   background-color: #021b56;
-  @media (min-width: 768px) {
-    width: 350px;
-  }
+
   &__title {
     display: flex;
     align-items: center;

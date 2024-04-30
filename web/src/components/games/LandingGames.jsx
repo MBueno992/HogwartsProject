@@ -1,15 +1,11 @@
 import '../../scss/layout/Games.scss';
-import HangedGame from './hanged/HangedGame';
 import imgHangman from '../../images/hangedGame.jpeg';
 import imgRockPaper from '../../images/rockpaper.jpeg';
+import imgMemo from '../../images/memoGame.jpeg';
 
 import CardGames from './CardGames';
 
 function LandingGames({ style }) {
-  const selectGame = {
-    HangedGame: <HangedGame />,
-  };
-
   return (
     <section className={`${!style ? 'gamesSection' : style}`}>
       <ul className="gamesSection__list">
@@ -27,37 +23,13 @@ function LandingGames({ style }) {
           gameTitle="Snape, Neville o Nagini"
           desc="  ¿Conoces el juego piedra, papel o tijera? Te traigo la versión de Harry Potter ¿Serás capaz de ganar la partida?"
         />
-
-        <li>
-          <div className="flip-card">
-            <div className="flip-card__inner">
-              <div className="flip-card__inner--front">
-                <p className="title">3 en raya</p>
-                <p>En proceso...</p>
-              </div>
-              {/* <div className="flip-card__inner--back">
-                <p className="title">BACK</p>
-                <p>Leave Me</p>
-              </div> */}
-            </div>
-          </div>
-        </li>
-        <li>
-          <div className="flip-card">
-            <div className="flip-card__inner">
-              <div className="flip-card__inner--front">
-                <p className="title">¿Cuánto sabes de Hogwarts?</p>
-                <p>En proceso...</p>
-              </div>
-              {/* <div className="flip-card__inner--back">
-                <p className="title">BACK</p>
-                <p>Leave Me</p>
-              </div> */}
-            </div>
-          </div>
-        </li>
+        <CardGames
+          url="/construction"
+          img={imgMemo}
+          gameTitle="Memory"
+          desc="Pon a prueba tu mente y encuentra las diferentes parejas que se esconden bajo las cartas. ¿Podrás hacerlo o te habrán lanzado un hechizo obliviate?"
+        />
       </ul>
-      {/* {selectGame[game]} */}
     </section>
   );
 }

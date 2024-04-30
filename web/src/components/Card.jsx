@@ -1,19 +1,19 @@
 import mujer from '../images/chica.jpeg';
 import hombre from '../images/chico.jpeg';
 import PropTypes from 'prop-types';
-import GryffindorShield from '../images/GryffindorShield.png';
-import SlytherinShield from '../images/SlytherinShield.png';
-import RavenclawShield from '../images/RavenclawShield.png';
-import HufflepuffShield from '../images/HufflepuffShield.png';
+import Gryffindor from '../images/GryffindorShield.png';
+import Slytherin from '../images/SlytherinShield.png';
+import Ravenclaw from '../images/RavenclawShield.png';
+import Hufflepuff from '../images/HufflepuffShield.png';
 import SchoolShield from '../images/escudo.png';
 
-function Card({ dataUser, houseSelect, imageHouse, formatDate }) {
-  const { name, wizardName, birthdate, gender, house, image } = dataUser;
+function Card({ dataUser, houseSelect, imageHouse }) {
+  const { name, wizardName, gender, image } = dataUser;
   const userHouse = {
-    Gryffindor: GryffindorShield,
-    Slytherin: SlytherinShield,
-    Ravenclaw: RavenclawShield,
-    Hufflepuff: HufflepuffShield,
+    Gryffindor: Gryffindor,
+    Slytherin: Slytherin,
+    Ravenclaw: Ravenclaw,
+    Hufflepuff: Hufflepuff,
   };
   return (
     <article className="adminForm__data">

@@ -27,13 +27,12 @@
   box-shadow: -12px -12px 32px #0f0f0f, 12px 12px 32px #131212;
   animation: fadeIn ease 5s;
   padding: 30px;
-  max-height: 700px;
-  overflow-x: auto;
   @media (min-width: 768px) {
+    max-width: 600px;
     margin: 40px;
   }
   &__shield {
-    width: 50%;
+    width: 140px;
     margin: 0 auto;
     @media (min-width: 768px) {
       width: 200px;
@@ -44,14 +43,14 @@
   }
   &__director {
     padding: 10px;
-    width: 50vw;
+    // width: 50vw;
     text-align: center;
     margin: 0 auto;
   }
   &__text {
     margin: 15px;
     font-family: $princessSofia;
-    width: 60vw;
+    // width: 60vw;
     font-size: 1.4rem;
     @media (min-width: 768px) {
       font-size: 2rem;

@@ -11,14 +11,14 @@ import Footer from './Base/Footer.jsx';
 import Landing from './Base/Landing.jsx';
 import Register from './Form/Register.jsx';
 import Ministery from './CompletePages/Ministery.jsx';
-import ShortingHat from './Form/ShortingHat.jsx';
-import Form from './Form/Form.jsx';
-import Profile from './Profile/Profile.jsx';
+import ShortingHat from './CompletePages/ShortingHat.jsx';
+import Form from './games/QuestHouse/Form.jsx';
 import Wizards from './Wizards/Wizards.jsx';
 import WizardDetail from './Wizards/WizardDetail.jsx';
 import HogwartsHouse from './Houses/HogwartsHouse.jsx';
 import LandingGames from './games/LandingGames.jsx';
 import HangedGame from './games/hanged/HangedGame.jsx';
+import RockPaperScissors from './games/rockPaperScissors/RockPaperScissors.jsx';
 import AdminData from './CompletePages/AdminData.jsx';
 import SwiperLetter from './Swipers/SwiperLetter.jsx';
 import AboutMe from './CompletePages/AboutMe.jsx';
@@ -26,17 +26,17 @@ import Contact from './CompletePages/Contact.jsx';
 //Services
 import questions from '../services/data.json';
 import local from '../services/localStorage.js';
-import connectBack from '../services/Login-User.jsx';
+import connectBack from '../services/LoginBD.jsx';
 import dataBase from '../services/dataBD.jsx';
 import router from '../services/router';
-import RockPaperScissors from './games/rockPaperScissors/RockPaperScissors.jsx';
+import Construction from './Base/Construction.jsx';
+import MemoGame from './games/Memory/MemoGame.jsx';
 
 function App() {
   const [userName, setUserName] = useState('');
   const [login, setLogin] = useState({ email: '', hashed_password: '' });
   const [isLoggedIn, setIsLoggedIn] = useState(local.get('isLogged', false));
   const [randomQuote, setRandomQuote] = useState([]);
-  // const [userId, setUserId] = useState('');
   const [loginError, setLoginError] = useState('');
   const [alertMsg, setAlertMsg] = useState('');
   const [randomOrder, setRandomOrder] = useState([]);
@@ -52,7 +52,6 @@ function App() {
       wizardName: '',
       birthdate: '',
       province: '',
-      city: '',
       house: '',
       email: '',
       password: '',
@@ -136,9 +135,6 @@ function App() {
   const updateUserData = () => {
     connectBack.modifyUser(dataUser).then((response) => {
       setAlertMsg(response.result);
-      setTimeout(() => {
-        router.redirect('/');
-      }, 800);
     });
   };
 
@@ -246,6 +242,7 @@ function App() {
     setUserLetters([]);
     setNumberOfErrors(0);
     setWinner(false);
+    setEndGame(false);
     loadWord();
   };
 
@@ -409,7 +406,6 @@ function App() {
                 logout={logout}
                 isLoggedIn={isLoggedIn}
               />
-              {/* <Profile data={dataUser} logout={logout} /> */}
               <Footer />
             </>
           }
@@ -464,7 +460,11 @@ function App() {
           path="/house"
           element={
             <div className={houseSelect ? houseSelect : 'background'}>
-              <Header houseSelect={houseSelect} />
+              <Header
+                isLoggedIn={isLoggedIn}
+                logout={logout}
+                houseSelect={houseSelect}
+              />{' '}
               <HogwartsHouse houseSelect={houseSelect} />
               <Footer houseSelect={houseSelect} />
             </div>
@@ -510,7 +510,7 @@ function App() {
           path="/rockpaper"
           element={
             <>
-              <Header />
+              <Header isLoggedIn={isLoggedIn} logout={logout} />
               <RockPaperScissors
                 computerMove={computerMove}
                 gameRules={gameRules}
@@ -532,6 +532,17 @@ function App() {
             </>
           }
         />
+        <Route
+          path="/memory"
+          element={
+            <>
+              <Header isLoggedIn={isLoggedIn} logout={logout} />
+              <MemoGame />
+              <Footer />
+            </>
+          }
+        />
+
         <Route
           path="/admin"
           element={
@@ -573,6 +584,16 @@ function App() {
           }
         />
         <Route
+          path="/construction"
+          element={
+            <>
+              <Header isLoggedIn={isLoggedIn} logout={logout} />
+              <Construction />
+              <Footer />
+            </>
+          }
+        />
+        {/* <Route
           path="/wizards"
           element={
             <>
@@ -581,9 +602,9 @@ function App() {
               <Footer />
             </>
           }
-        />
+        /> */}
 
-        <Route
+        {/* <Route
           path="/wizards/:idWizard"
           element={
             <>
@@ -592,7 +613,7 @@ function App() {
               <Footer />
             </>
           }
-        />
+        /> */}
       </Routes>
     </div>
   );

@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom';
-import InputText from '../ResgisterForm/InputText';
+import InputText from './InputText';
 import PropTypes from 'prop-types';
 import '../../scss/layout/LoginRegister.scss';
 
@@ -21,6 +20,8 @@ function Register({
 
   const updateData = (ev) => {
     ev.preventDefault();
+    const userId = JSON.parse(localStorage.getItem('userData')).fk_idUser;
+    dataUser.fk_idUser = userId;
     updateUserData(dataUser);
   };
   const provincias = [
@@ -79,7 +80,7 @@ function Register({
   ];
 
   return (
-    <>
+    <div className="modifyData">
       <section className="register">
         <div className="register__title">
           <hr />
@@ -177,40 +178,7 @@ function Register({
           {/* </Link> */}
         </form>
       </section>
-      {isLoggedIn ? (
-        <section className="register">
-          <div className="register__title">
-            <hr />
-            <h3 className="register__title--text">E-mail y contraseña</h3>
-            <hr />
-          </div>
-          <form
-            className="register__form"
-            onChange={(ev) => {
-              userRegister(ev.target.id, ev.target.value);
-            }}
-          >
-            <InputText
-              inputType="text"
-              text="E-mail"
-              desc="Introduce tu e-mail"
-              value="email"
-              data={dataUser.email}
-            />
-            <InputText
-              inputType="password"
-              text="Contraseña"
-              desc="Introduce una contraseña"
-              value="password"
-              data={dataUser.hashed_password}
-            />
-            <button className="register__form--btn" onClick={sendData}>
-              Enviar
-            </button>
-          </form>
-        </section>
-      ) : null}
-    </>
+    </div>
   );
 }
 

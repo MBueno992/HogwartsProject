@@ -15,13 +15,15 @@ function AdminData({
 }) {
   return (
     <section className="adminForm">
-      <Card
-        dataUser={dataUser}
-        // imageHouse={imageHouse}
-        formatDate={formatDate}
-        houseSelect={houseSelect}
-      />
-      <GetAvatar updateAvatar={userRegister} id="image" />
+      <div className="adminForm__cardBtn">
+        <Card
+          dataUser={dataUser}
+          // imageHouse={imageHouse}
+          formatDate={formatDate}
+          houseSelect={houseSelect}
+        />
+        <GetAvatar updateAvatar={userRegister} id="image" />
+      </div>
       <Register
         dataUser={dataUser}
         alertMsg={alertMsg}
