@@ -1,0 +1,371 @@
+@import '../core/Mixins.scss';
+@import '../core/variables';
+
+.title {
+  display: block;
+  font-size: 1.25rem;
+  line-height: 1;
+  text-align: center;
+  color: white;
+  font-family: $playfair;
+}
+
+.header__title {
+  padding-bottom: 2rem;
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  font-family: $playfair;
+}
+
+.hangedGame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+
+  &__title {
+    padding-bottom: 2rem;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+  }
+  &__panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+    border-radius: 15px;
+    padding: 20px 15px;
+    margin: 50px 30px;
+    font-family: $playfair;
+    color: white;
+    background-color: #001441;
+    @media (min-width: 768px) {
+      width: 75%;
+      flex-direction: row;
+      padding: 40px 0;
+    }
+  }
+  &__form {
+    margin-bottom: 1rem;
+    text-align: center;
+
+    &--input {
+      background-color: transparent;
+      border: none;
+      border-bottom: 3px solid white;
+      text-align: center;
+      font-size: 4rem;
+      outline: none;
+      animation-name: borderBottomInput;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+      font-family: $playfair;
+      color: #ffae00;
+      width: 30px;
+      &::selection {
+        background-color: rgba(255, 255, 255, 0.25);
+      }
+    }
+  }
+  &__msg {
+    text-align: center;
+    font-family: $playfair;
+    color: white;
+    font-style: italic;
+  }
+  &__solution,
+  &__error {
+    margin-bottom: 3.75rem;
+  }
+  &__letters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    min-height: 25px;
+    color: white;
+    font-family: $playfair;
+    margin: 10px auto;
+    text-transform: capitalize;
+    &--letter {
+      margin: 0 0.25rem;
+      min-width: 1.5rem;
+      font-size: 2rem;
+      border-bottom: 3px solid white;
+      text-align: center;
+    }
+  }
+}
+
+$dummyEnabledColor: white;
+$dummyDisabledColor: rgba(255, 255, 255, 0.2);
+$dummyTransitionTime: 1s;
+
+.dummy {
+  margin-left: 4rem;
+  position: relative;
+  min-width: 15rem;
+  height: 25rem;
+
+  .line {
+    position: absolute;
+    display: block;
+    height: 0.5rem;
+    background-color: $dummyDisabledColor;
+    border-radius: 0.25rem;
+    transition: background-color $dummyTransitionTime ease;
+  }
+
+  .head {
+    position: absolute;
+    display: block;
+    width: 3.5rem;
+    height: 3.5rem;
+    border: 0.5rem solid $dummyDisabledColor;
+    border-radius: 50%;
+    transition: border $dummyTransitionTime ease;
+  }
+
+  .eye {
+    position: absolute;
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: $dummyDisabledColor;
+    transition: color $dummyTransitionTime ease;
+    &::before {
+      content: '×';
+    }
+  }
+
+  .error-1 {
+    width: 6rem;
+    left: 0;
+    bottom: 0;
+  }
+
+  .error-2 {
+    transform: rotate(90deg);
+    width: 23rem;
+    top: 13rem;
+    left: -8.5rem;
+  }
+
+  .error-3 {
+    width: 8rem;
+    top: 1.75rem;
+    left: 2.75rem;
+  }
+
+  .error-4 {
+    transform: rotate(135deg);
+    width: 4rem;
+    top: 3rem;
+    left: 2.25rem;
+  }
+
+  .error-5 {
+    transform: rotate(90deg);
+    width: 6rem;
+    top: 4.5rem;
+    left: 7.5rem;
+  }
+
+  .error-6 {
+    top: 7.5rem;
+    left: 8.75rem;
+  }
+
+  .error-7 {
+    transform: rotate(90deg);
+    width: 6rem;
+    top: 13.5rem;
+    left: 7.5rem;
+  }
+
+  .error-8 {
+    transform: rotate(60deg);
+    width: 3rem;
+    top: 13.5rem;
+    left: 9.75rem;
+  }
+
+  .error-9 {
+    transform: rotate(120deg);
+    width: 3rem;
+    top: 13.5rem;
+    left: 8.25rem;
+  }
+
+  .error-10 {
+    transform: rotate(60deg);
+    width: 4rem;
+    top: 18rem;
+    left: 9.5rem;
+  }
+
+  .error-11 {
+    transform: rotate(120deg);
+    width: 4rem;
+    top: 18rem;
+    left: 7.5rem;
+  }
+
+  .error-12 {
+    top: 7.5rem;
+    left: 9.5rem;
+  }
+
+  .error-13 {
+    top: 7.5rem;
+    left: 10.5rem;
+  }
+
+  // https://sass-lang.com/documentation/at-rules/control/for
+  @for $e from 1 through 13 {
+    @for $s from 1 through $e {
+      &.error-#{$e} {
+        .error-#{$s}.line {
+          background-color: $dummyEnabledColor;
+        }
+        .error-#{$s}.head {
+          border-color: $dummyEnabledColor;
+        }
+        .error-#{$s}.eye {
+          color: $dummyEnabledColor;
+        }
+      }
+    }
+  }
+}
+
+@keyframes borderBottomInput {
+  from {
+    border-bottom-color: white;
+  }
+  50% {
+    border-bottom-color: transparent;
+  }
+  to {
+    border-bottom-color: white;
+  }
+}
+
+.instructions {
+  max-width: 30rem;
+  line-height: 2.25;
+
+  p {
+    padding-bottom: 2rem;
+  }
+}
+.game {
+  &__solution,
+  &__error {
+    margin-bottom: 3.75rem;
+  }
+  &__letters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    min-height: 25px;
+    color: white;
+    font-family: $playfair;
+    margin: 10px auto;
+    &--letter {
+      margin: 0 0.25rem;
+      min-width: 1.5rem;
+      font-size: 2rem;
+      border-bottom: 3px solid white;
+      text-align: center;
+    }
+  }
+  &__msg {
+    text-align: center;
+    font-family: $playfair;
+    color: white;
+    font-style: italic;
+  }
+}
+
+.loading {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  border: 0.25rem solid white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation-name: beat;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+
+  &.hidden {
+    opacity: 0;
+  }
+}
+
+@keyframes beat {
+  0% {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  20% {
+    width: 2rem;
+    height: 2rem;
+  }
+  40% {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  60% {
+    width: 2rem;
+    height: 2rem;
+  }
+  80% {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  100% {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+.space {
+  width: 20px;
+}
+
+.result {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+
+.gameOptions {
+  display: flex;
+  gap: 15px;
+  font-size: 1.4rem;
+  margin-bottom: 50px;
+  cursor: pointer;
+  &__btn {
+    padding: 3px 5px;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 50px;
+    color: white;
+    font-family: $playfair;
+    &:hover {
+      transition: font-size 0.2s ease-in 0s;
+      background-color: white;
+      color: #001411;
+      font-size: 1.5rem;
+    }
+  }
+}

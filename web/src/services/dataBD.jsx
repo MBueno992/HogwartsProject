@@ -14,9 +14,19 @@ const wizardsDb = () => {
     });
 };
 
+const wordsGame = () => {
+  return fetch('https://hogwarts-project-back.vercel.app/words').then(
+    (response) =>
+      response.json().then((data) => {
+        return data.result;
+      })
+  );
+};
+
 const dataBd = {
   quote: quote,
   wizardsDb: wizardsDb,
+  wordsGame: wordsGame,
 };
 
 export default dataBd;

@@ -1,146 +1,76 @@
 @import '../core/variables';
 
 .landing {
-  height: 85vh;
-  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  gap: 20px;
+  gap: 30px;
+  margin-bottom: 50px;
+  z-index: 1;
   @media (min-width: 768px) {
     justify-content: center;
     flex-direction: row;
-    margin: 0 auto;
-    width: 80vw;
-    gap: 80px;
-    // height: 52vh;
+    gap: 75px;
+    margin: auto 20px;
   }
   a {
     text-decoration: none;
   }
-
-  &__login {
-    height: 50vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    // @media (min-width: 768px) {
-    //   // width: 50vw;
-    //   // height: 85vh;
-    // }
-  }
-  &__register {
-    // width: 100vw;
-    height: 35vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-    @media (min-width: 768px) {
-      margin-bottom: 0;
-      width: 35vw;
-      //   // height: 85vh;
-    }
-  }
-}
-.login {
-  // height: 320px;
-  width: 300px;
-  border-radius: 10px;
-  border: 1px solid white;
-  padding: 20px;
-  color: #001441;
-  background: transparent;
-  backdrop-filter: blur(10px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  // margin-top: 30px;
-  @media (min-width: 768px) {
-    width: 350px;
-    height: 408px;
-    // margin: 0 20px;
-  }
-  &__title {
-    text-align: center;
-    font-size: 1.5rem;
-    @media (min-width: 768px) {
-      font-size: 2.4rem;
-    }
-  }
-  &__form {
+  &__random {
+    width: 95%;
+    max-width: 500px;
     display: flex;
     flex-direction: column;
-    margin-top: 15px;
-    width: 90%;
+    gap: 25px;
+    padding: 15px 10px;
+
     @media (min-width: 768px) {
-      margin-top: 25px;
-      font-size: 1.6rem;
+      width: 50%;
     }
-    input {
-      margin-top: 8px;
-      margin-bottom: 15px;
-      border: none;
-      padding: 1rem;
-      border-radius: 1rem;
-      background: #e8e8e8bb;
-      transition: 0.3s;
-      font-style: italic;
-      &:focus {
-        outline-color: #e8e8e8;
-        background: #e8e8e8;
-        transition: 0.3s;
-      }
-    }
-    &--btn {
-      width: 100%;
-      background: linear-gradient(
-        180deg,
-        rgba(52, 99, 204, 1) 0%,
-        rgba(10, 38, 102, 1) 50%
-      );
-      padding: 0.75rem;
-      text-align: center;
+    &--quote {
       color: white;
-      border: none;
-      border-radius: 0.375rem;
-      font-weight: 600;
-      transition: all 0.5s ease;
-      margin-top: 10px;
-      letter-spacing: 1.5px;
-      &:hover {
-        letter-spacing: 3px;
-        background: linear-gradient(
-          180deg,
-          rgba(255, 208, 117, 1) 0%,
-          rgba(190, 141, 45, 1) 50%
-        );
-        color: white;
-        box-shadow: rgba(190, 141, 45, 1) 0px 7px 29px 0px;
-      }
-      &:active {
-        transform: translateY(10px);
-        transition: 100ms;
-      }
+      background-color: #001441;
+      border-image-source: url('/src/images/marco.png');
+      border-image-slice: 50;
+      border-style: solid;
+      border-width: 20px;
+      padding: 10px;
+      font-family: $playfair;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 1.2rem;
+      margin: 0 30px;
     }
   }
-  &__register {
+  &__articles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+}
+.entrance {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.61);
+  font-family: $playfair;
+  padding: 5px;
+  border-radius: 5px;
+  &__text {
     text-align: center;
-    margin: 15px;
-    @media (min-width: 768px) {
-      font-size: 1.4rem;
-    }
-    &--msg {
-      font-style: italic;
-      width: 250px;
-      color: white;
-      background-color: rgba(190, 142, 45, 0.582);
-      padding: 5px;
-      border-radius: 5px;
+    margin: 3px 0 0;
+  }
+  &__more {
+    text-align: right;
+    color: white;
+    text-decoration: none;
+    padding-right: 10px;
+    &:hover {
+      color: black;
+      text-decoration: underline;
+      transition: color 0.5s ease-in 0s underline 0.5s ease-in 0s;
     }
   }
 }

@@ -1,0 +1,70 @@
+@import '../core/Mixins.scss';
+@import '../core/variables';
+
+.login {
+  @include forms;
+  @media (min-width: 768px) {
+    width: 350px;
+  }
+  &__register {
+    text-align: center;
+    margin: 15px;
+    @media (min-width: 768px) {
+      font-size: 1.4rem;
+    }
+  }
+}
+
+.register {
+  @include forms;
+  width: 90%;
+  max-width: 450px;
+  margin: 15px auto 50px;
+  @media (min-width: 768px) {
+    max-width: 450px;
+  }
+  &__title {
+    &--welcome {
+      font-size: 1.2rem;
+      text-align: center;
+      margin: 10px;
+      @media (min-width: 768px) {
+        font-size: 1.6rem;
+        margin: 10px 5px;
+      }
+    }
+  }
+
+  &__form {
+    &--gender {
+      display: flex;
+      align-items: baseline;
+      gap: 15px;
+      input {
+        box-shadow: none;
+        cursor: pointer;
+      }
+    }
+    &--select {
+      margin-top: 8px;
+      margin-bottom: 15px;
+      border: none;
+      padding: 1rem;
+      border-radius: 1rem;
+      background: #e8e8e8bb;
+      font-style: italic;
+      cursor: pointer;
+    }
+    &--btn {
+      margin-bottom: 30px;
+    }
+    &--msg {
+      margin: 10px auto 15px;
+    }
+  }
+}
+
+.modifyData {
+  display: flex;
+  flex-direction: column;
+}

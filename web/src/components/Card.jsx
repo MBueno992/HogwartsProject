@@ -1,11 +1,22 @@
 import mujer from '../images/chica.jpeg';
 import hombre from '../images/chico.jpeg';
 import PropTypes from 'prop-types';
+import Gryffindor from '../images/GryffindorShield.png';
+import Slytherin from '../images/SlytherinShield.png';
+import Ravenclaw from '../images/RavenclawShield.png';
+import Hufflepuff from '../images/HufflepuffShield.png';
+import SchoolShield from '../images/escudo.png';
 
-function Card({ dataUser, houseSelect, imageHouse, formatDate }) {
-  const { name, wizardName, birthdate, gender, house, image } = dataUser;
+function Card({ dataUser, houseSelect, imageHouse }) {
+  const { name, wizardName, gender, image } = dataUser;
+  const userHouse = {
+    Gryffindor: Gryffindor,
+    Slytherin: Slytherin,
+    Ravenclaw: Ravenclaw,
+    Hufflepuff: Hufflepuff,
+  };
   return (
-    <article className="register__data">
+    <article className="adminForm__data">
       <img
         src={
           image !== ''
@@ -17,6 +28,7 @@ function Card({ dataUser, houseSelect, imageHouse, formatDate }) {
             : imageHouse[houseSelect].Shield
         }
         alt={wizardName || ''}
+        className="adminForm__data--img"
       />
       <h3>
         Alumno/a: <span>{name || ''}</span>{' '}
@@ -24,13 +36,11 @@ function Card({ dataUser, houseSelect, imageHouse, formatDate }) {
       <h4>
         Apodo: <span>{wizardName || ''} </span>
       </h4>
-      <p>
-        Fecha de nacimiento:{' '}
-        <span>{!birthdate ? '' : formatDate(birthdate)} </span>
-      </p>
-      <p>
-        Miembro de la casa: <span>{house || houseSelect} </span>
-      </p>
+      <img
+        src={houseSelect ? userHouse[houseSelect] : SchoolShield}
+        alt="Shield"
+        className="adminForm__data--shield"
+      />
     </article>
   );
 }

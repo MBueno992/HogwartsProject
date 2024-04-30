@@ -16,7 +16,11 @@ const getConnection = async () => {
     host: process.env.HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
+<<<<<<< HEAD
     database: process.env.DB_NAME,
+=======
+    database: 'freedb_Hogwarts',
+>>>>>>> v2
   });
   await connection.connect();
   return connection;
@@ -58,6 +62,9 @@ const validateEmail = (email) => {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return regex.test(email);
 };
+
+//Validación contraseña
+const validatePassword = (pass) => {};
 
 //Iniciar el servidor
 const serverPort = process.env.PORT || 4000;
@@ -110,18 +117,7 @@ server.post('/', async (req, resp) => {
 
 //Registro
 server.post('/register', async (req, resp) => {
-  const {
-    gender,
-    name,
-    wizardName,
-    birthdate,
-    province,
-    city,
-    house,
-    image,
-    email,
-    password,
-  } = req.body;
+  const { gender, name, wizardName, birthdate, email, password } = req.body;
   console.log(req.body);
   const connect = await getConnection();
   const selectUser = 'SELECT * FROM users WHERE email = ?';
@@ -142,16 +138,12 @@ server.post('/register', async (req, resp) => {
     ]);
     const userId = resultUser.insertId;
     const insertWizard =
-      'INSERT INTO wizards (gender, name, wizardName, birthdate, province, city, house, image, fk_idUser) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
+      'INSERT INTO wizards (gender, name, wizardName, birthdate, fk_idUser) VALUES (?, ?, ?, ?, ?)';
     const [resultWizard] = await connect.query(insertWizard, [
       gender,
       name,
       wizardName,
       birthdate,
-      province,
-      city,
-      house,
-      image,
       userId,
     ]);
     resp.json({ success: true, data: resultUser });
@@ -163,9 +155,35 @@ server.post('/register', async (req, resp) => {
   }
 });
 
+// //Modificar datos
+server.patch('/admin/wizard', async (req, res) => {
+  try {
+    const { fk_idUser, gender, name, wizardName, birthdate, province, image } =
+      req.body;
+    const connect = await getConnection();
+    const updateData =
+      'UPDATE wizards SET gender = ?, name = ?, wizardName = ?, birthdate = ?, province = ?, image = ? WHERE fk_idUser = ?';
+    const [resultUpdate] = await connect.query(updateData, [
+      gender,
+      name,
+      wizardName,
+      birthdate,
+      province,
+      image,
+      fk_idUser,
+    ]);
+    res.json({ success: true, result: 'Datos actualizados correctamente.' });
+  } catch (error) {
+    console.error('Error al actualizar los datos: ', error);
+    res.status(500).son({
+      success: false,
+      result: 'Se ha producido un error al actualizar los datos.',
+    });
+  }
+});
+
 //Perfil usuario
 server.get('/profile/:wizardName', authenticate, async (req, res) => {
-  console.log(req.params);
   const wizard = req.params.wizardName;
   const sql = 'SELECT * FROM wizards WHERE wizardName = ?';
   const connect = await getConnection();
@@ -196,7 +214,7 @@ server.get('/quote', async (req, res) => {
   const connect = await getConnection();
   const quoteSQL = 'SELECT * FROM Quotes';
   const [resultQuote] = await connect.query(quoteSQL);
-  res.json(resultQuote);
+  res.json({ success: true, result: resultQuote });
 });
 
 //Listado magos
