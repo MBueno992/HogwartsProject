@@ -16,11 +16,7 @@ const getConnection = async () => {
     host: process.env.HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-<<<<<<< HEAD
-    database: process.env.DB_NAME,
-=======
     database: 'freedb_Hogwarts',
->>>>>>> v2
   });
   await connection.connect();
   return connection;
