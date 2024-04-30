@@ -92,7 +92,7 @@ function Header({ houseSelect, isLoggedIn, logout }) {
           </ul>
         ) : (
           <ul className="header__nav--login">
-            <li className="loginBtn">Iniciar sesión</li>
+            {/* <li className="loginBtn">Iniciar sesión</li> */}
             <li className="signupBtn">
               <Link to="/register">Regístrate</Link>
             </li>{' '}

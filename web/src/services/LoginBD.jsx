@@ -63,7 +63,7 @@ const logoutUser = () => {
 };
 
 const modifyUser = (dataUser) => {
-  return fetch(`http://localhost:4000/admin/wizard`, {
+  return fetch(`https://hogwarts-project-back.vercel.app/admin/wizard`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(dataUser),
