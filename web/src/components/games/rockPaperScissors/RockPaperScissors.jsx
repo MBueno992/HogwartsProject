@@ -34,12 +34,11 @@ function RockPaperScissors({
   };
   useEffect(() => {
     gameRules();
-  }, [userOption]);
+  }, [userOption, pcOption]);
 
   const handleOption = (ev) => {
     setUserOption(ev.target.id);
     computerMove();
-    // gameRules();
   };
 
   return (

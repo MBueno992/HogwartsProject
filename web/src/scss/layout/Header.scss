@@ -16,6 +16,10 @@
     &--url {
       text-decoration: none;
       color: white;
+      &:hover {
+        font-size: 1.5rem;
+        transition: all 0.2s;
+      }
     }
     &--login {
       height: 50px;

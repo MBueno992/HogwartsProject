@@ -10,7 +10,7 @@ function Construction() {
         Todos nuestros magos y brujas están trabajando para sacar adelante esta
         página cuanto antes. Gracias por tu paciencia.
       </p>
-      <ReturnBtn url="/" text="Volver al inicio" />
+      <ReturnBtn url="/games" text="Volver a juegos" />
     </section>
   );
 }

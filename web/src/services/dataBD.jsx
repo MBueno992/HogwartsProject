@@ -2,7 +2,7 @@ const quote = () => {
   return fetch('https://hogwarts-project-back.vercel.app/quote')
     .then((response) => response.json())
     .then((data) => {
-      return data;
+      return data.result;
     });
 };
 
