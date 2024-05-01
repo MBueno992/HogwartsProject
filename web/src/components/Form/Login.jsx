@@ -1,4 +1,6 @@
 import '../../scss/layout/LoginRegister.scss';
+import { Link } from 'react-router-dom';
+
 import PropTypes from 'prop-types';
 
 function Login({ loginUser, loginInput, loginError }) {
@@ -33,6 +35,9 @@ function Login({ loginUser, loginInput, loginError }) {
           {loginError}
         </p>
       </div>
+      <p className="login__register">
+        ¿Aún no te has registrado? <Link to="/register">Regístrate aquí</Link>
+      </p>
     </section>
   );
 }

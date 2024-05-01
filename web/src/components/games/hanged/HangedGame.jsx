@@ -63,7 +63,7 @@ function HangedGame({
         handleInstructions={handleInstructions}
         instruc={instruc}
         juego="El ahorcado"
-        text1=" El objetivo del juego es adivinar la palabra antes de que el muñeco se
+        text1=" El objetivo del juego es adivinar la palabra antes de que se
         complete el dibujo del muñeco ahorcado. Para ello, deberás adivinar cada
         letra hasta completar la palabra."
         text2="  En esta versión del juego, cada palabra está relacionada con el mundo de

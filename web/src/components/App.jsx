@@ -13,8 +13,6 @@ import Register from './Form/Register.jsx';
 import Ministery from './CompletePages/Ministery.jsx';
 import ShortingHat from './CompletePages/ShortingHat.jsx';
 import Form from './games/QuestHouse/Form.jsx';
-import Wizards from './Wizards/Wizards.jsx';
-import WizardDetail from './Wizards/WizardDetail.jsx';
 import HogwartsHouse from './Houses/HogwartsHouse.jsx';
 import LandingGames from './games/LandingGames.jsx';
 import HangedGame from './games/hanged/HangedGame.jsx';
@@ -44,7 +42,6 @@ function App() {
   const [answerSelected, setAnswerSelected] = useState([]);
   const [houseSelect, setHouseSelect] = useState(local.get('house', ''));
   const navigate = useNavigate();
-  const [wizardsList, setWizardsList] = useState([]);
   const [dataUser, setDataUser] = useState(
     local.get('userData', {
       gender: '',
