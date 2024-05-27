@@ -105,7 +105,7 @@ server.post('/', async (req, resp) => {
   } else {
     resp.json({
       success: false,
-      msg: 'Por favor, comprueba el correo electrónico.',
+      msg: 'Por favor, comprueba el correo electrónico. ',
     });
   }
   connect.end();
