@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@libsql/client": "^0.7.0",
     "@react-pdf/renderer": "^3.3.8",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.3.0",
